@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layout_demolicao"
+    android:background="@drawable/fundo"
+    tools:context=".Servicos.Demolicao">
+
+
+
+        <LinearLayout
+            android:id="@+id/linearART"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewArt"
+                    android:layout_width="70dp"
+                    android:layout_height="53dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/icon_art" />
+
+                <androidx.appcompat.widget.CardView
+                    android:layout_width="317dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:elevation="3dp"
+                    android:padding="10dp"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="316dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageView3"
+                        android:background="@android:color/transparent"
+                        android:orientation="vertical"
+                        android:paddingBottom="3dp"
+                        android:visibility="visible">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <LinearLayout
+                            android:layout_width="316dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+>
+                        <CheckBox
+                            android:id="@+id/checknoxArtArcondicionado"
+                            android:layout_width="303dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Ar Condicionado"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtEnvidracamento"
+                            android:layout_width="303dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Envidraçamento de sacada"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtPedrasMarmore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Pedras de mármores/granito (Pia, Lavatórioa e tanque)"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtNovosRevestimentos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Novos revestimentos (demolição e instalação de porcelanato/cerâmica)"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtEletrica"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Elétrica (Instalações, ramificações e deslocamento)"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtHidraulica"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Hidráulica (Instalações, ramificações e deslocamento)"
+                            android:textSize="12sp" />
+
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Box, espelhos, laminados/vinílico e Acessórios (chuveiro, prateleira, cortinas, etc.)"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtGesso"
+                            android:layout_width="305dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Gesso (Sanca, rebaixo, golas, molduras, Dry-wall) e Pintura Decorativa"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtDemolicao"
+                            android:layout_width="303dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Demolição de parede não estrutural"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtMoveisPlanejados"
+                            android:layout_width="303dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Móveis planejados"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxArtDeslocamento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/botao_servicos"
+                            android:gravity="center"
+                            android:text="Deslocamento do ponto de abastecimento de gás."
+                            android:textSize="12sp" />
+                        </LinearLayout>
+                    </ScrollView>
+
+                    </LinearLayout>
+                </androidx.appcompat.widget.CardView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+</LinearLayout>
