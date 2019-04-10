@@ -257,6 +257,16 @@
                             android:layout_margin="5dp"
                             android:textSize="12sp"
                             android:text="Quarto 2" />
+                        <CheckBox
+                            android:id="@+id/checkboxPintura_m2"
+                            android:background="@drawable/botao_servicos"
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="2dp"
+                            android:gravity="center"
+                            android:layout_margin="5dp"
+                            android:textSize="12sp"
+                            android:text="m² do Apartamento" />
 
 
                     </LinearLayout>
@@ -2725,7 +2735,74 @@
 
 
 
+                                    </LinearLayout><LinearLayout
+                                    android:id="@+id/linearPinturam2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
+
+
+                                    <LinearLayout
+                                        android:layout_width="178dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="3dp"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/pinturaApartamento1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:background="@android:drawable/editbox_background"
+                                                android:fontFamily="@font/roboto_thin"
+                                                android:inputType="numberDecimal"
+                                                android:maxLength="10"
+                                                android:padding="10sp"
+                                                android:singleLine="true"
+                                                android:text="0"
+                                                android:textSize="8sp" />
+
+                                            <EditText
+                                                android:id="@+id/pinturaApartamento1_1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:background="@android:drawable/editbox_background"
+                                                android:fontFamily="@font/roboto_thin"
+                                                android:inputType="numberDecimal"
+                                                android:maxLength="10"
+                                                android:padding="10sp"
+                                                android:singleLine="true"
+                                                android:text="0"
+                                                android:textSize="8sp" />
+                                        </LinearLayout>
+
+                                        <TextView
+
+                                            android:layout_width="100dp"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/botao_servicos"
+                                            android:fontFamily="@font/roboto_bold"
+                                            android:gravity="center"
+                                            android:text="m² do Apartamento"
+                                            android:textColor="#1d1d1d"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
                                     </LinearLayout>
+
+
+
+
+
+
+
+
+
+                                </LinearLayout>
                                 </LinearLayout>
 
                             </ScrollView>

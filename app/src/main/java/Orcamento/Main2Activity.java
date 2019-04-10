@@ -30,6 +30,11 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -58,6 +63,7 @@ import java.util.Date;
 import java.util.List;
 
 import Firebase.ConfiguracaoFirebase;
+import Firebase.ValoresCompartilhados;
 import Permissoes.PermissionsChecker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -93,12 +99,12 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
     private Document document;
     private CheckBox checkBoxCozinha;
     private CheckBox BtncheckBoxArtArCondicionado, BtncheckboxArtEnvidracamento, BtncheckboxArtPedrasMarmore, BtncheckboxArtNovosRevestimentos, BtncheckboxArtEletrica, BtncheckboxArtHidraulica, BtncheckboxArtBox, BtncheckboxArtGesso, BtncheckboxArtDemolicao, BtncheckboxArtMoveisPlanejados, BtncheckboxArtDeslocamento;
-    private CheckBox checkBoxPinturaCozinha, checkBoxPinturaBanheiroSocial, checkBoxPinturaAreaServico, checkBoxPinturaBanheiroSuite, checkBoxPinturaLavabo, checkBoxPinturaSacadaVaranda, checkBoxPinturaSalaJantar, checkBoxPinturaSalaEstar, checkBoxPinturaQuartoSuite, checkBoxPinturaQuarto1, checkBoxPinturaQuarto2;
+    private CheckBox checkBoxPinturaCozinha, checkBoxPinturaBanheiroSocial, checkBoxPinturaAreaServico, checkBoxPinturaBanheiroSuite, checkBoxPinturaLavabo, checkBoxPinturaSacadaVaranda, checkBoxPinturaSalaJantar, checkBoxPinturaSalaEstar, checkBoxPinturaQuartoSuite, checkBoxPinturaQuarto1, checkBoxPinturaQuarto2,checkBoxPinturaM2;
     private CheckBox checkBoxHidraulicaCozinha, checkBoxHidraulicaBanheiroSocial, checkBoxHidraulicaAreaServico, checkBoxHidraulicaBanheiroSuite, checkBoxHidraulicaLavabo, checkBoxHidraulicaSacadaVaranda, checkBoxHidraulicaSalaJantar, checkBoxHidraulicaSalaEstar, checkBoxHidraulicaQuartoSuite, checkBoxHidraulicaQuarto1, checkBoxHidraulicaQuarto2;
     private CheckBox checkBoxRevestimentoCozinha, checkBoxRevestimentoBanheiroSocial, checkBoxRevestimentoAreaServico, checkBoxRevestimentoBanheiroSuite, checkBoxRevestimentoLavabo, checkBoxRevestimentoSacadaVaranda, checkBoxRevestimentoSalaJantar, checkBoxRevestimentoSalaEstar, checkBoxRevestimentoQuartoSuite, checkBoxRevestimentoQuarto1, checkBoxRevestimentoQuarto2;
     private CheckBox checkBoxBanheiroSocial, checkBoxAreaServico, checkBoxBanheiroSuite, checkBoxLavabo, checkBoxSacadaVaranda, checkBoxSalaJantar, checkBoxSalaEstar, checkBoxQuartoSuite, checkBoxQuarto1, checkBoxQuarto2;
     private LinearLayout linearLayout1, linearLayout2, linearLayout3, linearLayout4, linearLayout5, linearLayout6, linearLayout7, linearLayout8, linearLayout9, linearLayout10, linearLayout11;
-    private LinearLayout linearLayoutPintura1, linearLayoutPintura2, linearLayoutPintura3, linearLayoutPintura4, linearLayoutPintura5, linearLayoutPintura6, linearLayoutPintura7, linearLayoutPintura8, linearLayoutPintura9, linearLayoutPintura10, linearLayoutPintura11;
+    private LinearLayout linearLayoutPintura1, linearLayoutPintura2, linearLayoutPintura3, linearLayoutPintura4, linearLayoutPintura5, linearLayoutPintura6, linearLayoutPintura7, linearLayoutPintura8, linearLayoutPintura9, linearLayoutPintura10, linearLayoutPintura11,linearLayoutPintura12;
     private LinearLayout linearLayoutHidraulica1, linearLayoutHidraulica2, linearLayoutHidraulica3, linearLayoutHidraulica4, linearLayoutHidraulica5, linearLayoutHidraulica6, linearLayoutHidraulica7, linearLayoutHidraulica8, linearLayoutHidraulica9, linearLayoutHidraulica10, linearLayoutHidraulica11;
     private LinearLayout linearLayoutRevestimento1, linearLayoutRevestimento2, linearLayoutRevestimento3, linearLayoutRevestimento4, linearLayoutRevestimento5, linearLayoutRevestimento6, linearLayoutRevestimento7, linearLayoutRevestimento8, linearLayoutRevestimento9, linearLayoutRevestimento10, linearLayoutRevestimento11;
     private EditText valorRevestimentoParede1, valorRevestimentoParede1_1, valorRemocaoPiso1, valorRemocaoPiso1_1, valorRemocaoPia1, valorRemocaoPia1_1, valorRemocacAlvenaria1, valorRemocacAlvenaria1_1, valorRemocaoTanque1, valorRemocaoTanque1_1, valorRasgarCaixinha4x2_1, valorRasgarCaixinha4x2_1_1, valorRasgarCaixinha4x4_1, valorRasgarCaixinha4x4_1_1, valorRasgarHidraulica1, valorRasgarHidraulica1_1, valorRemoverGesso1, valorRemoverGesso1_1, valorRemoverVaso1, valorRemoverVaso1_1, valorRemoverVao1, valorRemoverVao1_1,
@@ -141,7 +147,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
     private EditText valorPinturaPorta1, valorPinturaPorta1_1, valorPinturaPorta2, valorPinturaPorta2_1, valorPinturaPorta3, valorPinturaPorta3_1, valorPinturaPorta4, valorPinturaPorta4_1, valorPinturaPorta5, valorPinturaPorta5_1, valorPinturaPorta6, valorPinturaPorta6_1, valorPinturaPorta7, valorPinturaPorta7_1, valorPinturaPorta8, valorPinturaPorta8_1, valorPinturaPorta9, valorPinturaPorta9_1, valorPinturaPorta10, valorPinturaPorta10_1, valorPinturaPorta11, valorPinturaPorta11_1,
             valorPinturaJanela1, valorPinturaJanela1_1, valorPinturaJanela2, valorPinturaJanela2_1, valorPinturaJanela3, valorPinturaJanela3_1, valorPinturaJanela4, valorPinturaJanela4_1, valorPinturaJanela5, valorPinturaJanela5_1, valorPinturaJanela6, valorPinturaJanela6_1, valorPinturaJanela7, valorPinturaJanela7_1, valorPinturaJanela8, valorPinturaJanela8_1, valorPinturaJanela9, valorPinturaJanela9_1, valorPinturaJanela10, valorPinturaJanela10_1, valorPinturaJanela11, valorPinturaJanela11_1,
             valorPinturaEfeitoDecorativo1, valorPinturaEfeitoDecorativo1_1, valorPinturaEfeitoDecorativo2, valorPinturaEfeitoDecorativo2_1, valorPinturaEfeitoDecorativo3, valorPinturaEfeitoDecorativo3_1, valorPinturaEfeitoDecorativo4, valorPinturaEfeitoDecorativo4_1, valorPinturaEfeitoDecorativo5, valorPinturaEfeitoDecorativo5_1, valorPinturaEfeitoDecorativo6, valorPinturaEfeitoDecorativo6_1, valorPinturaEfeitoDecorativo7, valorPinturaEfeitoDecorativo7_1, valorPinturaEfeitoDecorativo8, valorPinturaEfeitoDecorativo8_1, valorPinturaEfeitoDecorativo9, valorPinturaEfeitoDecorativo9_1, valorPinturaEfeitoDecorativo10, valorPinturaEfeitoDecorativo10_1, valorPinturaEfeitoDecorativo11, valorPinturaEfeitoDecorativo11_1,
-            valorPinturaReparoGesso1, valorPinturaReparoGesso1_1, valorPinturaReparoGesso2, valorPinturaReparoGesso2_1, valorPinturaReparoGesso3, valorPinturaReparoGesso3_1, valorPinturaReparoGesso4, valorPinturaReparoGesso4_1, valorPinturaReparoGesso5, valorPinturaReparoGesso5_1, valorPinturaReparoGesso6, valorPinturaReparoGesso6_1, valorPinturaReparoGesso7, valorPinturaReparoGesso7_1, valorPinturaReparoGesso8, valorPinturaReparoGesso8_1, valorPinturaReparoGesso9, valorPinturaReparoGesso9_1, valorPinturaReparoGesso10, valorPinturaReparoGesso10_1, valorPinturaReparoGesso11, valorPinturaReparoGesso11_1;
+            valorPinturaReparoGesso1, valorPinturaReparoGesso1_1, valorPinturaReparoGesso2, valorPinturaReparoGesso2_1, valorPinturaReparoGesso3, valorPinturaReparoGesso3_1, valorPinturaReparoGesso4, valorPinturaReparoGesso4_1, valorPinturaReparoGesso5, valorPinturaReparoGesso5_1, valorPinturaReparoGesso6, valorPinturaReparoGesso6_1, valorPinturaReparoGesso7, valorPinturaReparoGesso7_1, valorPinturaReparoGesso8, valorPinturaReparoGesso8_1, valorPinturaReparoGesso9, valorPinturaReparoGesso9_1, valorPinturaReparoGesso10, valorPinturaReparoGesso10_1, valorPinturaReparoGesso11, valorPinturaReparoGesso11_1,valorPinturaApartamento1,valorPinturaApartamento1_1;
     private Button btn_finish;
     PermissionsChecker checker;
     Context mContext;
@@ -200,6 +206,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
     double precoPinturaJanela = 150.00;
     double precoPinturaEfeitoDecorativo = 90.00;
     double precoPinturaReparoGesso = 80.00;
+    double precoPinturaApartament0 = 40.00;
 
 
     //Variaveis Demolicao
@@ -948,6 +955,8 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
     private double varReparoGesso10_1 = 0;
     private double varReparoGesso11 = 0;
     private double varReparoGesso11_1 = 0;
+    private double varM2 = 0;
+    private double varM2_1 = 0;
 
 
     private double latitude = 0;
@@ -1021,6 +1030,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
     private double valorTotalCategoriaPintura = 0;
     private double valorTotalPinturaSalaEstar = 0;
     private double valorTotalPinturaQuartoSuite = 0;
+    private double valorTotalPinturaApartamento = 0;
 
 
     //ART Valores Totais
@@ -1035,7 +1045,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
     private double valorTotalArtDemolicaoParedeNaoEstrutural = 111.75;
     private double valorTotalArtMoveisPlanejados = 12.67;
     private double valorTotalArtDeslocamentoPontoGas = 85.96;
-    private double valorTotalArtTaxa = 82.94;
+    private double valorTotalArtTaxa = 85.96;
 
 
     private int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1;
@@ -1045,6 +1055,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
     static String mCurrentPhotoPath;
 
 
+    //Base de Dados
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase database;
+
     //Logof
 
     @Override
@@ -1053,7 +1067,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         setContentView(R.layout.activity_demolicao);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        database = FirebaseDatabase.getInstance();
 
         value = null;
 
@@ -1076,20 +1090,20 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         linearRevestimento = findViewById(R.id.linearRevestimento);
         linearHidraulica = findViewById(R.id.linearHidraulica);
         linearPintura = findViewById(R.id.linearPintura);
-
+        exibirNota = findViewById(R.id.exibirNota);
+        exibirValorNota = findViewById(R.id.textView91);
 
         //Firebase
 
 
         // use Shared preferences to save the best score
-        SharedPreferences mypref = getPreferences(MODE_PRIVATE);
-        SharedPreferences mypref2 = getPreferences(MODE_PRIVATE);
-        numNota = mypref.getInt("numeroNota", 0001);
-        valorNota = mypref.getString("valorNota", "0");
-        exibirNota = findViewById(R.id.exibirNota);
-        exibirValorNota = findViewById(R.id.textView91);
-        exibirNota.setText("000" + Integer.toString(numNota));
-        exibirValorNota.setText(valorNota);
+        //SharedPreferences mypref = getPreferences(MODE_PRIVATE);
+        //SharedPreferences mypref2 = getPreferences(MODE_PRIVATE);
+        isAccountValid();
+
+
+
+
 
 
         mContext = getApplicationContext();
@@ -1146,6 +1160,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         checkBoxPinturaSalaJantar = findViewById(R.id.checkboxPintura_salaJantar);
         checkBoxPinturaQuarto1 = findViewById(R.id.checkboxPintura_quarto1);
         checkBoxPinturaQuarto2 = findViewById(R.id.checkboxPintura_quarto2);
+        checkBoxPinturaM2 = findViewById(R.id.checkboxPintura_m2);
         checkBoxPinturaQuartoSuite = findViewById(R.id.checkboxPintura_quartoSuite);
         checkBoxPinturaSacadaVaranda = findViewById(R.id.checkboxPintura_sacada);
 
@@ -1218,6 +1233,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         linearLayoutPintura9 = findViewById(R.id.linearPinturaQuarto1);
         linearLayoutPintura10 = findViewById(R.id.linearPinturaQuarto2);
         linearLayoutPintura11 = findViewById(R.id.linearPinturaQuartoSuite);
+        linearLayoutPintura12 = findViewById(R.id.linearPinturam2);
 
 
         //Revestimento Parede
@@ -1750,6 +1766,11 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         valorPinturaReparoGesso11_1 = findViewById(R.id.pinturaReparoGesso11_1);
 
 
+
+
+        //Pintura Apartamento
+        valorPinturaApartamento1 = findViewById(R.id.pinturaApartamento1);
+        valorPinturaApartamento1_1 = findViewById(R.id.pinturaApartamento1_1);
         //Hidraulica
 
         valorHidraulicaTorneiraEletrica1 = findViewById(R.id.torneiraEletrica);
@@ -1995,6 +2016,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, camera.class);
                 startActivity(intent);
+                onPause();
 
             }
         });
@@ -2888,6 +2910,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaQuarto1.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura1.setVisibility(View.GONE);
                     checkBoxPinturaCozinha.setBackgroundResource(R.drawable.btn_servico1);
@@ -2915,7 +2938,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaLavabo.setChecked(false);
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaQuarto1.setChecked(false);
-                    checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura2.setVisibility(View.GONE);
                     checkBoxPinturaBanheiroSocial.setBackgroundResource(R.drawable.btn_servico1);
@@ -2945,6 +2968,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaQuarto1.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura3.setVisibility(View.GONE);
                     checkBoxPinturaAreaServico.setBackgroundResource(R.drawable.btn_servico1);
@@ -2973,6 +2997,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaLavabo.setChecked(false);
                     checkBoxPinturaQuarto1.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura4.setVisibility(View.GONE);
                     checkBoxPinturaBanheiroSuite.setBackgroundResource(R.drawable.btn_servico1);
@@ -3001,6 +3026,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaQuarto1.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura5.setVisibility(View.GONE);
                     checkBoxPinturaLavabo.setBackgroundResource(R.drawable.btn_servico1);
@@ -3031,6 +3057,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSocial.setChecked(false);
                     checkBoxPinturaQuarto1.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura6.setVisibility(View.GONE);
                     checkBoxPinturaSacadaVaranda.setBackgroundResource(R.drawable.btn_servico1);
@@ -3058,6 +3085,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaQuarto1.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura7.setVisibility(View.GONE);
                     checkBoxPinturaSalaJantar.setBackgroundResource(R.drawable.btn_servico1);
@@ -3086,6 +3114,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSocial.setChecked(false);
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura8.setVisibility(View.GONE);
                     checkBoxPinturaSalaEstar.setBackgroundResource(R.drawable.btn_servico1);
@@ -3114,6 +3143,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaSalaEstar.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura9.setVisibility(View.GONE);
                     checkBoxPinturaQuarto1.setBackgroundResource(R.drawable.btn_servico1);
@@ -3141,6 +3171,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaSalaEstar.setChecked(false);
                     checkBoxPinturaQuartoSuite.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura10.setVisibility(View.GONE);
                     checkBoxPinturaQuarto2.setBackgroundResource(R.drawable.btn_servico1);
@@ -3169,9 +3200,38 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     checkBoxPinturaBanheiroSuite.setChecked(false);
                     checkBoxPinturaSalaEstar.setChecked(false);
                     checkBoxPinturaQuarto2.setChecked(false);
+                    checkBoxPinturaM2.setChecked(false);
                 } else if (isChecked == false) {
                     linearLayoutPintura11.setVisibility(View.GONE);
                     checkBoxPinturaQuartoSuite.setBackgroundResource(R.drawable.btn_servico1);
+
+                }
+            }
+        });
+        checkBoxPinturaM2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    linearLayoutPintura12.setVisibility(View.VISIBLE);
+                    checkBoxPinturaM2.setBackgroundColor(Color.parseColor("#1d1d1d"));
+                    checkBoxPinturaM2.setTextColor(Color.parseColor("#ffffff"));
+
+
+                    //Desativando os outros checkBox
+                    checkBoxPinturaAreaServico.setChecked(false);
+                    checkBoxPinturaCozinha.setChecked(false);
+                    checkBoxPinturaSacadaVaranda.setChecked(false);
+                    checkBoxPinturaQuarto1.setChecked(false);
+                    checkBoxPinturaLavabo.setChecked(false);
+                    checkBoxPinturaSalaJantar.setChecked(false);
+                    checkBoxPinturaBanheiroSocial.setChecked(false);
+                    checkBoxPinturaBanheiroSuite.setChecked(false);
+                    checkBoxPinturaSalaEstar.setChecked(false);
+                    checkBoxPinturaQuarto2.setChecked(false);
+                    checkBoxQuartoSuite.setChecked(false);
+                } else if (isChecked == false) {
+                    linearLayoutPintura12.setVisibility(View.GONE);
+                    checkBoxPinturaM2.setBackgroundResource(R.drawable.btn_servico1);
 
                 }
             }
@@ -4158,7 +4218,13 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                 valorTotalPinturaQuartoSuite = varPorta11 + varPorta11_1 + varJanela11 + varJanela11_1 + varEfeitoDecorativo11 + varEfeitoDecorativo11_1 + varReparoGesso11 + varReparoGesso11_1;
 
-                valorTotalCategoriaPintura = valorTotalPinturaQuarto2 + valorTotalPinturaQuarto1 + valorTotalPinturaQuartoSuite + valorTotalPinturaSalaEstar + valorTotalPinturaSalaJantar + valorTotalPinturaSacada + valorTotalPinturaLavabo + valorTotalPinturaBanheiroSocial + valorTotalPinturaBanheiroSuite + valorTotalPinturaCozinha + valorTotalPinturaAreaServico;
+
+                varM2 = Double.parseDouble(valorPinturaApartamento1.getText().toString()) * precoPinturaApartament0;
+                varM2_1 = Double.parseDouble(valorPinturaApartamento1_1.getText().toString()) * precoPinturaApartament0;
+
+                valorTotalPinturaApartamento = varM2 + varM2_1;
+
+                valorTotalCategoriaPintura = valorTotalPinturaQuarto2 + valorTotalPinturaApartamento +  valorTotalPinturaQuarto1 + valorTotalPinturaQuartoSuite + valorTotalPinturaSalaEstar + valorTotalPinturaSalaJantar + valorTotalPinturaSacada + valorTotalPinturaLavabo + valorTotalPinturaBanheiroSocial + valorTotalPinturaBanheiroSuite + valorTotalPinturaCozinha + valorTotalPinturaAreaServico;
 
 
 
@@ -4224,7 +4290,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
         Font fonteEndereco = FontFactory.getFont("Times-Roman", 14, Font.NORMAL);
-        Font fonteOrcamento = FontFactory.getFont("Times-Roman", 13, Font.NORMAL);
+        Font fonteOrcamento = FontFactory.getFont("Times-Roman", 10, Font.NORMAL);
         Font bold = FontFactory.getFont("Times-Roman, Bold", 15, Font.BOLD);
         Font boldTitulo = FontFactory.getFont("Times-Roman, Bold", 22, Font.BOLD);
         Font boldTitulo2 = FontFactory.getFont("Times-Roman, Bold", 16, Font.BOLD);
@@ -4241,7 +4307,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
         //Adicionando Logo
-        Drawable d = getResources().getDrawable(R.drawable.logo_branca_th);
+        Drawable d = getResources().getDrawable(R.drawable.cabecalho);
         Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 100, 50, true);
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -4255,91 +4321,147 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             e.printStackTrace();
         }
 
+        Drawable d7 = getResources().getDrawable(R.drawable.endereco);
+        Bitmap bitmap7 = ((BitmapDrawable) d7).getBitmap();
+        Bitmap resizedBitmap7 = Bitmap.createScaledBitmap(bitmap7, 100, 50, true);
+        ByteArrayOutputStream stream7 = new ByteArrayOutputStream();
+        bitmap7.compress(Bitmap.CompressFormat.PNG, 100, stream7);
+        byte[] bitmapData7 = stream7.toByteArray();
+        Image image7 = null;
+        try {
+            image7 = Image.getInstance(bitmapData7);
+            image7.setAlignment(Element.ALIGN_CENTER);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Drawable d8 = getResources().getDrawable(R.drawable.logo_effes);
+        Bitmap bitmap8 = ((BitmapDrawable) d8).getBitmap();
+        Bitmap resizedBitmap8 = Bitmap.createScaledBitmap(bitmap8, 100, 50, true);
+        ByteArrayOutputStream stream8 = new ByteArrayOutputStream();
+        bitmap7.compress(Bitmap.CompressFormat.PNG, 100, stream8);
+        byte[] bitmapData8 = stream8.toByteArray();
+        Image image8 = null;
+        try {
+            image8 = Image.getInstance(bitmapData8);
+            image8.setAlignment(Element.ALIGN_CENTER);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DecimalFormat df = new DecimalFormat("###,##0.00");
 
         //Data
         Paragraph dataParagrafo = new Paragraph(String.valueOf(now), fontData);
         dataParagrafo.setAlignment(Element.ALIGN_LEFT);
         Paragraph espacoBranco = new Paragraph("", boldTitulo2);
+        Paragraph espacoBranco1 = new Paragraph("", boldTitulo2);
+        espacoBranco1.setSpacingBefore(5);
+        espacoBranco.setLeading(1.25f);
         Paragraph tituloParagrafo = new Paragraph("Orçamento", boldTitulo2);
         Paragraph paragrafoDemolicao = new Paragraph("Demolição", boldTitulo2);
+        paragrafoDemolicao.setSpacingAfter(7);
         Paragraph paragrafoArt = new Paragraph("ART - Anotação de Responsabilidade Técnica ", boldTitulo2);
+        paragrafoArt.setSpacingAfter(7);
         paragrafoDemolicao.setAlignment(Element.ALIGN_LEFT);
         Paragraph paragrafoRevestimento = new Paragraph("Revestimento", boldTitulo2);
+        paragrafoRevestimento.setSpacingAfter(7);
         paragrafoRevestimento.setAlignment(Element.ALIGN_LEFT);
         Paragraph paragrafoPintura = new Paragraph("Pintura", boldTitulo2);
+        paragrafoPintura.setSpacingAfter(7);
         paragrafoPintura.setAlignment(Element.ALIGN_LEFT);
         Paragraph paragrafoHidraulica = new Paragraph("Hidraulica\n", boldTitulo2);
+        paragrafoHidraulica.setSpacingAfter(7);
         paragrafoHidraulica.setAlignment(Element.ALIGN_LEFT);
 
 
         //Paragrafo Demolicao
-        Paragraph paragrafoCozinha = new Paragraph("Cozinha                                                                                    Total R$" + valorTotalCozinha + "0", boldServicos);
-        Paragraph paragrafoBanheiro = new Paragraph("Banheiro                                                                                   Total R$" + valorTotalBanheiro1 + "0", boldServicos);
-        Paragraph paragrafoAreaServico = new Paragraph("Área de Serviço                                                                            Total R$" + valorTotalAreaServico + "0", boldServicos);
-        Paragraph paragrafoBanheiro2 = new Paragraph("Banheiro Suíte                                                                             Total R$" + valorTotalBanheiro2 + "0", boldServicos);
-        Paragraph paragrafoLavabo = new Paragraph("Lavabo                                                                                     Total R$" + valorTotalLavabo + "0", boldServicos);
-        Paragraph paragrafoSacadaVaranda = new Paragraph("Sacada Varanda                                                                             Total R$" + valorTotalSacadaVaranda + "0", boldServicos);
-        Paragraph paragrafoSalaJantar = new Paragraph("Sala Jantar                                                                                Total R$" + valorTotalSalaJantar + "0", boldServicos);
-        Paragraph paragrafoSalaEstar = new Paragraph("Sala Estar                                                                                 Total R$" + valorTotalSalaEstar + "0", boldServicos);
-        Paragraph paragrafoQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + valorTotalQuarto1 + "0", boldServicos);
-        Paragraph paragrafoQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + valorTotalQuarto2 + "0", boldServicos);
-        Paragraph paragrafoQuarto3 = new Paragraph("Quarto Suíte                                                                               Total R$" + valorTotalQuarto3 + "0", boldServicos);
-
+        Paragraph paragrafoCozinha = new Paragraph("Cozinha                                                                                    Total R$" + df.format(valorTotalCozinha), boldServicos);
+        paragrafoCozinha.setSpacingAfter(10);
+        paragrafoCozinha.setExtraParagraphSpace(10);
+        Paragraph paragrafoBanheiro = new Paragraph("Banheiro                                                                                   Total R$" + df.format(valorTotalBanheiro1) , boldServicos);
+        paragrafoBanheiro.setSpacingAfter(10);
+        Paragraph paragrafoAreaServico = new Paragraph("Área de Serviço                                                                            Total R$" + df.format(valorTotalAreaServico) , boldServicos);
+        paragrafoAreaServico.setSpacingAfter(10);
+        Paragraph paragrafoBanheiro2 = new Paragraph("Banheiro Suíte                                                                             Total R$" + df.format(valorTotalBanheiro2) , boldServicos);
+        paragrafoBanheiro2.setSpacingAfter(10);
+        Paragraph paragrafoLavabo = new Paragraph("Lavabo                                                                                     Total R$" + df.format(valorTotalLavabo) , boldServicos);
+        paragrafoLavabo.setSpacingAfter(10);
+        Paragraph paragrafoSacadaVaranda = new Paragraph("Sacada Varanda                                                                             Total R$" + df.format(valorTotalSacadaVaranda) , boldServicos);
+        paragrafoSacadaVaranda.setSpacingAfter(10);
+        Paragraph paragrafoSalaJantar = new Paragraph("Sala Jantar                                                                                Total R$" + df.format(valorTotalSalaJantar) , boldServicos);
+        paragrafoSalaJantar.setSpacingAfter(10);
+        Paragraph paragrafoSalaEstar = new Paragraph("Sala Estar                                                                                 Total R$" + df.format(valorTotalSalaEstar) , boldServicos);
+        paragrafoSalaEstar.setSpacingAfter(10);
+        Paragraph paragrafoQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + df.format(valorTotalQuarto1), boldServicos);
+        paragrafoQuarto1.setSpacingAfter(10);
+        Paragraph paragrafoQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + df.format(valorTotalQuarto2), boldServicos);
+        paragrafoQuarto2.setSpacingAfter(10);
+        Paragraph paragrafoQuarto3 = new Paragraph("Quarto Suíte                                                                               Total R$" + df.format(valorTotalQuarto3) , boldServicos);
+        paragrafoQuarto3.setSpacingAfter(10);
+        Paragraph paragrafoArtTotal = new Paragraph(      "ART                                                                                             Total R$" + df.format(valorTotalCategoriaArt + valorTotalArtTaxa) , boldServicos);
+        paragrafoArtTotal.setSpacingAfter(10);
 
         //Paragrafo Revestimento
-        Paragraph paragrafoRevestimentoCozinha = new Paragraph("Cozinha                                                                                    Total R$" + valorTotalRevestimentoCozinha + "0", boldServicos);
-        Paragraph paragrafoRevestimentoBanheiro = new Paragraph("Banheiro                                                                                   Total R$" + valorTotalRevestimentoBanheiroSocial + "0", boldServicos);
-        Paragraph paragrafoRevestimentoAreaServico = new Paragraph("Área de Serviço                                                                            Total R$" + valorTotalRevestimentoAreaServico + "0", boldServicos);
-        Paragraph paragrafoRevestimentoBanheiro2 = new Paragraph("Banheiro Suíte                                                                             Total R$" + valorTotalRevestimentoBanheiroSuite + "0", boldServicos);
-        Paragraph paragrafoRevestimentoLavabo = new Paragraph("Lavabo                                                                                     Total R$" + valorTotalRevestimentoLavabo + "0", boldServicos);
-        Paragraph paragrafoRevestimentoSacadaVaranda = new Paragraph("Sacada Varanda                                                                             Total R$" + valorTotalRevestimentoSacada + "0", boldServicos);
-        Paragraph paragrafoRevestimentoSalaJantar = new Paragraph("Sala Jantar                                                                                Total R$" + valorTotalRevestimentoSalaJantar + "0", boldServicos);
-        Paragraph paragrafoRevestimentoSalaEstar = new Paragraph("Sala Estar                                                                                 Total R$" + valorTotalRevestimentoSalaEstar + "0", boldServicos);
-        Paragraph paragrafoRevestimentoQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + valorTotalRevestimentoQuarto1 + "0", boldServicos);
-        Paragraph paragrafoRevestimentoQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + valorTotalRevestimentoQuarto2 + "0", boldServicos);
-        Paragraph paragrafoRevestimentoQuarto3 = new Paragraph("Quarto Suíte                                                                               Total R$" + valorTotalRevestimentoQuartoSuite + "0", boldServicos);
+
+        Paragraph paragrafoRevestimentoCozinha = new Paragraph("Cozinha                                                                                    Total R$" + df.format(valorTotalRevestimentoCozinha) , boldServicos);
+        paragrafoRevestimentoCozinha.setLeading(0.70f);
+        Paragraph paragrafoRevestimentoBanheiro = new Paragraph("Banheiro                                                                                   Total R$" + df.format(valorTotalRevestimentoBanheiroSocial) , boldServicos);
+        Paragraph paragrafoRevestimentoAreaServico = new Paragraph("Área de Serviço                                                                            Total R$" + df.format(valorTotalRevestimentoAreaServico) , boldServicos);
+        Paragraph paragrafoRevestimentoBanheiro2 = new Paragraph("Banheiro Suíte                                                                             Total R$" + df.format(valorTotalRevestimentoBanheiroSuite) , boldServicos);
+        Paragraph paragrafoRevestimentoLavabo = new Paragraph("Lavabo                                                                                     Total R$" + df.format(valorTotalRevestimentoLavabo) , boldServicos);
+        Paragraph paragrafoRevestimentoSacadaVaranda = new Paragraph("Sacada Varanda                                                                             Total R$" + df.format(valorTotalRevestimentoSacada) , boldServicos);
+        Paragraph paragrafoRevestimentoSalaJantar = new Paragraph("Sala Jantar                                                                                Total R$" + df.format(valorTotalRevestimentoSalaJantar) , boldServicos);
+        Paragraph paragrafoRevestimentoSalaEstar = new Paragraph("Sala Estar                                                                                 Total R$" + df.format(valorTotalRevestimentoSalaEstar) , boldServicos);
+        Paragraph paragrafoRevestimentoQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + df.format(valorTotalRevestimentoQuarto1), boldServicos);
+        Paragraph paragrafoRevestimentoQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + df.format(valorTotalRevestimentoQuarto2), boldServicos);
+        Paragraph paragrafoRevestimentoQuarto3 = new Paragraph("Quarto Suíte                                                                               Total R$" + df.format(valorTotalRevestimentoQuartoSuite) , boldServicos);
 
 
         //Paragrafo Pintura
-        Paragraph paragrafoPinturaCozinha = new Paragraph("Cozinha                                                                                    Total R$" + valorTotalPinturaCozinha + "0", boldServicos);
-        Paragraph paragrafoPinturaBanheiro = new Paragraph("Banheiro                                                                                   Total R$" + valorTotalPinturaBanheiroSocial + "0", boldServicos);
-        Paragraph paragrafoPinturaAreaServico = new Paragraph("Área de Serviço                                                                            Total R$" + valorTotalPinturaAreaServico + "0", boldServicos);
-        Paragraph paragrafoPinturaBanheiro2 = new Paragraph("Banheiro Suíte                                                                             Total R$" + valorTotalPinturaBanheiroSuite + "0", boldServicos);
-        Paragraph paragrafoPinturaLavabo = new Paragraph("Lavabo                                                                                     Total R$" + valorTotalPinturaLavabo + "0", boldServicos);
-        Paragraph paragrafoPinturaSacadaVaranda = new Paragraph("Sacada Varanda                                                                             Total R$" + valorTotalPinturaSacada + "0", boldServicos);
-        Paragraph paragrafoPinturaSalaJantar = new Paragraph("Sala Jantar                                                                                Total R$" + valorTotalPinturaSalaJantar + "0", boldServicos);
-        Paragraph paragrafoPinturaSalaEstar = new Paragraph("Sala Estar                                                                                 Total R$" + valorTotalPinturaSalaEstar + "0", boldServicos);
-        Paragraph paragrafoPinturaQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + valorTotalPinturaQuarto1 + "0", boldServicos);
-        Paragraph paragrafoPinturaQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + valorTotalPinturaQuarto2 + "0", boldServicos);
-        Paragraph paragrafoPinturaQuarto3 = new Paragraph("Quarto Suíte                                                                               Total R$" + valorTotalPinturaQuartoSuite + "0", boldServicos);
+        Paragraph paragrafoPinturaCozinha = new Paragraph("Cozinha                                                                                    Total R$" + df.format(valorTotalPinturaCozinha), boldServicos);
+        Paragraph paragrafoPinturaApartamento = new Paragraph(   "Apartamento m²                                                                             Total R$" + df.format(valorTotalPinturaApartamento), boldServicos);
+        Paragraph paragrafoPinturaBanheiro = new Paragraph("Banheiro                                                                                   Total R$" + df.format(valorTotalPinturaBanheiroSocial), boldServicos);
+        Paragraph paragrafoPinturaAreaServico = new Paragraph("Área de Serviço                                                                            Total R$" + df.format(valorTotalPinturaAreaServico), boldServicos);
+        Paragraph paragrafoPinturaBanheiro2 = new Paragraph("Banheiro Suíte                                                                             Total R$" + df.format(valorTotalPinturaBanheiroSuite), boldServicos);
+        Paragraph paragrafoPinturaLavabo = new Paragraph("Lavabo                                                                                     Total R$" + df.format(valorTotalPinturaLavabo), boldServicos);
+        Paragraph paragrafoPinturaSacadaVaranda = new Paragraph("Sacada Varanda                                                                             Total R$" + df.format(valorTotalPinturaSacada), boldServicos);
+        Paragraph paragrafoPinturaSalaJantar = new Paragraph("Sala Jantar                                                                                Total R$" + df.format(valorTotalPinturaSalaJantar), boldServicos);
+        Paragraph paragrafoPinturaSalaEstar = new Paragraph("Sala Estar                                                                                 Total R$" + df.format(valorTotalPinturaSalaEstar), boldServicos);
+        Paragraph paragrafoPinturaQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + df.format(valorTotalPinturaQuarto1), boldServicos);
+        Paragraph paragrafoPinturaQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + df.format(valorTotalPinturaQuarto2), boldServicos);
+        Paragraph paragrafoPinturaQuarto3 = new Paragraph("Quarto Suíte                                                                               Total R$" + df.format(valorTotalPinturaQuartoSuite), boldServicos);
 
         //Paragrafo Hidraulica
 
-        Paragraph paragrafoHidraulicaCozinha = new Paragraph("Cozinha                                                                                    Total R$" + valorTotalHidraulicaCozinha + "0", boldServicos);
-        Paragraph paragrafoHidraulicaBanheiro = new Paragraph("Banheiro                                                                                   Total R$" + valorTotalHidraulicaBanheiroSocial + "0", boldServicos);
-        Paragraph paragrafoHidraulicaAreaServico = new Paragraph("Área de Serviço                                                                            Total R$" + valorTotalHidraulicaAreaServico + "0", boldServicos);
-        Paragraph paragrafoHidraulicaBanheiro2 = new Paragraph("Banheiro Suíte                                                                             Total R$" + valorTotalHidraulicaBanheiroSuite + "0", boldServicos);
-        Paragraph paragrafoHidraulicaLavabo = new Paragraph("Lavabo                                                                                     Total R$" + valorTotalHidraulicaLavabo + "0", boldServicos);
-        Paragraph paragrafoHidraulicaSacadaVaranda = new Paragraph("Sacada Varanda                                                                             Total R$" + valorTotalHidraulicaSacada + "0", boldServicos);
-        Paragraph paragrafoHidraulicaSalaJantar = new Paragraph("Sala Jantar                                                                                Total R$" + valorTotalHidraulicaSalaJantar + "0", boldServicos);
-        Paragraph paragrafoHidraulicaSalaEstar = new Paragraph("Sala Estar                                                                                 Total R$" + valorTotalHidraulicaSalaEstar + "0", boldServicos);
-        Paragraph paragrafoHidraulicaQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + valorTotalHidraulicaQuarto1 + "0", boldServicos);
-        Paragraph paragrafoHidraulicaQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + valorTotalHidraulicaQuarto2 + "0", boldServicos);
-        Paragraph paragrafoHidraulicaQuarto3 = new Paragraph("Quarto Suíte                                                                               Total R$" + valorTotalHidraulicaQuartoSuite + "0", boldServicos);
+        Paragraph paragrafoHidraulicaCozinha = new Paragraph("Cozinha                                                                                    Total R$" + df.format(valorTotalHidraulicaCozinha), boldServicos);
+        Paragraph paragrafoHidraulicaBanheiro = new Paragraph("Banheiro                                                                                   Total R$" + df.format(valorTotalHidraulicaBanheiroSocial), boldServicos);
+        Paragraph paragrafoHidraulicaAreaServico = new Paragraph("Área de Serviço                                                                            Total R$" + df.format(valorTotalHidraulicaAreaServico), boldServicos);
+        Paragraph paragrafoHidraulicaBanheiro2 = new Paragraph("Banheiro Suíte                                                                             Total R$" + df.format(valorTotalHidraulicaBanheiroSuite), boldServicos);
+        Paragraph paragrafoHidraulicaLavabo = new Paragraph("Lavabo                                                                                     Total R$" + df.format(valorTotalHidraulicaLavabo), boldServicos);
+        Paragraph paragrafoHidraulicaSacadaVaranda = new Paragraph("Sacada Varanda                                                                             Total R$" + df.format(valorTotalHidraulicaSacada), boldServicos);
+        Paragraph paragrafoHidraulicaSalaJantar = new Paragraph("Sala Jantar                                                                                Total R$" + df.format(valorTotalHidraulicaSalaJantar), boldServicos);
+        Paragraph paragrafoHidraulicaSalaEstar = new Paragraph("Sala Estar                                                                                 Total R$" + df.format(valorTotalHidraulicaSalaEstar), boldServicos);
+        Paragraph paragrafoHidraulicaQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + df.format(valorTotalHidraulicaQuarto1), boldServicos);
+        Paragraph paragrafoHidraulicaQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + df.format(valorTotalHidraulicaQuarto2), boldServicos);
+        Paragraph paragrafoHidraulicaQuarto3 = new Paragraph("Quarto Suíte                                                                               Total R$" + df.format(valorTotalHidraulicaQuartoSuite), boldServicos);
 
         Paragraph paragrafoServicos = new Paragraph("Quarto Suíte", boldServicosPrestados);
 
 
         //Tabela Endereco
-        PdfPTable table = new PdfPTable(2);
+        PdfPTable table = new PdfPTable(1);
         table.setWidthPercentage(100);
-        table.setWidths(new int[]{1, 2});
 
 
         //Adicionando logo e retirando a borda
         PdfPCell cell = new PdfPCell();
+        PdfPCell cellEndereco = new PdfPCell();
+        PdfPCell cellEffes = new PdfPCell();
         cell.addElement(image);
+        cellEndereco.addElement(image7);
+        cellEffes.addElement(image8);
         cell.setBorder(Rectangle.NO_BORDER);
+        cellEndereco.setBorder(Rectangle.NO_BORDER);
+        cellEffes.setBorder(Rectangle.NO_BORDER);
 
         PdfPTable table2 = new PdfPTable(1);
         table2.setWidthPercentage(100);
@@ -4347,12 +4469,8 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
         //Adicionando a logo no documento com o texto do endereço no lado direito
         table.addCell(cell);
-        try {
-            table.addCell(createTextCell("RAGONEZI - Engenharia e Reformas\nTEL: (19) 97402-3202 - Engº Felipe / (19) 99112-2676 Engº Fabio\n" +
-                    "ragoneziengenharia@gmail.com\nRua João Burato, 88 - Barão Geraldo - Campinas/SP"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+
         //Adicionando titulo
 
         PdfPTable tableOrcamento = new PdfPTable(1);
@@ -4427,25 +4545,33 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         tableProposta.setWidthPercentage(100);
         PdfPCell cellProposta = new PdfPCell();
         PdfPCell cellTextao = new PdfPCell();
+        PdfPCell cellFaixa = new PdfPCell();
+
+        cellFaixa.addElement(image2);
+        cellFaixa.setBorder(Rectangle.NO_BORDER);
 
 
-        Paragraph paragrafoDisposicao = new Paragraph("Fico à disposição para qualquer dúvida e negociação\n" +
-                "Atenciosamente, Eng° Felipe Ragonezi\n" +
-                "RAGONEZI – Engenharia e Reformas\n", fonteOrcamento);
+        Paragraph paragrafoDisposicao = new Paragraph("Fico à disposição para qualquer dúvida e negociação, atenciosamente;\n" +
+                "Ragonezi Engenharia | effes revestimentos\n", fonteOrcamento);
         paragrafoDisposicao.setAlignment(Element.ALIGN_RIGHT);
         Paragraph paragrafoProposta = new Paragraph("PROPOSTA", bold);
         paragrafoProposta.setAlignment(Element.ALIGN_CENTER);
-        Paragraph paragrafoTextao = new Paragraph("Todos os serviços citados serão acompanhados por um engenheiro capacitado e credenciado. Nota fiscal para todos os itens apresentados.\n" +
-                "Forma de pagamento 40% na entrada, fechamento de contrato + 60% na conclusão do processo.\n" +
-                "São aceitos pagamentos com cartão de débito e crédito, tambem poderá ser efetuado o pagamento por boleto bancário e/ou transferência.\n" +
-                "Esses valor não estão inclusos os materiais que serão usados.\n", fonteOrcamento);
-        paragrafoTextao.setAlignment(Element.ALIGN_CENTER);
+        Paragraph paragrafoTextao = new Paragraph("-Todos os serviços citados serão acompanhados por um engenheiro capacitado e credenciado.\n" +
+                "-Forma de pagamento 30% na entrada, fechamento de contrato + 70% na conclusão do processo.\n" +
+                "-Pagamentos com cartão de débito e crédito, também poderá ser efetuado o pagamento por boleto bancário e/ou transferência.\n" +
+                "-Validade desse documento 30 dias a contar da data de envio.\n" +
+                "-Itens não listados acima acordar valor em outra planilha.\n" +
+                "-Este orçamento não tem validade para itens orçados separadamente.\n", fonteOrcamento);
+        paragrafoTextao.setAlignment(Element.ALIGN_LEFT);
 
 
         cellProposta.addElement(paragrafoProposta);
+        cellProposta.setBorder(Rectangle.NO_BORDER);
         cellTextao.addElement(paragrafoTextao);
+        cellTextao.setBorder(Rectangle.NO_BORDER);
         tableProposta.addCell(cellProposta);
         tableProposta.addCell(cellTextao);
+        tableProposta.addCell(cellFaixa);
 
 
         //
@@ -4506,30 +4632,33 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         //document.add(image);
         document.add(Chunk.NEWLINE);
         document.add(titulo);
-        document.add(Chunk.NEWLINE);
-        document.add(Chunk.NEWLINE);
-        document.add(Chunk.NEWLINE);
 
 
-        if (totalDemolicao > 0) {
+
+        if (totalDemolicao > 0){
+            document.add(espacoBranco);
 
             PdfPTable tableDemolicao = new PdfPTable(1);
             tableDemolicao.setWidthPercentage(100);
             PdfPCell demolicao = new PdfPCell();
             demolicao.setBorder(Rectangle.NO_BORDER);
             demolicao.addElement(paragrafoDemolicao);
+            tableDemolicao.addCell(demolicao);
+
 
             document.add(paragrafoDemolicao);
             document.add(espacoBranco);
 
 
-            if (valorTotalCozinha > 0) {
+
+
+            if (valorTotalCozinha > 0){
+
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha2;
 
                 tableCozinha.addCell(paragrafoCozinha);
-                document.add(Chunk.NEWLINE);
                 document.add(tableCozinha);
                 if (varRemoverRevestimentoParede > 0 || varRemoverRevestimentoParede1 > 0)
                     document.add(new Paragraph(">>>Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede1.getText().toString()) + Double.parseDouble(valorRevestimentoParede1_1.getText().toString())) + " m² -----" + "R$" + (varRemoverRevestimentoParede + varRemoverRevestimentoParede1) + "0", boldServicosPrestados));
@@ -4553,16 +4682,17 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso1.getText().toString()) + Double.parseDouble(valorRemoverVaso1_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario1 + varRemoverVasoSanitario) + "0", boldServicosPrestados));
                 if (varRemoverVao > 0 || varRemoverVao1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao1.getText().toString()) + Double.parseDouble(valorRemoverVao1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao1 + varRemoverVao) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
 
+                document.add(espacoBranco1);
             }
-            if (valorTotalBanheiro1 > 0) {
+            if (valorTotalBanheiro1 > 0){
+
                 PdfPTable tableBanheiro = new PdfPTable(1);
                 tableBanheiro.setWidthPercentage(100);
                 PdfPCell cellBanheiro;
 
                 tableBanheiro.addCell(paragrafoBanheiro);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableBanheiro);
 
                 if (varRemoverRevestimentoParede2 > 0 || varRemoverRevestimentoParede2_1 > 0)
@@ -4587,16 +4717,16 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso2.getText().toString()) + Double.parseDouble(valorRemoverVaso2_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario2 + varRemoverVasoSanitario2_1) + "0", boldServicosPrestados));
                 if (varRemoverVao2 > 0 || varRemoverVao2_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao2.getText().toString()) + Double.parseDouble(valorRemoverVao2.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao2 + varRemoverVao2_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalAreaServico > 0) {
+            if (valorTotalAreaServico > 0){
 
                 PdfPTable tableAreaServico = new PdfPTable(1);
                 tableAreaServico.setWidthPercentage(100);
                 PdfPCell cellAreaServico;
 
                 tableAreaServico.addCell(paragrafoAreaServico);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableAreaServico);
 
                 if (varRemoverRevestimentoParede3 > 0 || varRemoverRevestimentoParede3_1 > 0)
@@ -4621,15 +4751,15 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso3.getText().toString()) + Double.parseDouble(valorRemoverVaso3_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario3 + varRemoverVasoSanitario3_1) + "0", boldServicosPrestados));
                 if (varRemoverVao3 > 0 || varRemoverVao3_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao3.getText().toString()) + Double.parseDouble(valorRemoverVao3.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao3 + varRemoverVao3_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalBanheiro2 > 0) {
+            if (valorTotalBanheiro2 > 0){
                 PdfPTable tableBanheiro2 = new PdfPTable(1);
                 tableBanheiro2.setWidthPercentage(100);
                 PdfPCell cellAreaServico;
 
                 tableBanheiro2.addCell(paragrafoBanheiro2);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableBanheiro2);
 
 
@@ -4638,7 +4768,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverPiso4 > 0 || varRemoverPiso4_1 > 0)
                     document.add(new Paragraph(">>>Remover Piso: " + (Double.parseDouble(valorRemocaoPiso4.getText().toString()) + Double.parseDouble(valorRemocaoPiso4_1.getText().toString())) + " m² -----" + "R$" + (varRemoverPiso4 + varRemoverPiso4_1) + "0", boldServicosPrestados));
                 if (varRemoverPia4 > 0 || varRemoverPia4_1 > 0)
-                    document.add(new Paragraph("Remover Pia: " + (Double.parseDouble(valorRemocaoPia4.getText().toString()) + Double.parseDouble(valorRemocaoPia4_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia4 + varRemoverPia4_1) + "0", boldServicosPrestados));
+                    document.add(new Paragraph(">>>Remover Pia: " + (Double.parseDouble(valorRemocaoPia4.getText().toString()) + Double.parseDouble(valorRemocaoPia4_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia4 + varRemoverPia4_1) + "0", boldServicosPrestados));
                 if (varRemoverAlvenaria4 > 0 || varRemoverAlvenaria4_1 > 0)
                     document.add(new Paragraph(">>>Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria4.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria4.getText().toString())) + " m² -----" + "  R$" + (varRemoverAlvenaria4 + varRemoverAlvenaria4_1) + "0", boldServicosPrestados));
                 if (varRemoverTanque4 > 0 || varRemoverTanque4_1 > 0)
@@ -4655,9 +4785,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso4.getText().toString()) + Double.parseDouble(valorRemoverVaso4_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario4 + varRemoverVasoSanitario4_1) + "0", boldServicosPrestados));
                 if (varRemoverVao4 > 0 || varRemoverVao4_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao4.getText().toString()) + Double.parseDouble(valorRemoverVao4.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao4 + varRemoverVao4_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalLavabo > 0) {
+            if (valorTotalLavabo > 0){
 
 
                 PdfPTable tableAreaServico = new PdfPTable(1);
@@ -4665,7 +4795,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 PdfPCell cellAreaServico;
 
                 tableAreaServico.addCell(paragrafoLavabo);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableAreaServico);
 
 
@@ -4674,7 +4804,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverPiso5 > 0 || varRemoverPiso5_1 > 0)
                     document.add(new Paragraph(">>>Remover Piso: " + (Double.parseDouble(valorRemocaoPiso5.getText().toString()) + Double.parseDouble(valorRemocaoPiso5_1.getText().toString())) + " m² -----" + "R$" + (varRemoverPiso5 + varRemoverPiso5_1) + "0", boldServicosPrestados));
                 if (varRemoverPia5 > 0 || varRemoverPia5_1 > 0)
-                    document.add(new Paragraph("Remover Pia: " + (Double.parseDouble(valorRemocaoPia5.getText().toString()) + Double.parseDouble(valorRemocaoPia5_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia5 + varRemoverPia5_1) + "0", boldServicosPrestados));
+                    document.add(new Paragraph(">>>Remover Pia: " + (Double.parseDouble(valorRemocaoPia5.getText().toString()) + Double.parseDouble(valorRemocaoPia5_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia5 + varRemoverPia5_1) + "0", boldServicosPrestados));
                 if (varRemoverAlvenaria5 > 0 || varRemoverAlvenaria5_1 > 0)
                     document.add(new Paragraph(">>>Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria5.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria5.getText().toString())) + " m² -----" + "  R$" + (varRemoverAlvenaria5 + varRemoverAlvenaria5_1) + "0", boldServicosPrestados));
                 if (varRemoverTanque5 > 0 || varRemoverTanque5_1 > 0)
@@ -4691,24 +4821,24 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso5.getText().toString()) + Double.parseDouble(valorRemoverVaso5_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario5 + varRemoverVasoSanitario5_1) + "0", boldServicosPrestados));
                 if (varRemoverVao5 > 0 || varRemoverVao5_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao5.getText().toString()) + Double.parseDouble(valorRemoverVao5.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao5 + varRemoverVao5_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
 
-            if (valorTotalSacadaVaranda > 0) {
+            if (valorTotalSacadaVaranda > 0){
 
                 PdfPTable tableAreaServico = new PdfPTable(1);
                 tableAreaServico.setWidthPercentage(100);
                 PdfPCell cellAreaServico;
 
                 tableAreaServico.addCell(paragrafoSacadaVaranda);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableAreaServico);
                 if (varRemoverRevestimentoParede6 > 0 || varRemoverRevestimentoParede6_1 > 0)
                     document.add(new Paragraph(">>>Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede6.getText().toString()) + Double.parseDouble(valorRevestimentoParede6_1.getText().toString())) + " m² -----" + "R$" + (varRemoverRevestimentoParede6 + varRemoverRevestimentoParede6_1) + "0", boldServicosPrestados));
                 if (varRemoverPiso6 > 0 || varRemoverPiso6_1 > 0)
                     document.add(new Paragraph(">>>Remover Piso: " + (Double.parseDouble(valorRemocaoPiso6.getText().toString()) + Double.parseDouble(valorRemocaoPiso6_1.getText().toString())) + " m² -----" + "R$" + (varRemoverPiso6 + varRemoverPiso6_1) + "0", boldServicosPrestados));
                 if (varRemoverPia6 > 0 || varRemoverPia6_1 > 0)
-                    document.add(new Paragraph("Remover Pia: " + (Double.parseDouble(valorRemocaoPia6.getText().toString()) + Double.parseDouble(valorRemocaoPia6_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia6 + varRemoverPia6_1) + "0", boldServicosPrestados));
+                    document.add(new Paragraph(">>>Remover Pia: " + (Double.parseDouble(valorRemocaoPia6.getText().toString()) + Double.parseDouble(valorRemocaoPia6_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia6 + varRemoverPia6_1) + "0", boldServicosPrestados));
                 if (varRemoverAlvenaria6 > 0 || varRemoverAlvenaria6_1 > 0)
                     document.add(new Paragraph(">>>Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria6.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria6.getText().toString())) + " m² -----" + "  R$" + (varRemoverAlvenaria6 + varRemoverAlvenaria6_1) + "0", boldServicosPrestados));
                 if (varRemoverTanque6 > 0 || varRemoverTanque6_1 > 0)
@@ -4725,15 +4855,15 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso6.getText().toString()) + Double.parseDouble(valorRemoverVaso6_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario6 + varRemoverVasoSanitario6_1) + "0", boldServicosPrestados));
                 if (varRemoverVao6 > 0 || varRemoverVao6_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao6.getText().toString()) + Double.parseDouble(valorRemoverVao6.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao6 + varRemoverVao6_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalSalaJantar > 0) {
+            if (valorTotalSalaJantar > 0){
                 PdfPTable tableAreaServico = new PdfPTable(1);
                 tableAreaServico.setWidthPercentage(100);
                 PdfPCell cellAreaServico;
 
                 tableAreaServico.addCell(paragrafoSalaJantar);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableAreaServico);
 
 
@@ -4742,7 +4872,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverPiso7 > 0 || varRemoverPiso7_1 > 0)
                     document.add(new Paragraph(">>>Remover Piso: " + (Double.parseDouble(valorRemocaoPiso7.getText().toString()) + Double.parseDouble(valorRemocaoPiso7_1.getText().toString())) + " m² -----" + "R$" + (varRemoverPiso7 + varRemoverPiso7_1) + "0", boldServicosPrestados));
                 if (varRemoverPia7 > 0 || varRemoverPia7_1 > 0)
-                    document.add(new Paragraph("Remover Pia: " + (Double.parseDouble(valorRemocaoPia7.getText().toString()) + Double.parseDouble(valorRemocaoPia7_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia7 + varRemoverPia7_1) + "0", boldServicosPrestados));
+                    document.add(new Paragraph(">>>Remover Pia: " + (Double.parseDouble(valorRemocaoPia7.getText().toString()) + Double.parseDouble(valorRemocaoPia7_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia7 + varRemoverPia7_1) + "0", boldServicosPrestados));
                 if (varRemoverAlvenaria7 > 0 || varRemoverAlvenaria7_1 > 0)
                     document.add(new Paragraph(">>>Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria7.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria7.getText().toString())) + " m² -----" + "  R$" + (varRemoverAlvenaria7 + varRemoverAlvenaria7_1) + "0", boldServicosPrestados));
                 if (varRemoverTanque7 > 0 || varRemoverTanque7_1 > 0)
@@ -4759,16 +4889,16 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso7.getText().toString()) + Double.parseDouble(valorRemoverVaso7_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario7 + varRemoverVasoSanitario7_1) + "0", boldServicosPrestados));
                 if (varRemoverVao7 > 0 || varRemoverVao7_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao7.getText().toString()) + Double.parseDouble(valorRemoverVao7.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao7 + varRemoverVao7_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalSalaEstar > 0) {
+            if (valorTotalSalaEstar > 0){
 
                 PdfPTable tableAreaServico = new PdfPTable(1);
                 tableAreaServico.setWidthPercentage(100);
                 PdfPCell cellAreaServico;
 
                 tableAreaServico.addCell(paragrafoSalaEstar);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableAreaServico);
 
                 if (varRemoverRevestimentoParede8 > 0 || varRemoverRevestimentoParede8_1 > 0)
@@ -4776,7 +4906,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverPiso8 > 0 || varRemoverPiso8_1 > 0)
                     document.add(new Paragraph(">>>Remover Piso: " + (Double.parseDouble(valorRemocaoPiso8.getText().toString()) + Double.parseDouble(valorRemocaoPiso8_1.getText().toString())) + " m² -----" + "R$" + (varRemoverPiso8 + varRemoverPiso8_1) + "0", boldServicosPrestados));
                 if (varRemoverPia8 > 0 || varRemoverPia8_1 > 0)
-                    document.add(new Paragraph("Remover Pia: " + (Double.parseDouble(valorRemocaoPia8.getText().toString()) + Double.parseDouble(valorRemocaoPia8_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia8 + varRemoverPia8_1) + "0", boldServicosPrestados));
+                    document.add(new Paragraph(">>>Remover Pia: " + (Double.parseDouble(valorRemocaoPia8.getText().toString()) + Double.parseDouble(valorRemocaoPia8_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia8 + varRemoverPia8_1) + "0", boldServicosPrestados));
                 if (varRemoverAlvenaria8 > 0 || varRemoverAlvenaria8_1 > 0)
                     document.add(new Paragraph(">>>Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria8.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria8.getText().toString())) + " m² -----" + "  R$" + (varRemoverAlvenaria8 + varRemoverAlvenaria8_1) + "0", boldServicosPrestados));
                 if (varRemoverTanque8 > 0 || varRemoverTanque8_1 > 0)
@@ -4793,16 +4923,16 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso8.getText().toString()) + Double.parseDouble(valorRemoverVaso8_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario8 + varRemoverVasoSanitario8_1) + "0", boldServicosPrestados));
                 if (varRemoverVao8 > 0 || varRemoverVao8_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao8.getText().toString()) + Double.parseDouble(valorRemoverVao8.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao8 + varRemoverVao8_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalQuarto1 > 0) {
+            if (valorTotalQuarto1 > 0){
 
                 PdfPTable tableAreaServico = new PdfPTable(1);
                 tableAreaServico.setWidthPercentage(100);
                 PdfPCell cellAreaServico;
 
                 tableAreaServico.addCell(paragrafoQuarto1);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableAreaServico);
 
 
@@ -4811,7 +4941,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverPiso9 > 0 || varRemoverPiso9_1 > 0)
                     document.add(new Paragraph(">>>Remover Piso: " + (Double.parseDouble(valorRemocaoPiso9.getText().toString()) + Double.parseDouble(valorRemocaoPiso9_1.getText().toString())) + " m² -----" + "R$" + (varRemoverPiso9 + varRemoverPiso9_1) + "0", boldServicosPrestados));
                 if (varRemoverPia9 > 0 || varRemoverPia9_1 > 0)
-                    document.add(new Paragraph("Remover Pia: " + (Double.parseDouble(valorRemocaoPia9.getText().toString()) + Double.parseDouble(valorRemocaoPia9_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia9 + varRemoverPia9_1) + "0", boldServicosPrestados));
+                    document.add(new Paragraph(">>>Remover Pia: " + (Double.parseDouble(valorRemocaoPia9.getText().toString()) + Double.parseDouble(valorRemocaoPia9_1.getText().toString())) + " un ----- " + "R$" + (varRemoverPia9 + varRemoverPia9_1) + "0", boldServicosPrestados));
                 if (varRemoverAlvenaria9 > 0 || varRemoverAlvenaria9_1 > 0)
                     document.add(new Paragraph(">>>Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria9.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria9.getText().toString())) + " m² -----" + "  R$" + (varRemoverAlvenaria9 + varRemoverAlvenaria9_1) + "0", boldServicosPrestados));
                 if (varRemoverTanque9 > 0 || varRemoverTanque9_1 > 0)
@@ -4828,16 +4958,16 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso9.getText().toString()) + Double.parseDouble(valorRemoverVaso9_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario9 + varRemoverVasoSanitario9_1) + "0", boldServicosPrestados));
                 if (varRemoverVao9 > 0 || varRemoverVao9_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao9.getText().toString()) + Double.parseDouble(valorRemoverVao9.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao9 + varRemoverVao9_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalQuarto2 > 0) {
+            if (valorTotalQuarto2 > 0){
 
                 PdfPTable tableDaCategoria = new PdfPTable(1);
                 tableDaCategoria.setWidthPercentage(100);
                 PdfPCell cell2;
 
                 tableDaCategoria.addCell(paragrafoQuarto2);
-                document.add(Chunk.NEWLINE);
+
                 document.add(tableDaCategoria);
 
 
@@ -4863,15 +4993,15 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso10.getText().toString()) + Double.parseDouble(valorRemoverVaso10_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario10 + varRemoverVasoSanitario10_1) + "0", boldServicosPrestados));
                 if (varRemoverVao10 > 0 || varRemoverVao10_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao10.getText().toString()) + Double.parseDouble(valorRemoverVao10.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao10 + varRemoverVao10_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalQuarto3 > 0) {
+            if (valorTotalQuarto3 > 0){
                 PdfPTable tableDaCategoria = new PdfPTable(1);
                 tableDaCategoria.setWidthPercentage(100);
                 PdfPCell cell3;
 
                 tableDaCategoria.addCell(paragrafoQuarto2);
-                document.add(Chunk.NEWLINE);
+
                 document.add(paragrafoQuarto3);
 
 
@@ -4897,12 +5027,12 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>>Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso11.getText().toString()) + Double.parseDouble(valorRemoverVaso11_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario11 + varRemoverVasoSanitario11_1) + "0", boldServicosPrestados));
                 if (varRemoverVao11 > 0 || varRemoverVao11_1 > 0)
                     document.add(new Paragraph(">>>Remover Vão para Nicho : " + (Double.parseDouble(valorRemoverVao11.getText().toString()) + Double.parseDouble(valorRemoverVao11.getText().toString())) + " un ----- " + "    R$" + (varRemoverVao11 + varRemoverVao11_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
         }
 
         //Impressao dos valores de Revestimento
-        if (valorTotalCategoriaRevestimento > 0) {
+        if (valorTotalCategoriaRevestimento > 0){
             PdfPTable tableRevestimento = new PdfPTable(1);
             tableRevestimento.setWidthPercentage(100);
             PdfPCell revestimento = new PdfPCell();
@@ -4911,9 +5041,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
             document.add(paragrafoRevestimento);
             document.add(espacoBranco);
-            document.add(Chunk.NEWLINE);
 
-            if (valorTotalRevestimentoCozinha > 0) {
+
+            if (valorTotalRevestimentoCozinha > 0){
+                document.add(espacoBranco);
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -4935,9 +5066,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro1.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro1_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro + varPastilhaVidro_1) + "0", boldServicosPrestados));
                 if (varRevestimento3D > 0 || varRevestimento3D_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D1.getText().toString()) + Double.parseDouble(valorRevestimento3D1_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D + varRevestimento3D_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalRevestimentoBanheiroSocial > 0) {
+            if (valorTotalRevestimentoBanheiroSocial > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -4958,10 +5089,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro2.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro2_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_2_1 + varPastilhaVidro_2) + "0", boldServicosPrestados));
                 if (varRevestimento3D_2 > 0 || varRevestimento3D_2_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D2.getText().toString()) + Double.parseDouble(valorRevestimento3D2_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_2 + varRevestimento3D_2_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
 
-            if (valorTotalRevestimentoAreaServico > 0) {
+            if (valorTotalRevestimentoAreaServico > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -4982,9 +5113,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro3.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro3_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_3_1 + varPastilhaVidro_3) + "0", boldServicosPrestados));
                 if (varRevestimento3D_3 > 0 || varRevestimento3D_3_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D3.getText().toString()) + Double.parseDouble(valorRevestimento3D3_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_3 + varRevestimento3D_3_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalRevestimentoBanheiroSuite > 0) {
+            if (valorTotalRevestimentoBanheiroSuite > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5005,9 +5136,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro4.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro4_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_4_1 + varPastilhaVidro_4) + "0", boldServicosPrestados));
                 if (varRevestimento3D_4 > 0 || varRevestimento3D_4_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D4.getText().toString()) + Double.parseDouble(valorRevestimento3D4_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_4 + varRevestimento3D_4_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalRevestimentoLavabo > 0) {
+            if (valorTotalRevestimentoLavabo > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5028,9 +5159,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro5.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro5_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_5_1 + varPastilhaVidro_5) + "0", boldServicosPrestados));
                 if (varRevestimento3D_5 > 0 || varRevestimento3D_5_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D5.getText().toString()) + Double.parseDouble(valorRevestimento3D5_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_5 + varRevestimento3D_5_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalRevestimentoSacada > 0) {
+            if (valorTotalRevestimentoSacada > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5051,9 +5182,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro6.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro6_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_6_1 + varPastilhaVidro_6) + "0", boldServicosPrestados));
                 if (varRevestimento3D_6 > 0 || varRevestimento3D_6_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D6.getText().toString()) + Double.parseDouble(valorRevestimento3D6_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_6 + varRevestimento3D_6_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalRevestimentoSalaJantar > 0) {
+            if (valorTotalRevestimentoSalaJantar > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5074,9 +5205,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro7.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro7_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_7_1 + varPastilhaVidro_7) + "0", boldServicosPrestados));
                 if (varRevestimento3D_7 > 0 || varRevestimento3D_7_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D7.getText().toString()) + Double.parseDouble(valorRevestimento3D7_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_7 + varRevestimento3D_7_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                 document.add(espacoBranco1) ;
             }
-            if (valorTotalRevestimentoSalaEstar > 0) {
+            if (valorTotalRevestimentoSalaEstar > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5097,10 +5228,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro8.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro8_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_8_1 + varPastilhaVidro_8) + "0", boldServicosPrestados));
                 if (varRevestimento3D_8 > 0 || varRevestimento3D_8_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D8.getText().toString()) + Double.parseDouble(valorRevestimento3D8_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_8 + varRevestimento3D_8_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
 
-            if (valorTotalRevestimentoQuarto1 > 0) {
+            if (valorTotalRevestimentoQuarto1 > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5121,9 +5252,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro9.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro9_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_9_1 + varPastilhaVidro_9) + "0", boldServicosPrestados));
                 if (varRevestimento3D_9 > 0 || varRevestimento3D_9_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D9.getText().toString()) + Double.parseDouble(valorRevestimento3D9_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_9 + varRevestimento3D_9_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco);
             }
-            if (valorTotalRevestimentoQuarto2 > 0) {
+            if (valorTotalRevestimentoQuarto2 > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5144,10 +5275,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro10.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro10_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_10_1 + varPastilhaVidro_10) + "0", boldServicosPrestados));
                 if (varRevestimento3D_10 > 0 || varRevestimento3D_10_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D10.getText().toString()) + Double.parseDouble(valorRevestimento3D10_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_10 + varRevestimento3D_10_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
 
-            if (valorTotalRevestimentoQuartoSuite > 0) {
+            if (valorTotalRevestimentoQuartoSuite > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5168,11 +5299,11 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro11.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro11_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_11_1 + varPastilhaVidro_11) + "0", boldServicosPrestados));
                 if (varRevestimento3D_11 > 0 || varRevestimento3D_11_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D11.getText().toString()) + Double.parseDouble(valorRevestimento3D11_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_11 + varRevestimento3D_11_1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
         }
 
-        if (valorTotalCategoriaPintura > 0) {
+        if (valorTotalCategoriaPintura > 0){
 
             PdfPTable tablePintura = new PdfPTable(1);
             tablePintura.setWidthPercentage(100);
@@ -5181,10 +5312,21 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             pintura.addElement(paragrafoPintura);
 
             document.add(paragrafoPintura);
-            document.add(espacoBranco);
-            document.add(Chunk.NEWLINE);
 
-            if (valorTotalPinturaCozinha > 0) {
+
+
+            if (valorTotalPinturaApartamento > 0){
+                PdfPTable tableCozinha = new PdfPTable(1);
+                tableCozinha.setWidthPercentage(100);
+                PdfPCell cellCozinha;
+
+                tableCozinha.addCell(paragrafoPinturaApartamento);
+                document.add(tableCozinha);
+                if (varM2 > 0 || varM2_1 > 0)
+                    document.add(new Paragraph(">>> Metro Quadrado do Apartamento: " + (Double.parseDouble(valorPinturaApartamento1.getText().toString()) + Double.parseDouble(valorPinturaApartamento1_1.getText().toString())) + " m² -----" + "R$" + (varM2 + varM2_1) + "0", boldServicosPrestados));
+                document.add(espacoBranco1);
+            }
+            if (valorTotalPinturaCozinha > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5199,9 +5341,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo1.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo1_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo1 + varEfeitoDecorativo) + "0", boldServicosPrestados));
                 if (varReparoGesso > 0 || varReparoGesso1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo1.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo1_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso1 + varReparoGesso) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaBanheiroSocial > 0) {
+            if (valorTotalPinturaBanheiroSocial > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5216,9 +5358,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo2.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo2_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo2_1 + varEfeitoDecorativo2) + "0", boldServicosPrestados));
                 if (varReparoGesso2 > 0 || varReparoGesso2_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo2.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo2_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso2_1 + varReparoGesso2) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaAreaServico > 0) {
+            if (valorTotalPinturaAreaServico > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5233,9 +5375,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo3.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo3_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo3_1 + varEfeitoDecorativo3) + "0", boldServicosPrestados));
                 if (varReparoGesso3 > 0 || varReparoGesso3_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo3.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo3_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso3_1 + varReparoGesso3) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaBanheiroSuite > 0) {
+            if (valorTotalPinturaBanheiroSuite > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5250,9 +5392,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo4.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo4_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo4_1 + varEfeitoDecorativo4) + "0", boldServicosPrestados));
                 if (varReparoGesso4 > 0 || varReparoGesso4_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo4.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo4_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso4_1 + varReparoGesso4) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaLavabo > 0) {
+            if (valorTotalPinturaLavabo > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5267,9 +5409,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo5.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo5_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo5_1 + varEfeitoDecorativo5) + "0", boldServicosPrestados));
                 if (varReparoGesso5 > 0 || varReparoGesso5_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo5.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo5_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso5_1 + varReparoGesso5) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaSacada > 0) {
+            if (valorTotalPinturaSacada > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5284,9 +5426,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo6.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo6_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo6_1 + varEfeitoDecorativo6) + "0", boldServicosPrestados));
                 if (varReparoGesso6 > 0 || varReparoGesso6_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo6.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo6_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso6_1 + varReparoGesso6) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaSalaJantar > 0) {
+            if (valorTotalPinturaSalaJantar > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5301,9 +5443,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo7.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo7_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo7_1 + varEfeitoDecorativo7) + "0", boldServicosPrestados));
                 if (varReparoGesso7 > 0 || varReparoGesso7_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaReparoGesso7.getText().toString()) + Double.parseDouble(valorPinturaReparoGesso7_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso7_1 + varReparoGesso7) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaSalaEstar > 0) {
+            if (valorTotalPinturaSalaEstar > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5318,9 +5460,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo8.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo8_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo8_1 + varEfeitoDecorativo8) + "0", boldServicosPrestados));
                 if (varReparoGesso8 > 0 || varReparoGesso8_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo8.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo8_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso8_1 + varReparoGesso8) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaQuarto1 > 0) {
+            if (valorTotalPinturaQuarto1 > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5335,9 +5477,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo9.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo9_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo9_1 + varEfeitoDecorativo9) + "0", boldServicosPrestados));
                 if (varReparoGesso9 > 0 || varReparoGesso9_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo9.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo9_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso9_1 + varReparoGesso9) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaQuarto2 > 0) {
+            if (valorTotalPinturaQuarto2 > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5352,9 +5494,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo10.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo10_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo10_1 + varEfeitoDecorativo10) + "0", boldServicosPrestados));
                 if (varReparoGesso10 > 0 || varReparoGesso10_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo10.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo10_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso10_1 + varReparoGesso10) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalPinturaQuartoSuite > 0) {
+            if (valorTotalPinturaQuartoSuite > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(110);
                 PdfPCell cellCozinha;
@@ -5369,13 +5511,13 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo11.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo11_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo11_1 + varEfeitoDecorativo11) + "0", boldServicosPrestados));
                 if (varReparoGesso11 > 0 || varReparoGesso11_1 > 0)
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo11.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo11_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso11_1 + varReparoGesso11) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
 
+                document.add(espacoBranco1);
 
             }
         }
 
-        if (valorTotalCategoriaHidraulica > 0) {
+        if (valorTotalCategoriaHidraulica > 0){
             PdfPTable tableHidraulica = new PdfPTable(1);
             tableHidraulica.setWidthPercentage(100);
             PdfPCell hidraulica = new PdfPCell();
@@ -5384,9 +5526,11 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
             document.add(paragrafoHidraulica);
-            document.add(Chunk.NEWLINE);
             document.add(espacoBranco);
-            if (valorTotalHidraulicaCozinha > 0) {
+
+
+
+            if (valorTotalHidraulicaCozinha > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5418,9 +5562,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear1.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear1_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear + varAdicionarRaloLinear1) + "0", boldServicosPrestados));
                 if (varAdicionarVasoSanitario > 0 || varAdicionarVasoSanitario1 > 0)
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario1.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario1_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario + varAdicionarVasoSanitario1) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaBanheiroSocial > 0) {
+            if (valorTotalHidraulicaBanheiroSocial > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5451,9 +5595,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear2.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear2_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear2_1 + varAdicionarRaloLinear2) + "0", boldServicosPrestados));
                 if (varAdicionarVasoSanitario2 > 0 || varAdicionarVasoSanitario2_1 > 0)
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario2.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario2_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario2_1 + varAdicionarVasoSanitario2) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaAreaServico > 0) {
+            if (valorTotalHidraulicaAreaServico > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5484,9 +5628,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear3.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear3_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear3_1 + varAdicionarRaloLinear3) + "0", boldServicosPrestados));
                 if (varAdicionarVasoSanitario3 > 0 || varAdicionarVasoSanitario3_1 > 0)
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario3.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario3_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario3_1 + varAdicionarVasoSanitario3) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaBanheiroSuite > 0) {
+            if (valorTotalHidraulicaBanheiroSuite > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5517,9 +5661,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear4.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear4_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear4_1 + varAdicionarRaloLinear4) + "0", boldServicosPrestados));
                 if (varAdicionarVasoSanitario4 > 0 || varAdicionarVasoSanitario4_1 > 0)
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario4.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario4_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario4_1 + varAdicionarVasoSanitario4) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaLavabo > 0) {
+            if (valorTotalHidraulicaLavabo > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5550,9 +5694,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear5.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear5_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear5_1 + varAdicionarRaloLinear5) + "0", boldServicosPrestados));
                 if (varAdicionarVasoSanitario5 > 0 || varAdicionarVasoSanitario5_1 > 0)
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario5.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario5_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario5_1 + varAdicionarVasoSanitario5) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaSacada > 0) {
+            if (valorTotalHidraulicaSacada > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -5581,7 +5725,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Chuveiro : " + (Double.parseDouble(valorHidraulicaChuveiro6.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro6_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarChuveiro6_1 + varAdicionarChuveiro6) + "0", boldServicosPrestados));
                 if (varAdicionarRaloLinear6 > 0 || varAdicionarRaloLinear6_1 > 0)
                     document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear6.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear6_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear6_1 + varAdicionarRaloLinear6) + "0", boldServicosPrestados));
-                document.add(Chunk.NEWLINE);
+                document.add(espacoBranco1);
             }
         }
 
@@ -5594,8 +5738,8 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             demolicao.addElement(paragrafoAreaServico);
 
             document.add(paragrafoArt);
-            document.add(espacoBranco);
-            document.add(Chunk.NEWLINE);
+            document.add(espacoBranco1);
+
 
             PdfPTable tableCozinha = new PdfPTable(1);
             tableCozinha.setWidthPercentage(100);
@@ -5644,7 +5788,6 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             }
 
 
-            Paragraph paragrafoArtTotal = new Paragraph("ART                                                                                        Total R$" + (valorTotalCategoriaArt + valorTotalArtTaxa) , boldServicos);
 
             tableCozinha.addCell(paragrafoArtTotal);
             document.add(tableCozinha);
@@ -5690,48 +5833,78 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 document.add(new Paragraph(">>> Deslocamento do ponto de abastecimento de gás." + "R$" + (valorTotalArtDeslocamentoPontoGas), boldServicosPrestados));
 
             }
-            document.add(new Paragraph(">>> Taxas não inclusas (R$ 82,94) ", boldServicosPrestados));
+            document.add(new Paragraph(">>> Taxas do CREA (R$ 85,96) ", boldServicosPrestados));
+            document.add(espacoBranco1);
 
-            document.add(Chunk.NEWLINE);
             valorTotalCategoriaArt = valorTotalCategoriaArt + valorTotalArtTaxa;
-            latitude = totalDemolicao + valorTotalCategoriaHidraulica + valorTotalCategoriaPintura + valorTotalCategoriaRevestimento + valorTotalCategoriaArt;
-            DecimalFormat df = new DecimalFormat("###,##0.00");
 
-            String valorNotaTexto = df.format(latitude);
-            SharedPreferences mypref2 = getPreferences(MODE_PRIVATE);
-            SharedPreferences.Editor editor2 = mypref.edit();
-            editor2.putString("valorNota", valorNotaTexto);
-            editor2.commit();
-            alterarValorNota = Integer.toString(numeroNotaAtual);
-            exibirNota.setText("000" + alterarNumeroNota);
-            exibirValorNota.setText(valorNotaTexto);
-
-
-
-
-            //Valor Total
-            Paragraph valorTotal = new Paragraph("TOTAL R$ " + valorNotaTexto , boldTotal);
-            valorTotal.setAlignment(Element.ALIGN_CENTER);
-            document.add(Chunk.NEWLINE);
-            document.add(valorTotal);
 
         }
 
+        latitude = totalDemolicao + valorTotalCategoriaHidraulica + valorTotalCategoriaPintura + valorTotalCategoriaRevestimento + valorTotalCategoriaArt;
 
-        document.add(Chunk.NEWLINE);
+
+        String valorNotaTexto = df.format(latitude);
+        SharedPreferences mypref2 = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor2 = mypref.edit();
+        editor2.putString("valorNota", valorNotaTexto);
+        editor2.commit();
+        alterarValorNota = Integer.toString(numeroNotaAtual);
+        exibirNota.setText("000" + alterarNumeroNota);
+        exibirValorNota.setText(valorNotaTexto);
+        String valorNumeroNota = alterarNumeroNota.toString();
+
+
+
+        //Valor Total
+        ValoresCompartilhados valoresCompartilhados = new ValoresCompartilhados();
+        valoresCompartilhados.setValorTotal(valorNotaTexto);
+        valoresCompartilhados.setNumeroNota(valorNumeroNota);
+        DatabaseReference reference = database.getReference("ValoresCompartilhados/");
+        reference.setValue(valoresCompartilhados);
+        Paragraph valorTotal = new Paragraph("TOTAL R$ " + valorNotaTexto , boldTotal);
+        valorTotal.setAlignment(Element.ALIGN_CENTER);
+        valorTotal.setSpacingBefore(15);
+        document.add(valorTotal);
+
+
         document.add(tableProposta);
-        document.add(Chunk.NEWLINE);
-        document.add(new Paragraph("- Validade desde documento 30 dias a contar da data de envio.\n" +
-                "- Itens não listados acima acordar valor em outra planilha.\n" +
-                "- Este orçamento não tem validade para itens orçados separadamente.\n"));
+
+
         // document.add(new LineSeparator());
-        document.add(Chunk.NEWLINE);
         document.add(paragrafoDisposicao);
         document.close();
-         viewPdf();
+        viewPdf();
 
     }
+    private void isAccountValid() {
+        DatabaseReference databaseReference = ConfiguracaoFirebase.getFirebase().child("ValoresCompartilhados");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("numeroNota").getValue() == null)
+                    Toast.makeText(Main2Activity.this, "Null", Toast.LENGTH_SHORT).show();
+                else {
+                    numNota = Integer.parseInt(dataSnapshot.child("numeroNota").getValue().toString());
+                    valorNota = dataSnapshot.child("valorTotal").getValue().toString();
+                    exibirNota.setText("000" + Integer.toString(numNota));
+                    exibirValorNota.setText(valorNota);
+                    if (valorNota == null) {
+                        Toast.makeText(mContext, "Você está sem internet!", Toast.LENGTH_SHORT).show();
+                    } else {
 
+
+
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
     private void previewPdf() {
 
 
@@ -5896,6 +6069,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         email.putExtra(Intent.EXTRA_STREAM, uri);
         email.setType("message/rfc822");
         startActivity(email);
+        onStop();
     }
 
     public void linearHidraulica() {
@@ -5998,6 +6172,8 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         //Preparando o local
 
         //Calculando Valores Cozinha
+        DecimalFormat df = new DecimalFormat("###,##0.00");
+
 
         varRemoverRevestimentoParede = Double.parseDouble(valorRevestimentoParede1.getText().toString()) * precoRemoverRevestimentoParede;
         varRemoverRevestimentoParede1 = Double.parseDouble(valorRevestimentoParede1_1.getText().toString()) * precoRemoverRevestimentoParede;
@@ -6812,7 +6988,11 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
         valorTotalPinturaQuartoSuite = varPorta11 + varPorta11_1 + varJanela11 + varJanela11_1 + varEfeitoDecorativo11 + varEfeitoDecorativo11_1 + varReparoGesso11 + varReparoGesso11_1;
 
+
         valorTotalCategoriaPintura = valorTotalPinturaQuarto2 + valorTotalPinturaQuarto1 + valorTotalPinturaQuartoSuite + valorTotalPinturaSalaEstar + valorTotalPinturaSalaJantar + valorTotalPinturaSacada + valorTotalPinturaLavabo + valorTotalPinturaBanheiroSocial + valorTotalPinturaBanheiroSuite + valorTotalPinturaCozinha + valorTotalPinturaAreaServico;
+
+        latitude2 = totalDemolicao + valorTotalCategoriaHidraulica + valorTotalCategoriaPintura + valorTotalCategoriaRevestimento + valorTotalCategoriaArt2;
+
 
 
         valorTotalCategoriaArt2 = 0;
@@ -6821,45 +7001,45 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtTaxa ;
 
             if (BtncheckBoxArtArCondicionado.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtArcondicionado;
-              }
-             if (BtncheckboxArtEnvidracamento.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtEnvidracamento;
-              }
-             if (BtncheckboxArtPedrasMarmore.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtPedrasMarmore;
-              }
-             if (BtncheckboxArtNovosRevestimentos.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtNovosRevestimentos;
-             }
-             if (BtncheckboxArtEletrica.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtEletrica;
-             }
-             if (BtncheckboxArtHidraulica.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtHidraulica;
-
-             }
-             if (BtncheckboxArtBox.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtBox;
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtArcondicionado;
+            }
+            if (BtncheckboxArtEnvidracamento.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtEnvidracamento;
+            }
+            if (BtncheckboxArtPedrasMarmore.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtPedrasMarmore;
+            }
+            if (BtncheckboxArtNovosRevestimentos.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtNovosRevestimentos;
+            }
+            if (BtncheckboxArtEletrica.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtEletrica;
+            }
+            if (BtncheckboxArtHidraulica.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtHidraulica;
 
             }
-              if (BtncheckboxArtGesso.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtGesso;
+            if (BtncheckboxArtBox.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtBox;
+
+            }
+            if (BtncheckboxArtGesso.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtGesso;
 
 
             }
-              if (BtncheckboxArtDemolicao.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtDemolicaoParedeNaoEstrutural;
+            if (BtncheckboxArtDemolicao.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtDemolicaoParedeNaoEstrutural;
 
             }
-             if (BtncheckboxArtMoveisPlanejados.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtMoveisPlanejados;
+            if (BtncheckboxArtMoveisPlanejados.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtMoveisPlanejados;
 
-           }
-             if (BtncheckboxArtDeslocamento.isChecked()) {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtDeslocamentoPontoGas;
+            }
+            if (BtncheckboxArtDeslocamento.isChecked()) {
+                valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtDeslocamentoPontoGas;
 
-           }
+            }
         }
         else {
             valorTotalCategoriaArt2 = 0;
@@ -6867,13 +7047,12 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
         latitude2 = 0;
         latitude2 = totalDemolicao + valorTotalCategoriaHidraulica + valorTotalCategoriaPintura + valorTotalCategoriaRevestimento + valorTotalCategoriaArt2;
-        DecimalFormat df = new DecimalFormat("###,##0.00");
+
 
         String valorNotaTexto = df.format(latitude2);
 
         alterarValorNota = Integer.toString(numeroNotaAtual);
         exibirValorNota.setText(valorNotaTexto);
-
 
 
 
