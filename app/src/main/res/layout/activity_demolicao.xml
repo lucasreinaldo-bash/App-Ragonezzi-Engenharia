@@ -23615,6 +23615,11 @@
                 android:layout_width="100px"
                 android:layout_height="100px"
                 android:background="@drawable/finish" />
+            <Button
+                android:id="@+id/btnAjustar"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:background="@drawable/ferramenta" />
 
 
         </LinearLayout>

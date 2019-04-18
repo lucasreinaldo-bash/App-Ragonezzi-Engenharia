@@ -1061,6 +1061,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
     //Logof
 
+    private Button btnAjustar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -1083,6 +1084,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         btnFinalizar = findViewById(R.id.btnFinalizar);
         btnPintura = findViewById(R.id.btnPintura);
         btnCam = findViewById(R.id.button7);
+        btnAjustar = findViewById(R.id.btnAjustar);
 
         //Casts nos Lineares
         linearART = findViewById(R.id.linearART);
@@ -1100,9 +1102,18 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         //SharedPreferences mypref = getPreferences(MODE_PRIVATE);
         //SharedPreferences mypref2 = getPreferences(MODE_PRIVATE);
         isAccountValid();
+        carregarValores();
 
 
 
+        btnAjustar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main2Activity.this, Ajustes.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 
@@ -5883,7 +5894,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("numeroNota").getValue() == null)
-                    Toast.makeText(Main2Activity.this, "Null", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main2Activity.this,     "Voce esta sem internet", Toast.LENGTH_SHORT).show();
                 else {
                     numNota = Integer.parseInt(dataSnapshot.child("numeroNota").getValue().toString());
                     valorNota = dataSnapshot.child("valorTotal").getValue().toString();
@@ -5904,6 +5915,83 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
+    }
+    private void carregarValores(){
+        DatabaseReference databaseReference = ConfiguracaoFirebase.getFirebase().child("ValorServico");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("demolicao").child("RemoverRevestimentoParede").getValue() == null)
+                    Toast.makeText(Main2Activity.this,     "Voce esta sem internet", Toast.LENGTH_SHORT).show();
+                else {
+
+                    //Carregando valores Demolicao
+                    precoRemoverRevestimentoParede = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverRevestimentoParede").getValue().toString());
+                    precoRemoverPiso = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverPiso").getValue().toString());
+                    precoRemoverAlvenaria = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverAlvenaria").getValue().toString());
+                    precoRemoverPia = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverPia").getValue().toString());
+                    precoRemoverTanque = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverTanque").getValue().toString());
+                    precoRasgarCaixinha4x2 = Double.parseDouble(dataSnapshot.child("demolicao").child("RasgarCaixinha4x2").getValue().toString());;
+                    precoRasgarCaixinha4x4 = Double.parseDouble(dataSnapshot.child("demolicao").child("RasgarCaixinha4x4").getValue().toString());
+                    precoRemoverVasoSanitario = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverVasoSanitario").getValue().toString());
+                    precoRemoverVao = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverVao").getValue().toString());
+                    precoRemoverHidraulica = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverHidraulica").getValue().toString());
+                    precoRemoverGesso = Double.parseDouble(dataSnapshot.child("demolicao").child("RemoverGesso").getValue().toString());
+
+                    //Hidraulica
+                    precoTorneiraEletrica = Double.parseDouble(dataSnapshot.child("hidraulica").child("TorneiraEletrica").getValue().toString());
+                    precoTorneiraMonocomando = Double.parseDouble(dataSnapshot.child("hidraulica").child("TorneiraMonocomando").getValue().toString());
+                    precoTorneiraSimples = Double.parseDouble(dataSnapshot.child("hidraulica").child("TorneiraSimples").getValue().toString());
+                    precoValvulaSifao = Double.parseDouble(dataSnapshot.child("hidraulica").child("TorneiraEletrica").getValue().toString());
+                    precoRegistroAcabamento = Double.parseDouble(dataSnapshot.child("hidraulica").child("RegistroAcabamento").getValue().toString());
+                    precoCriacaoAgua = Double.parseDouble(dataSnapshot.child("hidraulica").child("CriacaoAgua").getValue().toString());
+                    precoCriacaoEsgoto = Double.parseDouble(dataSnapshot.child("hidraulica").child("CriacaoEsgoto").getValue().toString());
+                    precoRalo10cm = Double.parseDouble(dataSnapshot.child("hidraulica").child("Ralo10cm").getValue().toString());
+                    precoRalo15cm = Double.parseDouble(dataSnapshot.child("hidraulica").child("Ralo15cm").getValue().toString());
+                    precoChuveiro = Double.parseDouble(dataSnapshot.child("hidraulica").child("Chuveiro").getValue().toString());
+                    precoRaloLinear = Double.parseDouble(dataSnapshot.child("hidraulica").child("RaloLinear").getValue().toString());
+                    precoInstalarVasoSanitario = Double.parseDouble(dataSnapshot.child("hidraulica").child("InstalarVasoSanitario").getValue().toString());
+
+                    //Revestimento
+                    precoCriarAlvenaria = Double.parseDouble(dataSnapshot.child("revestimento").child("CriarAlvenaria").getValue().toString());
+                    precoCriarContraPiso = Double.parseDouble(dataSnapshot.child("revestimento").child("CriarContraPiso").getValue().toString());
+                    precoAplicarImpermeabilizante = Double.parseDouble(dataSnapshot.child("revestimento").child("AplicarImpermeabilizante").getValue().toString());
+                    precoPorcelanatoMenor = Double.parseDouble(dataSnapshot.child("revestimento").child("PorcelanatoMenor").getValue().toString());
+                    precoPorcelanatoMaior = Double.parseDouble(dataSnapshot.child("revestimento").child("PorcelanatoMaior").getValue().toString());
+                    precoPastilhaVidro = Double.parseDouble(dataSnapshot.child("revestimento").child("PastilhaVidro").getValue().toString());
+                    precoRevestimento3D = Double.parseDouble(dataSnapshot.child("revestimento").child("Revestimento3D").getValue().toString());
+
+                    //Art
+                    valorTotalArtArcondicionado = Double.parseDouble(dataSnapshot.child("art").child("ArtArcondicionado").getValue().toString());
+                    valorTotalArtEnvidracamento = Double.parseDouble(dataSnapshot.child("art").child("ArtEnvidracamento").getValue().toString());
+                    valorTotalArtPedrasMarmore = Double.parseDouble(dataSnapshot.child("art").child("ArtPedrasMarmore").getValue().toString());
+                    valorTotalArtNovosRevestimentos = Double.parseDouble(dataSnapshot.child("art").child("ArtNovosRevestimentos").getValue().toString());
+                    valorTotalArtEletrica = Double.parseDouble(dataSnapshot.child("art").child("ArtEletrica").getValue().toString());
+                    valorTotalArtHidraulica = Double.parseDouble(dataSnapshot.child("art").child("ArtHidraulica").getValue().toString());
+                    valorTotalArtBox = Double.parseDouble(dataSnapshot.child("art").child("ArtBox").getValue().toString());
+                    valorTotalArtGesso = Double.parseDouble(dataSnapshot.child("art").child("ArtGesso").getValue().toString());
+                    valorTotalArtDemolicaoParedeNaoEstrutural = Double.parseDouble(dataSnapshot.child("art").child("ArtDemolicaoParedeNaoEstrutural").getValue().toString());
+                    valorTotalArtMoveisPlanejados = Double.parseDouble(dataSnapshot.child("art").child("ArtMoveisPlanejados").getValue().toString());
+                    valorTotalArtDeslocamentoPontoGas = Double.parseDouble(dataSnapshot.child("art").child("ArtDeslocamentoPontoGas").getValue().toString());
+                    valorTotalArtTaxa = Double.parseDouble(dataSnapshot.child("art").child("ArtTaxa").getValue().toString());
+
+
+
+
+                    if (precoRemoverRevestimentoParede == 0) {
+                        Toast.makeText(mContext, "Você está sem internet!", Toast.LENGTH_SHORT).show();
+                    } else {
+
+
+
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
     private void previewPdf() {
 

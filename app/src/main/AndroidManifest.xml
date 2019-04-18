@@ -36,6 +36,9 @@
         <activity android:name="Orcamento.login"
             android:theme="@style/AppTheme.NoActionBar"
             />
+        <activity android:name="Orcamento.Ajustes"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
 
         <!-- File Provider -->
         <meta-data
