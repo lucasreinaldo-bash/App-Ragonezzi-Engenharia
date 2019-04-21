@@ -17,6 +17,7 @@
         android:allowBackup="true"
         android:label="@string/AppName"
         android:supportsRtl="true"
+        android:windowSoftInputMode="adjustResize"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name="Orcamento.Splash">
@@ -37,6 +38,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             />
         <activity android:name="Orcamento.Ajustes"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/AppTheme.NoActionBar"
             />
 

@@ -5888,7 +5888,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         viewPdf();
 
     }
-    private void isAccountValid() {
+    private void    isAccountValid() {
         DatabaseReference databaseReference = ConfiguracaoFirebase.getFirebase().child("ValoresCompartilhados");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

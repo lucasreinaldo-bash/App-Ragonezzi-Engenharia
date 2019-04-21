@@ -47,12 +47,88 @@ public class Ajustes extends AppCompatActivity {
 
         setContentView(R.layout.activity_ajustes);
 
-        //Fazendo cast e instanciando a animação
-        //comecar = findViewById(R.id.idComecar);
         //Instanciando Firebase
+        database = FirebaseDatabase.getInstance();
+        recuperarValorAtual();
 
+
+        btnAtualizar = findViewById(R.id.btn_atualizar);
+        btnVoltar = findViewById(R.id.btn_voltar);
+
+        //Cast EditText Art
+        artArcondicionado = findViewById(R.id.AjustesArcondicionado);
+        artEnvidracamento = findViewById(R.id.AjustesEnvidracamento);
+        artPedrasMarmore = findViewById(R.id.AjustesPedraMarmore);
+        artNovosRevestimentos = findViewById(R.id.AjustesRevestimentos);
+        artEletrica = findViewById(R.id.AjustesEletrica);
+        artHidraulica = findViewById(R.id.AjustesHidraulica);
+        artBox = findViewById(R.id.AjustesBox);
+        artGesso = findViewById(R.id.AjustesGesso);
+        artDemolicaoParede = findViewById(R.id.AjustesDemolicaoNestrutural);
+        artMoveis = findViewById(R.id.AjustesMoveisPlanejados);
+        artDeslocamentoGas = findViewById(R.id.AjustesDeslocamentoGas);
+        artTaxa = findViewById(R.id.AjustesCrea);
 
        }
 
+       public void recuperarValorAtual(){
+
+        DatabaseReference databaseReference = ConfiguracaoFirebase.getFirebase().child("ValorServico");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("art").child("ArtTaxa").getValue() == null){
+                    Toast.makeText(Ajustes.this, "Sem Internet!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    String art = dataSnapshot.child("art").child("ArtArcondicionado").getValue().toString();
+                    Toast.makeText(Ajustes.this, ""+art, Toast.LENGTH_SHORT).show();
+                    artArcondicionado.setText(art.toString());
+                    artEnvidracamento.setText(dataSnapshot.child("art").child("ArtEnvidracamento").getValue().toString());
+                    artPedrasMarmore.setText(dataSnapshot.child("art").child("ArtPedrasMarmore").getValue().toString());
+                    artNovosRevestimentos.setText(dataSnapshot.child("art").child("ArtNovosRevestimentos").getValue().toString());
+                    artEletrica.setText(dataSnapshot.child("art").child("ArtEletrica").getValue().toString());
+                    artHidraulica.setText(dataSnapshot.child("art").child("ArtHidraulica").getValue().toString());
+                    artBox.setText(dataSnapshot.child("art").child("ArtBox").getValue().toString());
+                    artGesso.setText(dataSnapshot.child("art").child("ArtGesso").getValue().toString());
+                    artDemolicaoParede.setText(dataSnapshot.child("art").child("ArtDemolicaoParedeNaoEstrutural").getValue().toString());
+                    artMoveis.setText(dataSnapshot.child("art").child("ArtMoveisPlanejados").getValue().toString());
+                    artDeslocamentoGas.setText(dataSnapshot.child("art").child("ArtDeslocamentoPontoGas").getValue().toString());
+                    artTaxa.setText(dataSnapshot.child("art").child("ArtTaxa").getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+       }
+       public void atualizarValores(){
+
+           //Instanciando as bases de dados de acordo com a categoria do servico
+
+           DatabaseReference databaseReferenceArt = ConfiguracaoFirebase.getFirebase().child("ValorServico").child("art");
+           DatabaseReference databaseReferenceDemolicao = ConfiguracaoFirebase.getFirebase().child("ValorServico").child("art");
+           DatabaseReference databaseReferencePintura = ConfiguracaoFirebase.getFirebase().child("ValorServico").child("art");
+           DatabaseReference databaseReferenceHidraulica = ConfiguracaoFirebase.getFirebase().child("ValorServico").child("art");
+           DatabaseReference databaseReferenceRevestimento = ConfiguracaoFirebase.getFirebase().child("ValorServico").child("art");
+
+           //Art
+           databaseReferenceArt.child("ArtArcondicionado").setValue(artArcondicionado.getText().toString());
+           databaseReferenceArt.child("ArtEnvidracamento").setValue(artEnvidracamento.getText().toString());
+           databaseReferenceArt.child("ArtPedrasMarmore").setValue(artPedrasMarmore.getText().toString());
+           databaseReferenceArt.child("ArtNovosRevestimentos").setValue(artNovosRevestimentos.getText().toString());
+           databaseReferenceArt.child("ArtEletrica").setValue(artEletrica.getText().toString());
+           databaseReferenceArt.child("ArtHidraulica").setValue(artHidraulica.getText().toString());
+           databaseReferenceArt.child("ArtBox").setValue(artBox.getText().toString());
+           databaseReferenceArt.child("ArtGesso").setValue(artGesso.getText().toString());
+           databaseReferenceArt.child("ArtDemolicaoParedeNaoEstrutural").setValue(artDemolicaoParede.getText().toString());
+           databaseReferenceArt.child("ArtMoveisPlanejados").setValue(artMoveis.getText().toString());
+           databaseReferenceArt.child("ArtDeslocamentoPontoGas").setValue(artDeslocamentoGas.getText().toString());
+           databaseReferenceArt.child("ArtTaxa").setValue(artTaxa.getText().toString());
+
+
+    }
 
 }
