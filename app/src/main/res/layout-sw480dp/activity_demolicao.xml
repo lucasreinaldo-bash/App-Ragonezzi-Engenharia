@@ -23573,52 +23573,56 @@
 
             <Button
                 android:id="@+id/btnART"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/icon_art" />
 
             <Button
                 android:id="@+id/btnDemolicao"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/icon_demolicao" />
 
             <Button
                 android:id="@+id/btnRevestimento"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/icon_revestimento" />
 
             <Button
                 android:id="@+id/btnHidraulica"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/icon_hidraulica" />
 
             <Button
                 android:id="@+id/btnPintura"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/icon_pintura" />
             <Button
                 android:id="@+id/btnCalculadora"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/um" />
 
             <Button
                 android:id="@+id/btnFinalizar"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/finish" />
             <Button
                 android:id="@+id/btnAjustar"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/ferramenta" />
 
 

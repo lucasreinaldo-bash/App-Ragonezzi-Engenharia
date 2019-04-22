@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/calc_grey_100"
     android:orientation="vertical"
     tools:context="Orcamento.Ajustes">
@@ -289,6 +289,7 @@
 
                 </ScrollView>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/linear_ajustes_demolicao"
                 android:layout_width="match_parent"
@@ -528,6 +529,7 @@
 
                 </ScrollView>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/linear_ajustes_hidraulica"
                 android:layout_width="match_parent"
@@ -785,6 +787,7 @@
 
                 </ScrollView>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/linear_ajustes_revestimento"
                 android:layout_width="match_parent"
@@ -953,6 +956,7 @@
 
                 </ScrollView>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/linear_ajustes_pintura"
                 android:layout_width="match_parent"
@@ -1079,8 +1083,6 @@
                             </LinearLayout>
 
 
-
-
                         </LinearLayout>
                     </LinearLayout>
 
@@ -1113,9 +1115,9 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|start">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -1166,4 +1168,5 @@
 
         </LinearLayout>
     </HorizontalScrollView>
-</LinearLayout>
+
+</RelativeLayout>

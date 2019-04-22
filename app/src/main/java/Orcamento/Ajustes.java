@@ -193,7 +193,7 @@ public class Ajustes extends AppCompatActivity {
                 }
                 else {
                     String art = dataSnapshot.child("art").child("ArtArcondicionado").getValue().toString();
-                    Toast.makeText(Ajustes.this, ""+art, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(Ajustes.this, ""+art, Toast.LENGTH_SHORT).show();
 
                     //art
 
