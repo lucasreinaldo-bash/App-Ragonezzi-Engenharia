@@ -5916,7 +5916,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         });
 
     }
-    private void carregarValores(){
+    public void carregarValores(){
         DatabaseReference databaseReference = ConfiguracaoFirebase.getFirebase().child("ValorServico");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -7086,7 +7086,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         valorTotalCategoriaArt2 = 0;
         if (BtncheckBoxArtArCondicionado.isChecked() || BtncheckboxArtEnvidracamento.isChecked() || BtncheckboxArtPedrasMarmore.isChecked() || BtncheckboxArtNovosRevestimentos.isChecked() || BtncheckboxArtEletrica.isChecked() || BtncheckboxArtHidraulica.isChecked() || BtncheckboxArtBox.isChecked() || BtncheckboxArtGesso.isChecked() || BtncheckboxArtDemolicao.isChecked() || BtncheckboxArtMoveisPlanejados.isChecked() || BtncheckboxArtDeslocamento.isChecked() )
         {
-            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtTaxa ;
+
 
             if (BtncheckBoxArtArCondicionado.isChecked()) {
                 valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtArcondicionado;
@@ -7128,11 +7128,15 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtDeslocamentoPontoGas;
 
             }
+
         }
         else {
             valorTotalCategoriaArt2 = 0;
         }
 
+        if (valorTotalCategoriaArt2 > 0){
+            valorTotalCategoriaArt2 = valorTotalCategoriaArt2 + valorTotalArtTaxa ;
+        }
         latitude2 = 0;
         latitude2 = totalDemolicao + valorTotalCategoriaHidraulica + valorTotalCategoriaPintura + valorTotalCategoriaRevestimento + valorTotalCategoriaArt2;
 
