@@ -54,7 +54,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1040326941505:android:93074a1e47e730c7",
         "android_client_info": {
-          "package_name": "vostore.orcamentoragonezi"
+          "package_name": "vostore.apporcamentoragonezi"
         }
       },
       "oauth_client": [
@@ -62,7 +62,7 @@
           "client_id": "1040326941505-kt5vnap0du7f0tv3t2th088rvhimkbcj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "vostore.orcamentoragonezi",
+            "package_name": "vostore.apporcamentoragonezi",
             "certificate_hash": "8e95dacf6c6fad9f88ef5f89c3d1663d0cc145b4"
           }
         },

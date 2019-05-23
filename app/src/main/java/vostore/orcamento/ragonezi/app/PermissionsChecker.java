@@ -1,4 +1,4 @@
-package Permissoes;
+package vostore.orcamento.ragonezi.app;
 
 import android.Manifest;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package Firebase;
+package vostore.orcamento.ragonezi.app.Firebase;
 
 public class ValoresCompartilhados {
 

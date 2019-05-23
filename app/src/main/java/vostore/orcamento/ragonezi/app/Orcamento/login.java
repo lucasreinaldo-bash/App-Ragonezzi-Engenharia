@@ -1,8 +1,8 @@
-package Orcamento;
+package vostore.orcamento.ragonezi.app.Orcamento;
 
 import android.content.Intent;
 
-import Firebase.ConfiguracaoFirebase;
+import vostore.orcamento.ragonezi.app.Firebase.ConfiguracaoFirebase;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

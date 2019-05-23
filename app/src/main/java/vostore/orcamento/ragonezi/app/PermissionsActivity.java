@@ -1,4 +1,4 @@
-package Permissoes;
+package vostore.orcamento.ragonezi.app;
 
 import android.app.Activity;
 import android.app.AlertDialog;

@@ -1,4 +1,4 @@
-package Firebase;
+package vostore.orcamento.ragonezi.app.Firebase;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

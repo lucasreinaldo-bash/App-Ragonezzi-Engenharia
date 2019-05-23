@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/calc_grey_100"
     android:orientation="vertical"
-    tools:context="Orcamento.Ajustes">
+    tools:context=".app.Orcamento.Ajustes">
 
     <Button
         android:id="@+id/btnAjustar"

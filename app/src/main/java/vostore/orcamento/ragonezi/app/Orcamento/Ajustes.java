@@ -1,11 +1,9 @@
-package Orcamento;
+package vostore.orcamento.ragonezi.app.Orcamento;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import Firebase.ConfiguracaoFirebase;
+import vostore.orcamento.ragonezi.app.Firebase.ConfiguracaoFirebase;
 import androidx.appcompat.app.AppCompatActivity;
 import vostore.apporcamentoragonezi.R;
 
@@ -48,7 +46,7 @@ public class Ajustes extends AppCompatActivity {
 
         setContentView(R.layout.activity_ajustes);
 
-        //Instanciando Firebase
+        //Instanciando vostore.orcamento.ragonezi.Permissoes.Firebase
         database = FirebaseDatabase.getInstance();
         recuperarValorAtual();
 
