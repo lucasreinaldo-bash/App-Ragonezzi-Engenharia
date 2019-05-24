@@ -4304,7 +4304,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         Font fonteOrcamento = FontFactory.getFont("Times-Roman", 10, Font.NORMAL);
         Font bold = FontFactory.getFont("Times-Roman, Bold", 15, Font.BOLD);
         Font boldTitulo = FontFactory.getFont("Times-Roman, Bold", 22, Font.BOLD);
-        Font boldTitulo2 = FontFactory.getFont("Times-Roman, Bold", 16, Font.BOLD);
+        Font boldTitulo2 = FontFactory.getFont("Times-Roman, Bold", 13, Font.BOLD);
         Font boldTotal = FontFactory.getFont("Times-Roman, Bold", 17, Font.BOLD);
         Font boldTota2 = FontFactory.getFont("Times-Roman, Bold", 17, Font.NORMAL);
         Font boldServicos = FontFactory.getFont("Times-Roman, Bold", 13, Font.NORMAL);
@@ -4385,234 +4385,233 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
         //Paragrafo Demolicao
-        Paragraph paragrafoCozinha = new Paragraph(0,"Cozinha",boldServicos);
+        Paragraph paragrafoCozinha = new Paragraph(0, "Cozinha", boldServicos);
         Paragraph paragrafoCozinhaValor = new Paragraph("Total R$" + df.format(valorTotalCozinha), boldServicos);
         paragrafoCozinhaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoCozinha.add(0,paragrafoCozinhaValor);
+        paragrafoCozinha.add(0, paragrafoCozinhaValor);
         paragrafoCozinha.setLeading(0.70f);
 //        paragrafoCozinha.setExtraParagraphSpace(10);
-        Paragraph paragrafoBanheiro = new Paragraph(0,"Banheiro",boldServicos);
-        Paragraph paragrafoBanheiroValor = new Paragraph("Total R$" + df.format(valorTotalBanheiro1) , boldServicos);
+        Paragraph paragrafoBanheiro = new Paragraph(0, "Banheiro", boldServicos);
+        Paragraph paragrafoBanheiroValor = new Paragraph("Total R$" + df.format(valorTotalBanheiro1), boldServicos);
         paragrafoBanheiroValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoBanheiro.add(0,paragrafoBanheiroValor);
+        paragrafoBanheiro.add(0, paragrafoBanheiroValor);
         paragrafoBanheiro.setLeading(0.70f);
-        Paragraph paragrafoAreaServico = new Paragraph(0,"Área de Serviço", boldServicos);
-        Paragraph paragrafoAreaServicoValor = new Paragraph("Total R$" + df.format(valorTotalAreaServico) , boldServicos);
+        Paragraph paragrafoAreaServico = new Paragraph(0, "Área de Serviço", boldServicos);
+        Paragraph paragrafoAreaServicoValor = new Paragraph("Total R$" + df.format(valorTotalAreaServico), boldServicos);
         paragrafoAreaServicoValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoAreaServico.add(0,paragrafoAreaServicoValor);
+        paragrafoAreaServico.add(0, paragrafoAreaServicoValor);
         paragrafoAreaServico.setLeading(0.70f);
-        Paragraph paragrafoBanheiro2 = new Paragraph(0,"Banheiro Suíte", boldServicos);
-        Paragraph paragrafoBanheiro2Valor = new Paragraph("Total R$" + df.format(valorTotalBanheiro2) , boldServicos);
+        Paragraph paragrafoBanheiro2 = new Paragraph(0, "Banheiro Suíte", boldServicos);
+        Paragraph paragrafoBanheiro2Valor = new Paragraph("Total R$" + df.format(valorTotalBanheiro2), boldServicos);
         paragrafoBanheiro2Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoBanheiro2.add(0,paragrafoBanheiro2Valor);
+        paragrafoBanheiro2.add(0, paragrafoBanheiro2Valor);
         paragrafoBanheiro2.setLeading(0.70f);
-        Paragraph paragrafoLavabo = new Paragraph(0,"Lavabo", boldServicos);
-        Paragraph paragrafoLavaboValor = new Paragraph("Total R$" + df.format(valorTotalLavabo) , boldServicos);
+        Paragraph paragrafoLavabo = new Paragraph(0, "Lavabo", boldServicos);
+        Paragraph paragrafoLavaboValor = new Paragraph("Total R$" + df.format(valorTotalLavabo), boldServicos);
         paragrafoLavaboValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoLavabo.add(0,paragrafoLavaboValor);
+        paragrafoLavabo.add(0, paragrafoLavaboValor);
         paragrafoLavabo.setLeading(0.70f);
-        Paragraph paragrafoSacadaVaranda = new Paragraph(0,"Sacada/Varanda", boldServicos);
-        Paragraph paragrafoSacadaVarandaValor = new Paragraph("Total R$" + df.format(valorTotalSacadaVaranda) , boldServicos);
+        Paragraph paragrafoSacadaVaranda = new Paragraph(0, "Sacada/Varanda", boldServicos);
+        Paragraph paragrafoSacadaVarandaValor = new Paragraph("Total R$" + df.format(valorTotalSacadaVaranda), boldServicos);
         paragrafoSacadaVarandaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoSacadaVaranda.add(0,paragrafoSacadaVarandaValor);
+        paragrafoSacadaVaranda.add(0, paragrafoSacadaVarandaValor);
         paragrafoSacadaVaranda.setLeading(0.70f);
-        Paragraph paragrafoSalaJantar = new Paragraph(0,"Sala Jantar", boldServicos);
-        Paragraph paragrafoSalaJantarValor = new Paragraph("Total R$" + df.format(valorTotalSalaJantar) , boldServicos);
+        Paragraph paragrafoSalaJantar = new Paragraph(0, "Sala Jantar", boldServicos);
+        Paragraph paragrafoSalaJantarValor = new Paragraph("Total R$" + df.format(valorTotalSalaJantar), boldServicos);
         paragrafoSalaJantarValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoSalaJantar.add(0,paragrafoSalaJantarValor);
+        paragrafoSalaJantar.add(0, paragrafoSalaJantarValor);
         paragrafoSalaJantar.setLeading(0.70f);
-        Paragraph paragrafoSalaEstar = new Paragraph(0,"Sala Estar", boldServicos);
-        Paragraph paragrafoSalaEstarValor = new Paragraph("Total R$" + df.format(valorTotalSalaEstar) , boldServicos);
+        Paragraph paragrafoSalaEstar = new Paragraph(0, "Sala Estar", boldServicos);
+        Paragraph paragrafoSalaEstarValor = new Paragraph("Total R$" + df.format(valorTotalSalaEstar), boldServicos);
         paragrafoSalaEstarValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoSalaEstar.add(0,paragrafoSalaEstarValor);
+        paragrafoSalaEstar.add(0, paragrafoSalaEstarValor);
         paragrafoSalaEstar.setLeading(0.70f);
-        Paragraph paragrafoQuarto1 = new Paragraph(0,"Quarto 1", boldServicos);
+        Paragraph paragrafoQuarto1 = new Paragraph(0, "Quarto 1", boldServicos);
         Paragraph paragrafoQuarto1Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto2), boldServicos);
         paragrafoQuarto1Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoQuarto1.add(0,paragrafoQuarto1Valor);
+        paragrafoQuarto1.add(0, paragrafoQuarto1Valor);
         paragrafoQuarto1.setLeading(0.70f);
-        Paragraph paragrafoQuarto2 = new Paragraph(0,"Quarto 2", boldServicos);
+        Paragraph paragrafoQuarto2 = new Paragraph(0, "Quarto 2", boldServicos);
         Paragraph paragrafoQuarto2Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto1), boldServicos);
         paragrafoQuarto2Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoQuarto2.add(0,paragrafoQuarto2Valor);
+        paragrafoQuarto2.add(0, paragrafoQuarto2Valor);
         paragrafoQuarto2.setLeading(0.70f);
-        Paragraph paragrafoQuarto3 = new Paragraph(0,"Quarto Suíte", boldServicos);
-        Paragraph paragrafoQuarto3Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto3) , boldServicos);
+        Paragraph paragrafoQuarto3 = new Paragraph(0, "Quarto Suíte", boldServicos);
+        Paragraph paragrafoQuarto3Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto3), boldServicos);
         paragrafoQuarto3Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoQuarto3.add(0,paragrafoQuarto3Valor);
+        paragrafoQuarto3.add(0, paragrafoQuarto3Valor);
         paragrafoQuarto3.setLeading(0.70f);
-        Paragraph paragrafoDemolicaoQuarto3 = new Paragraph(0,"Quarto Suíte", boldServicos);
-        Paragraph paragrafoDemolicaoQuarto3Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto3) , boldServicos);
+        Paragraph paragrafoDemolicaoQuarto3 = new Paragraph(0, "Quarto Suíte", boldServicos);
+        Paragraph paragrafoDemolicaoQuarto3Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto3), boldServicos);
         paragrafoDemolicaoQuarto3Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoDemolicaoQuarto3.add(0,paragrafoDemolicaoQuarto3Valor);
+        paragrafoDemolicaoQuarto3.add(0, paragrafoDemolicaoQuarto3Valor);
         paragrafoDemolicaoQuarto3.setLeading(0.70f);
 
         //ART
-        Paragraph paragrafoArtTotal = new Paragraph(      "ART                                                                                             Total R$" + df.format(valorTotalCategoriaArt + valorTotalArtTaxa) , boldServicos);
-        paragrafoArtTotal.setLeading(0.70f);
+
 
         //Paragrafo Revestimento
 
-        Paragraph paragrafoRevestimentoCozinha = new Paragraph(0,"Cozinha", boldServicos);
-        Paragraph paragrafoRevestimentoCozinhaValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoCozinha) , boldServicos);
+        Paragraph paragrafoRevestimentoCozinha = new Paragraph(0, "Cozinha", boldServicos);
+        Paragraph paragrafoRevestimentoCozinhaValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoCozinha), boldServicos);
         paragrafoRevestimentoCozinhaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoCozinha.add(0,paragrafoRevestimentoCozinhaValor);
+        paragrafoRevestimentoCozinha.add(0, paragrafoRevestimentoCozinhaValor);
         paragrafoRevestimentoCozinha.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoBanheiro = new Paragraph(0,"Banheiro", boldServicos);
-        Paragraph paragrafoRevestimentoBanheiroValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoBanheiroSocial) , boldServicos);
+        Paragraph paragrafoRevestimentoBanheiro = new Paragraph(0, "Banheiro", boldServicos);
+        Paragraph paragrafoRevestimentoBanheiroValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoBanheiroSocial), boldServicos);
         paragrafoRevestimentoBanheiroValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoBanheiro.add(0,paragrafoRevestimentoBanheiroValor);
+        paragrafoRevestimentoBanheiro.add(0, paragrafoRevestimentoBanheiroValor);
         paragrafoRevestimentoBanheiro.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoAreaServico = new Paragraph(0,"Área de Serviço", boldServicos);
-        Paragraph paragrafoRevestimentoAreaServicoValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoAreaServico) , boldServicos);
+        Paragraph paragrafoRevestimentoAreaServico = new Paragraph(0, "Área de Serviço", boldServicos);
+        Paragraph paragrafoRevestimentoAreaServicoValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoAreaServico), boldServicos);
         paragrafoRevestimentoAreaServicoValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoAreaServico.add(0,paragrafoRevestimentoAreaServicoValor);
+        paragrafoRevestimentoAreaServico.add(0, paragrafoRevestimentoAreaServicoValor);
         paragrafoRevestimentoAreaServico.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoBanheiro2 = new Paragraph(0,"Banheiro Suíte", boldServicos);
-        Paragraph paragrafoRevestimentoBanheiro2Valor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoBanheiroSuite) , boldServicos);
+        Paragraph paragrafoRevestimentoBanheiro2 = new Paragraph(0, "Banheiro Suíte", boldServicos);
+        Paragraph paragrafoRevestimentoBanheiro2Valor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoBanheiroSuite), boldServicos);
         paragrafoRevestimentoBanheiro2Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoBanheiro2.add(0,paragrafoRevestimentoBanheiro2Valor);
+        paragrafoRevestimentoBanheiro2.add(0, paragrafoRevestimentoBanheiro2Valor);
         paragrafoRevestimentoBanheiro2.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoLavabo = new Paragraph(0,"Lavabo", boldServicos);
-        Paragraph paragrafoRevestimentoLavaboValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoLavabo) , boldServicos);
+        Paragraph paragrafoRevestimentoLavabo = new Paragraph(0, "Lavabo", boldServicos);
+        Paragraph paragrafoRevestimentoLavaboValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoLavabo), boldServicos);
         paragrafoRevestimentoLavaboValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoLavabo.add(0,paragrafoRevestimentoLavaboValor);
+        paragrafoRevestimentoLavabo.add(0, paragrafoRevestimentoLavaboValor);
         paragrafoRevestimentoLavabo.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoSacadaVaranda = new Paragraph(0,"Sacada Varanda", boldServicos);
-        Paragraph paragrafoRevestimentoSacadaVarandaValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoSacada) , boldServicos);
+        Paragraph paragrafoRevestimentoSacadaVaranda = new Paragraph(0, "Sacada Varanda", boldServicos);
+        Paragraph paragrafoRevestimentoSacadaVarandaValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoSacada), boldServicos);
         paragrafoRevestimentoSacadaVarandaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoSacadaVaranda.add(0,paragrafoRevestimentoSacadaVarandaValor);
+        paragrafoRevestimentoSacadaVaranda.add(0, paragrafoRevestimentoSacadaVarandaValor);
         paragrafoRevestimentoSacadaVaranda.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoSalaJantar = new Paragraph(0,"Sala Jantar", boldServicos);
-        Paragraph paragrafoRevestimentoSalaJantarValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoSalaJantar) , boldServicos);
+        Paragraph paragrafoRevestimentoSalaJantar = new Paragraph(0, "Sala Jantar", boldServicos);
+        Paragraph paragrafoRevestimentoSalaJantarValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoSalaJantar), boldServicos);
         paragrafoRevestimentoSalaJantarValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoSalaJantar.add(0,paragrafoRevestimentoSalaJantarValor);
+        paragrafoRevestimentoSalaJantar.add(0, paragrafoRevestimentoSalaJantarValor);
         paragrafoRevestimentoSalaJantar.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoSalaEstar = new Paragraph(0,"Sala Estar", boldServicos);
-        Paragraph paragrafoRevestimentoSalaEstarValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoSalaEstar) , boldServicos);
+        Paragraph paragrafoRevestimentoSalaEstar = new Paragraph(0, "Sala Estar", boldServicos);
+        Paragraph paragrafoRevestimentoSalaEstarValor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoSalaEstar), boldServicos);
         paragrafoRevestimentoSalaEstarValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoSalaEstar.add(0,paragrafoRevestimentoSalaEstarValor);
+        paragrafoRevestimentoSalaEstar.add(0, paragrafoRevestimentoSalaEstarValor);
         paragrafoRevestimentoSalaEstar.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoQuarto1 = new Paragraph(0,"Quarto 1", boldServicos);
+        Paragraph paragrafoRevestimentoQuarto1 = new Paragraph(0, "Quarto 1", boldServicos);
         Paragraph paragrafoRevestimentoQuarto1Valor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoQuarto1), boldServicos);
         paragrafoRevestimentoQuarto1Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoQuarto1.add(0,paragrafoRevestimentoQuarto1Valor);
+        paragrafoRevestimentoQuarto1.add(0, paragrafoRevestimentoQuarto1Valor);
         paragrafoRevestimentoQuarto1.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoQuarto2 = new Paragraph(0,"Quarto 2", boldServicos);
+        Paragraph paragrafoRevestimentoQuarto2 = new Paragraph(0, "Quarto 2", boldServicos);
         Paragraph paragrafoRevestimentoQuarto2Valor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoQuarto2), boldServicos);
         paragrafoRevestimentoQuarto2Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoQuarto2.add(0,paragrafoRevestimentoQuarto2Valor);
+        paragrafoRevestimentoQuarto2.add(0, paragrafoRevestimentoQuarto2Valor);
         paragrafoRevestimentoQuarto2.setLeading(0.70f);
-        Paragraph paragrafoRevestimentoQuarto3 = new Paragraph(0,"Quarto Suíte", boldServicos);
-        Paragraph paragrafoRevestimentoQuarto3Valor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoQuartoSuite) , boldServicos);
+        Paragraph paragrafoRevestimentoQuarto3 = new Paragraph(0, "Quarto Suíte", boldServicos);
+        Paragraph paragrafoRevestimentoQuarto3Valor = new Paragraph("Total R$" + df.format(valorTotalRevestimentoQuartoSuite), boldServicos);
         paragrafoRevestimentoQuarto3Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoRevestimentoQuarto3.add(0,paragrafoRevestimentoQuarto3Valor);
+        paragrafoRevestimentoQuarto3.add(0, paragrafoRevestimentoQuarto3Valor);
         paragrafoRevestimentoQuarto3.setLeading(0.70f);
 
 
         //Paragrafo Pintura
-        Paragraph paragrafoPinturaCozinha = new Paragraph(0,"Cozinha", boldServicos);
+        Paragraph paragrafoPinturaCozinha = new Paragraph(0, "Cozinha", boldServicos);
         Paragraph paragrafoPinturaCozinhaValor = new Paragraph("Total R$" + df.format(valorTotalPinturaCozinha), boldServicos);
         paragrafoPinturaCozinhaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaCozinha.add(0,paragrafoPinturaCozinhaValor);
+        paragrafoPinturaCozinha.add(0, paragrafoPinturaCozinhaValor);
         paragrafoPinturaCozinha.setLeading(0.70f);
-        Paragraph paragrafoPinturaApartamento = new Paragraph(   0,"Apartamento m²", boldServicos);
-        Paragraph paragrafoPinturaApartamentoValor = new Paragraph(   "Total R$" + df.format(valorTotalPinturaApartamento), boldServicos);
+        Paragraph paragrafoPinturaApartamento = new Paragraph(0, "Apartamento m²", boldServicos);
+        Paragraph paragrafoPinturaApartamentoValor = new Paragraph("Total R$" + df.format(valorTotalPinturaApartamento), boldServicos);
         paragrafoPinturaApartamentoValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaApartamento.add(0,paragrafoPinturaApartamentoValor);
+        paragrafoPinturaApartamento.add(0, paragrafoPinturaApartamentoValor);
         paragrafoPinturaApartamento.setLeading(0.70f);
-        Paragraph paragrafoPinturaBanheiro = new Paragraph(0,"Banheiro", boldServicos);
+        Paragraph paragrafoPinturaBanheiro = new Paragraph(0, "Banheiro", boldServicos);
         Paragraph paragrafoPinturaBanheiroValor = new Paragraph("Total R$" + df.format(valorTotalPinturaBanheiroSocial), boldServicos);
         paragrafoPinturaBanheiroValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaBanheiro.add(0,paragrafoPinturaBanheiroValor);
+        paragrafoPinturaBanheiro.add(0, paragrafoPinturaBanheiroValor);
         paragrafoPinturaBanheiro.setLeading(0.70f);
-        Paragraph paragrafoPinturaAreaServico = new Paragraph(0,"Área de Serviço", boldServicos);
+        Paragraph paragrafoPinturaAreaServico = new Paragraph(0, "Área de Serviço", boldServicos);
         Paragraph paragrafoPinturaAreaServicoValor = new Paragraph("Total R$" + df.format(valorTotalPinturaAreaServico), boldServicos);
         paragrafoPinturaAreaServicoValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaAreaServico.add(0,paragrafoPinturaAreaServicoValor);
+        paragrafoPinturaAreaServico.add(0, paragrafoPinturaAreaServicoValor);
         paragrafoPinturaAreaServico.setLeading(0.70f);
-        Paragraph paragrafoPinturaBanheiro2 = new Paragraph(0,"Banheiro Suíte", boldServicos);
+        Paragraph paragrafoPinturaBanheiro2 = new Paragraph(0, "Banheiro Suíte", boldServicos);
         Paragraph paragrafoPinturaBanheiro2Valor = new Paragraph("Total R$" + df.format(valorTotalPinturaBanheiroSuite), boldServicos);
         paragrafoPinturaBanheiro2Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaBanheiro2.add(0,paragrafoPinturaBanheiro2Valor);
+        paragrafoPinturaBanheiro2.add(0, paragrafoPinturaBanheiro2Valor);
         paragrafoPinturaBanheiro2.setLeading(0.70f);
-        Paragraph paragrafoPinturaLavabo = new Paragraph(0,"Lavabo", boldServicos);
+        Paragraph paragrafoPinturaLavabo = new Paragraph(0, "Lavabo", boldServicos);
         Paragraph paragrafoPinturaLavaboValor = new Paragraph("Total R$" + df.format(valorTotalPinturaLavabo), boldServicos);
         paragrafoPinturaLavaboValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaLavabo.add(0,paragrafoPinturaLavaboValor);
+        paragrafoPinturaLavabo.add(0, paragrafoPinturaLavaboValor);
         paragrafoPinturaLavabo.setLeading(0.70f);
-        Paragraph paragrafoPinturaSacadaVaranda = new Paragraph(0,"Sacada Varanda", boldServicos);
+        Paragraph paragrafoPinturaSacadaVaranda = new Paragraph(0, "Sacada Varanda", boldServicos);
         Paragraph paragrafoPinturaSacadaVarandaValor = new Paragraph("Total R$" + df.format(valorTotalPinturaSacada), boldServicos);
         paragrafoPinturaSacadaVarandaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaSacadaVaranda.add(0,paragrafoPinturaSacadaVarandaValor);
+        paragrafoPinturaSacadaVaranda.add(0, paragrafoPinturaSacadaVarandaValor);
         paragrafoPinturaSacadaVaranda.setLeading(0.70f);
-        Paragraph paragrafoPinturaSalaJantar = new Paragraph(0,"Sala Jantar", boldServicos);
+        Paragraph paragrafoPinturaSalaJantar = new Paragraph(0, "Sala Jantar", boldServicos);
         Paragraph paragrafoPinturaSalaJantarValor = new Paragraph("Total R$" + df.format(valorTotalPinturaSalaJantar), boldServicos);
         paragrafoPinturaSalaJantarValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaSalaJantar.add(0,paragrafoPinturaSalaJantarValor);
+        paragrafoPinturaSalaJantar.add(0, paragrafoPinturaSalaJantarValor);
         paragrafoPinturaSalaJantar.setLeading(0.70f);
-        Paragraph paragrafoPinturaSalaEstar = new Paragraph(0,"Sala Estar", boldServicos);
+        Paragraph paragrafoPinturaSalaEstar = new Paragraph(0, "Sala Estar", boldServicos);
         Paragraph paragrafoPinturaSalaEstarValor = new Paragraph("Total R$" + df.format(valorTotalPinturaSalaEstar), boldServicos);
         paragrafoPinturaSalaEstarValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaSalaEstar.add(0,paragrafoPinturaSalaEstarValor);
+        paragrafoPinturaSalaEstar.add(0, paragrafoPinturaSalaEstarValor);
         paragrafoPinturaSalaEstar.setLeading(0.70f);
-        Paragraph paragrafoPinturaQuarto1 = new Paragraph(0,"Quarto 1", boldServicos);
+        Paragraph paragrafoPinturaQuarto1 = new Paragraph(0, "Quarto 1", boldServicos);
         Paragraph paragrafoPinturaQuarto1Valor = new Paragraph("Total R$" + df.format(valorTotalPinturaQuarto1), boldServicos);
         paragrafoPinturaQuarto1Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaQuarto1.add(0,paragrafoPinturaQuarto1Valor);
+        paragrafoPinturaQuarto1.add(0, paragrafoPinturaQuarto1Valor);
         paragrafoPinturaQuarto1.setLeading(0.70f);
-        Paragraph paragrafoPinturaQuarto2 = new Paragraph(0,"Quarto 2", boldServicos);
+        Paragraph paragrafoPinturaQuarto2 = new Paragraph(0, "Quarto 2", boldServicos);
         Paragraph paragrafoPinturaQuarto2Valor = new Paragraph("Total R$" + df.format(valorTotalPinturaQuarto2), boldServicos);
         paragrafoPinturaQuarto2Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaQuarto2.add(0,paragrafoPinturaQuarto2Valor);
+        paragrafoPinturaQuarto2.add(0, paragrafoPinturaQuarto2Valor);
         paragrafoPinturaQuarto2.setLeading(0.70f);
-        Paragraph paragrafoPinturaQuarto3 = new Paragraph(0,"Quarto 2", boldServicos);
+        Paragraph paragrafoPinturaQuarto3 = new Paragraph(0, "Quarto 2", boldServicos);
         Paragraph paragrafoPinturaQuarto3Valor = new Paragraph("Total R$" + df.format(valorTotalPinturaQuartoSuite), boldServicos);
         paragrafoPinturaQuarto3Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoPinturaQuarto3.add(0,paragrafoPinturaQuarto3Valor);
+        paragrafoPinturaQuarto3.add(0, paragrafoPinturaQuarto3Valor);
         paragrafoPinturaQuarto3.setLeading(0.70f);
 
         //Paragrafo Hidraulica
 
-        Paragraph paragrafoHidraulicaCozinha = new Paragraph(0,"Cozinha", boldServicos);
+        Paragraph paragrafoHidraulicaCozinha = new Paragraph(0, "Cozinha", boldServicos);
         Paragraph paragrafoHidraulicaCozinhaValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaCozinha), boldServicos);
         paragrafoHidraulicaCozinhaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaCozinha.add(0,paragrafoHidraulicaCozinhaValor);
+        paragrafoHidraulicaCozinha.add(0, paragrafoHidraulicaCozinhaValor);
         paragrafoHidraulicaCozinha.setLeading(0.70f);
-        Paragraph paragrafoHidraulicaBanheiro = new Paragraph(0,"Banheiro", boldServicos);
+        Paragraph paragrafoHidraulicaBanheiro = new Paragraph(0, "Banheiro", boldServicos);
         Paragraph paragrafoHidraulicaBanheiroValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaBanheiroSocial), boldServicos);
         paragrafoHidraulicaBanheiroValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaBanheiro.add(0,paragrafoHidraulicaBanheiroValor);
+        paragrafoHidraulicaBanheiro.add(0, paragrafoHidraulicaBanheiroValor);
         paragrafoHidraulicaBanheiro.setLeading(0.70f);
-        Paragraph paragrafoHidraulicaAreaServico = new Paragraph(0,"Área de Serviço", boldServicos);
+        Paragraph paragrafoHidraulicaAreaServico = new Paragraph(0, "Área de Serviço", boldServicos);
         Paragraph paragrafoHidraulicaAreaServicoValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaAreaServico), boldServicos);
         paragrafoHidraulicaAreaServico.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaAreaServico.add(0,paragrafoHidraulicaAreaServicoValor);
+        paragrafoHidraulicaAreaServico.add(0, paragrafoHidraulicaAreaServicoValor);
         paragrafoHidraulicaAreaServico.setLeading(0.70f);
         Paragraph paragrafoHidraulicaBanheiro2 = new Paragraph("Banheiro Suíte", boldServicos);
         Paragraph paragrafoHidraulicaBanheiro2Valor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaBanheiroSuite), boldServicos);
         paragrafoHidraulicaBanheiro2Valor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaBanheiro2.add(0,paragrafoHidraulicaBanheiro2Valor);
+        paragrafoHidraulicaBanheiro2.add(0, paragrafoHidraulicaBanheiro2Valor);
         paragrafoHidraulicaBanheiro2.setLeading(0.70f);
-        Paragraph paragrafoHidraulicaLavabo = new Paragraph(0,"Lavabo", boldServicos);
+        Paragraph paragrafoHidraulicaLavabo = new Paragraph(0, "Lavabo", boldServicos);
         Paragraph paragrafoHidraulicaLavaboValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaLavabo), boldServicos);
         paragrafoHidraulicaLavaboValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaLavabo.add(0,paragrafoHidraulicaLavaboValor);
+        paragrafoHidraulicaLavabo.add(0, paragrafoHidraulicaLavaboValor);
         paragrafoHidraulicaLavabo.setLeading(0.70f);
-        Paragraph paragrafoHidraulicaSacadaVaranda = new Paragraph(0,"Sacada Varanda", boldServicos);
+        Paragraph paragrafoHidraulicaSacadaVaranda = new Paragraph(0, "Sacada Varanda", boldServicos);
         Paragraph paragrafoHidraulicaSacadaVarandaValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaSacada), boldServicos);
         paragrafoHidraulicaSacadaVarandaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaSacadaVaranda.add(0,paragrafoHidraulicaSacadaVaranda);
+        paragrafoHidraulicaSacadaVaranda.add(0, paragrafoHidraulicaSacadaVaranda);
         paragrafoHidraulicaSacadaVaranda.setLeading(0.70f);
-        Paragraph paragrafoHidraulicaSalaJantar = new Paragraph(0,"Sala Jantar", boldServicos);
+        Paragraph paragrafoHidraulicaSalaJantar = new Paragraph(0, "Sala Jantar", boldServicos);
         Paragraph paragrafoHidraulicaSalaJantarValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaSalaJantar), boldServicos);
         paragrafoHidraulicaSalaJantarValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaSalaJantar.add(0,paragrafoHidraulicaSalaJantarValor);
+        paragrafoHidraulicaSalaJantar.add(0, paragrafoHidraulicaSalaJantarValor);
         paragrafoHidraulicaSalaJantar.setLeading(0.70f);
-        Paragraph paragrafoHidraulicaSalaEstar = new Paragraph(0,"Sala Estar", boldServicos);
+        Paragraph paragrafoHidraulicaSalaEstar = new Paragraph(0, "Sala Estar", boldServicos);
         Paragraph paragrafoHidraulicaSalaEstarValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaSalaEstar), boldServicos);
         paragrafoHidraulicaSalaEstarValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaSalaEstar.add(0,paragrafoHidraulicaSalaEstarValor);
+        paragrafoHidraulicaSalaEstar.add(0, paragrafoHidraulicaSalaEstarValor);
         paragrafoHidraulicaSalaEstar.setLeading(0.70f);
         Paragraph paragrafoHidraulicaQuarto1 = new Paragraph("Quarto 1                                                                                   Total R$" + df.format(valorTotalHidraulicaQuarto1), boldServicos);
         Paragraph paragrafoHidraulicaQuarto2 = new Paragraph("Quarto 2                                                                                   Total R$" + df.format(valorTotalHidraulicaQuarto2), boldServicos);
@@ -4808,8 +4807,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         document.add(titulo);
 
 
-
-        if (totalDemolicao > 0){
+        if (totalDemolicao > 0) {
             document.add(espacoBranco);
 
             PdfPTable tableDemolicao = new PdfPTable(1);
@@ -4822,8 +4820,6 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
             document.add(paragrafoDemolicao);
             document.add(espacoBranco);
-
-
 
 
             if (valorTotalCozinha > 0) {
@@ -4908,7 +4904,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 document.add(tableCozinha);
                 if (varRemoverRevestimentoParede > 0 || varRemoverRevestimentoParede1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede1.getText().toString()) + Double.parseDouble(valorRevestimentoParede1_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varRemoverRevestimentoParede + varRemoverRevestimentoParede1) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varRemoverRevestimentoParede + varRemoverRevestimentoParede1), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5026,7 +5022,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverCaixinha4x4 > 0 || varRemoverCaixinha4x4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_1.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_1_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_1 + varRemoverCaixinha4x4)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_1 + varRemoverCaixinha4x4)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5041,11 +5037,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverHidraulica > 0 || varRemoverHidraulica1 > 0)
-
-                {
+                if (varRemoverHidraulica > 0 || varRemoverHidraulica1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica1.getText().toString()) + Double.parseDouble(valorRasgarHidraulica1_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica1 + varRemoverHidraulica) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica1 + varRemoverHidraulica)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5063,7 +5057,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverGesso > 0 || varRemoverGesso1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso1_1.getText().toString()) + Double.parseDouble(valorRemoverGesso1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso1 + varRemoverGesso) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso1 + varRemoverGesso)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5084,7 +5078,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverVao > 0 || varRemoverVao1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao1.getText().toString()) + Double.parseDouble(valorRemoverVao1_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao1 + varRemoverVao) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao1 + varRemoverVao)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5101,7 +5095,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalBanheiro1 > 0){
+            if (valorTotalBanheiro1 > 0) {
 
                 PdfPTable tableBanheiro = new PdfPTable(1);
                 tableBanheiro.setWidthPercentage(100);
@@ -5149,7 +5143,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverPia2 > 0 || varRemoverPia2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia2.getText().toString()) + Double.parseDouble(valorRemocaoPia2_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia2 + varRemoverPia2_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia2 + varRemoverPia2_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5164,10 +5158,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria2 > 0 || varRemoverAlvenaria2_1 > 0)
-                {
+                if (varRemoverAlvenaria2 > 0 || varRemoverAlvenaria2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria2.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria2_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria2 + varRemoverAlvenaria2_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria2 + varRemoverAlvenaria2_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5185,7 +5178,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                 if (varRemoverTanque2 > 0 || varRemoverTanque2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque2.getText().toString()) + Double.parseDouble(valorRemocaoTanque2_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque2_1 + varRemoverTanque2) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque2_1 + varRemoverTanque2)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5202,7 +5195,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverCaixinha4x2_2 > 0 || varRemoverCaixinha4x2_2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_2.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_2_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_2 + varRemoverCaixinha4x2_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_2 + varRemoverCaixinha4x2_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5219,7 +5212,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverCaixinha4x4_2 > 0 || varRemoverCaixinha4x4_2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_2.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_2_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_1 + varRemoverCaixinha4x4) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_1 + varRemoverCaixinha4x4)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5233,9 +5226,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     celula.setBorder(Rectangle.NO_BORDER);
                     tabela.addCell(celula);
                     document.add(tabela);
-                } if (varRemoverHidraulica2 > 0 || varRemoverHidraulica2_1 > 0){
+                }
+                if (varRemoverHidraulica2 > 0 || varRemoverHidraulica2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica2.getText().toString()) + Double.parseDouble(valorRasgarHidraulica2_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica2 + varRemoverHidraulica2_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica2 + varRemoverHidraulica2_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5251,11 +5245,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(tabela);
 
                 }
-                if (varRemoverGesso2 > 0 || varRemoverGesso2_1 > 0)
-
-                {
+                if (varRemoverGesso2 > 0 || varRemoverGesso2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRemoverGesso2_1.getText().toString()) + Double.parseDouble(valorRemoverGesso2.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso2 + varRemoverGesso2_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso2 + varRemoverGesso2_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5271,10 +5263,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(tabela);
 
                 }
-                if (varRemoverVasoSanitario2 > 0 || varRemoverVasoSanitario2_1 > 0)
-                {
+                if (varRemoverVasoSanitario2 > 0 || varRemoverVasoSanitario2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vaso Sanitário: " + (Double.parseDouble(valorRemoverVaso2.getText().toString()) + Double.parseDouble(valorRemoverVaso2_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVasoSanitario2 + varRemoverVasoSanitario2_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVasoSanitario2 + varRemoverVasoSanitario2_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5290,11 +5281,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(tabela);
 
                 }
-                if (varRemoverVao2 > 0 || varRemoverVao2_1 > 0)
-
-                {
+                if (varRemoverVao2 > 0 || varRemoverVao2_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao2.getText().toString()) + Double.parseDouble(valorRemoverVao2_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverVao2 + varRemoverVao2_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao2 + varRemoverVao2_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5312,7 +5301,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalAreaServico > 0){
+            if (valorTotalAreaServico > 0) {
 
 
                 int qtdDemoAreaServico = 0;
@@ -5397,7 +5386,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverRevestimentoParede3 > 0 || varRemoverRevestimentoParede3_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede3.getText().toString()) + Double.parseDouble(valorRevestimentoParede3_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede3 + varRemoverRevestimentoParede3_1)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede3 + varRemoverRevestimentoParede3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5441,7 +5430,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverPia3 > 0 || varRemoverPia3_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia3.getText().toString()) + Double.parseDouble(valorRemocaoPia3_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia3 + varRemoverPia3_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia3 + varRemoverPia3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5456,8 +5445,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria3 > 0 || varRemoverAlvenaria3_1 > 0)
-                {
+                if (varRemoverAlvenaria3 > 0 || varRemoverAlvenaria3_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria3.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria3_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria3 + varRemoverAlvenaria3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -5475,8 +5463,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(tabela);
                 }
 
-                if (varRemoverTanque3 > 0 || varRemoverTanque3_1 > 0)
-                {
+                if (varRemoverTanque3 > 0 || varRemoverTanque3_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque3.getText().toString()) + Double.parseDouble(valorRemocaoTanque3_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque3 + varRemoverTanque3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -5493,8 +5480,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_3 > 0 || varRemoverCaixinha4x2_3_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_3 > 0 || varRemoverCaixinha4x2_3_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_3.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_3_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_3 + varRemoverCaixinha4x2_3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -5511,10 +5497,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_3 > 0 || varRemoverCaixinha4x4_3_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_3 > 0 || varRemoverCaixinha4x4_3_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_3.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_3_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverCaixinha4x4_3 + varRemoverCaixinha4x4_3_1)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_3 + varRemoverCaixinha4x4_3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5529,10 +5514,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverHidraulica3 > 0 || varRemoverHidraulica3_1 > 0)
-                {
+                if (varRemoverHidraulica3 > 0 || varRemoverHidraulica3_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica3.getText().toString()) + Double.parseDouble(valorRasgarHidraulica3_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverHidraulica3 + varRemoverHidraulica3_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica3 + varRemoverHidraulica3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5547,10 +5531,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso3 > 0 || varRemoverGesso3_1 > 0)
-                {
+                if (varRemoverGesso3 > 0 || varRemoverGesso3_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso3_1.getText().toString()) + Double.parseDouble(valorRemoverGesso3.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso3 + varRemoverGesso3_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso3 + varRemoverGesso3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5565,13 +5548,11 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverVasoSanitario3 > 0 || varRemoverVasoSanitario3_1 > 0)
-                {
+                if (varRemoverVasoSanitario3 > 0 || varRemoverVasoSanitario3_1 > 0) {
 
 
                 }
-                if (varRemoverVao3 > 0 || varRemoverVao3_1 > 0)
-                {
+                if (varRemoverVao3 > 0 || varRemoverVao3_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao3.getText().toString()) + Double.parseDouble(valorRemoverVao3_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao3 + varRemoverVao3_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -5590,7 +5571,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalBanheiro2 > 0){
+            if (valorTotalBanheiro2 > 0) {
                 PdfPTable tableBanheiro2 = new PdfPTable(1);
                 tableBanheiro2.setWidthPercentage(100);
                 PdfPCell cellAreaServico = new PdfPCell();
@@ -5600,10 +5581,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 document.add(tableBanheiro2);
 
 
-                if (varRemoverRevestimentoParede4 > 0 || varRemoverRevestimentoParede4_1 > 0)
-                {
+                if (varRemoverRevestimentoParede4 > 0 || varRemoverRevestimentoParede4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede4.getText().toString()) + Double.parseDouble(valorRevestimentoParede4_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede4 + varRemoverRevestimentoParede4_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede4 + varRemoverRevestimentoParede4_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5618,10 +5598,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverPiso4 > 0 || varRemoverPiso4_1 > 0)
-                {
+                if (varRemoverPiso4 > 0 || varRemoverPiso4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso4.getText().toString()) + Double.parseDouble(valorRemocaoPiso4_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverPiso4 + varRemoverPiso4_1)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPiso4 + varRemoverPiso4_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5636,10 +5615,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverPia4 > 0 || varRemoverPia4_1 > 0)
-                {
+                if (varRemoverPia4 > 0 || varRemoverPia4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia4.getText().toString()) + Double.parseDouble(valorRemocaoPia4_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia4 + varRemoverPia4_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia4 + varRemoverPia4_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5654,10 +5632,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria4 > 0 || varRemoverAlvenaria4_1 > 0)
-                {
+                if (varRemoverAlvenaria4 > 0 || varRemoverAlvenaria4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria4.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria4_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria4 + varRemoverAlvenaria4_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria4 + varRemoverAlvenaria4_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5672,10 +5649,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverTanque4 > 0 || varRemoverTanque4_1 > 0)
-                {
+                if (varRemoverTanque4 > 0 || varRemoverTanque4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque4.getText().toString()) + Double.parseDouble(valorRemocaoTanque4_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverTanque4_1 + varRemoverTanque4)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque4_1 + varRemoverTanque4)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5690,10 +5666,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_4 > 0 || varRemoverCaixinha4x2_4_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_4 > 0 || varRemoverCaixinha4x2_4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_4.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_4_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_4_1 + varRemoverCaixinha4x2_4) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_4_1 + varRemoverCaixinha4x2_4)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5708,10 +5683,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_4 > 0 || varRemoverCaixinha4x4_4_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_4 > 0 || varRemoverCaixinha4x4_4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_4.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_4_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_4 + varRemoverCaixinha4x4_4_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_4 + varRemoverCaixinha4x4_4_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5726,10 +5700,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverHidraulica4 > 0 || varRemoverHidraulica4_1 > 0)
-                {
+                if (varRemoverHidraulica4 > 0 || varRemoverHidraulica4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica4.getText().toString()) + Double.parseDouble(valorRasgarHidraulica4_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverHidraulica4 + varRemoverHidraulica4_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica4 + varRemoverHidraulica4_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5744,10 +5717,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso4 > 0 || varRemoverGesso4_1 > 0)
-                {
+                if (varRemoverGesso4 > 0 || varRemoverGesso4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRemoverGesso4_1.getText().toString()) + Double.parseDouble(valorRemoverGesso4.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso4 + varRemoverGesso4_1)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso4 + varRemoverGesso4_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5762,12 +5734,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverVasoSanitario4 > 0 || varRemoverVasoSanitario4_1 > 0)
-                {
+                if (varRemoverVasoSanitario4 > 0 || varRemoverVasoSanitario4_1 > 0) {
 
                 }
-                if (varRemoverVao4 > 0 || varRemoverVao4_1 > 0)
-                {
+                if (varRemoverVao4 > 0 || varRemoverVao4_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao4.getText().toString()) + Double.parseDouble(valorRemoverVao4_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao4 + varRemoverVao4_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -5786,7 +5756,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalLavabo > 0){
+            if (valorTotalLavabo > 0) {
                 int qtdDemoLavabo = 0;
 
                 if (varRemoverRevestimentoParede > 0) {
@@ -5867,10 +5837,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                 document.add(tableCozinha);
 
-                if (varRemoverRevestimentoParede5 > 0 || varRemoverRevestimentoParede5_1 > 0)
-                {
+                if (varRemoverRevestimentoParede5 > 0 || varRemoverRevestimentoParede5_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede5.getText().toString()) + Double.parseDouble(valorRevestimentoParede5_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede5_1 + varRemoverRevestimentoParede5)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede5_1 + varRemoverRevestimentoParede5)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5893,8 +5862,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 //                    tableCozinhaServicos.addCell(cellCozinha2);
 //                    document.add(tableCozinhaServicos);
                 }
-                if (varRemoverPiso5 > 0 || varRemoverPiso5_1 > 0)
-                {
+                if (varRemoverPiso5 > 0 || varRemoverPiso5_1 > 0) {
 
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso5_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso5_1.getText().toString())) + " m²", boldServicosPrestados);
@@ -5915,9 +5883,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 }
-                if (varRemoverPia5 > 0 || varRemoverPia5_1 > 0)
-
-                {
+                if (varRemoverPia5 > 0 || varRemoverPia5_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia5.getText().toString()) + Double.parseDouble(valorRemocaoPia5_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia5 + varRemoverPia5_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -5934,10 +5900,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria5 > 0 || varRemoverAlvenaria5_1 > 0){
+                if (varRemoverAlvenaria5 > 0 || varRemoverAlvenaria5_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria5.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria5_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria5 + varRemoverAlvenaria5)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria5 + varRemoverAlvenaria5)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5952,10 +5918,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverTanque5 > 0 || varRemoverTanque5_1 > 0)
-                {
+                if (varRemoverTanque5 > 0 || varRemoverTanque5_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque5.getText().toString()) + Double.parseDouble(valorRemocaoTanque5_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque5 + varRemoverTanque5_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque5 + varRemoverTanque5_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5970,10 +5935,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_5 > 0 || varRemoverCaixinha4x2_5_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_5 > 0 || varRemoverCaixinha4x2_5_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_5.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_5_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_5 + varRemoverCaixinha4x2_5_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_5 + varRemoverCaixinha4x2_5_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -5988,10 +5952,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_5 > 0 || varRemoverCaixinha4x4_5_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_5 > 0 || varRemoverCaixinha4x4_5_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_5.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_5_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_5 + varRemoverCaixinha4x4_5_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_5 + varRemoverCaixinha4x4_5_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6008,7 +5971,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverHidraulica5 > 0 || varRemoverHidraulica5_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica5.getText().toString()) + Double.parseDouble(valorRasgarHidraulica5_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica5 + varRemoverHidraulica5_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica5 + varRemoverHidraulica5_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6023,8 +5986,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso5 > 0 || varRemoverGesso5_1 > 0)
-                {
+                if (varRemoverGesso5 > 0 || varRemoverGesso5_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso5_1.getText().toString()) + Double.parseDouble(valorRemoverGesso5.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso5 + varRemoverGesso5_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6044,8 +6006,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverVasoSanitario5 > 0 || varRemoverVasoSanitario5_1 > 0)
                     document.add(new Paragraph(">>> Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso5.getText().toString()) + Double.parseDouble(valorRemoverVaso5_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario5 + varRemoverVasoSanitario5_1) + "0", boldServicosPrestados));
-                if (varRemoverVao5 > 0 || varRemoverVao5_1 > 0)
-                {
+                if (varRemoverVao5 > 0 || varRemoverVao5_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao5.getText().toString()) + Double.parseDouble(valorRemoverVao5_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao5 + varRemoverVao5_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6065,7 +6026,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 document.add(espacoBranco1);
             }
 
-            if (valorTotalSacadaVaranda > 0){
+            if (valorTotalSacadaVaranda > 0) {
                 int qtdDemoSacadaVaranda = 0;
 
                 if (varRemoverRevestimentoParede > 0) {
@@ -6146,10 +6107,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                 document.add(tableCozinha);
 
-                if (varRemoverRevestimentoParede6 > 0 || varRemoverRevestimentoParede6_1 > 0)
-                {
+                if (varRemoverRevestimentoParede6 > 0 || varRemoverRevestimentoParede6_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede6.getText().toString()) + Double.parseDouble(valorRevestimentoParede6_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede6_1 + varRemoverRevestimentoParede6)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede6_1 + varRemoverRevestimentoParede6)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6172,8 +6132,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 //                    tableCozinhaServicos.addCell(cellCozinha2);
 //                    document.add(tableCozinhaServicos);
                 }
-                if (varRemoverPiso6 > 0 || varRemoverPiso6_1 > 0)
-                {
+                if (varRemoverPiso6 > 0 || varRemoverPiso6_1 > 0) {
 
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso6_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso6_1.getText().toString())) + " m²", boldServicosPrestados);
@@ -6194,9 +6153,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 }
-                if (varRemoverPia6 > 0 || varRemoverPia6_1 > 0)
-
-                {
+                if (varRemoverPia6 > 0 || varRemoverPia6_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia6.getText().toString()) + Double.parseDouble(valorRemocaoPia6_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia6 + varRemoverPia6_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6213,10 +6170,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria6 > 0 || varRemoverAlvenaria6_1 > 0){
+                if (varRemoverAlvenaria6 > 0 || varRemoverAlvenaria6_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria6.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria6_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria6 + varRemoverAlvenaria6)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria6 + varRemoverAlvenaria6)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6231,10 +6188,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverTanque6 > 0 || varRemoverTanque6_1 > 0)
-                {
+                if (varRemoverTanque6 > 0 || varRemoverTanque6_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque6.getText().toString()) + Double.parseDouble(valorRemocaoTanque6_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque6 + varRemoverTanque6_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque6 + varRemoverTanque6_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6249,10 +6205,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_6 > 0 || varRemoverCaixinha4x2_6_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_6 > 0 || varRemoverCaixinha4x2_6_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_6.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_6_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_6 + varRemoverCaixinha4x2_6_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_6 + varRemoverCaixinha4x2_6_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6267,10 +6222,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_6 > 0 || varRemoverCaixinha4x4_6_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_6 > 0 || varRemoverCaixinha4x4_6_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_6.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_6_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_6 + varRemoverCaixinha4x4_6_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_6 + varRemoverCaixinha4x4_6_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6287,7 +6241,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverHidraulica6 > 0 || varRemoverHidraulica6_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica6.getText().toString()) + Double.parseDouble(valorRasgarHidraulica6_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica6 + varRemoverHidraulica6_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica6 + varRemoverHidraulica6_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6302,8 +6256,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso6 > 0 || varRemoverGesso6_1 > 0)
-                {
+                if (varRemoverGesso6 > 0 || varRemoverGesso6_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso6_1.getText().toString()) + Double.parseDouble(valorRemoverGesso6.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso6 + varRemoverGesso6_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6323,8 +6276,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverVasoSanitario6 > 0 || varRemoverVasoSanitario6_1 > 0)
                     document.add(new Paragraph(">>> Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso6.getText().toString()) + Double.parseDouble(valorRemoverVaso6_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario6 + varRemoverVasoSanitario6_1) + "0", boldServicosPrestados));
-                if (varRemoverVao6 > 0 || varRemoverVao6_1 > 0)
-                {
+                if (varRemoverVao6 > 0 || varRemoverVao6_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao6.getText().toString()) + Double.parseDouble(valorRemoverVao6_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao6 + varRemoverVao6_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6343,7 +6295,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalSalaJantar > 0){
+            if (valorTotalSalaJantar > 0) {
 
                 int qtdDemoSalaJantar = 0;
 
@@ -6411,7 +6363,6 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
 
 
-
                 PdfPTable tableCozinha = new PdfPTable(1);
                 PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoSalaJantar);
 //                tableCozinhaServicos.
@@ -6428,10 +6379,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 document.add(tableCozinha);
 
 
-                if (varRemoverRevestimentoParede7 > 0 || varRemoverRevestimentoParede7_1 > 0)
-                {
+                if (varRemoverRevestimentoParede7 > 0 || varRemoverRevestimentoParede7_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede7.getText().toString()) + Double.parseDouble(valorRevestimentoParede7_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede7_1 + varRemoverRevestimentoParede7)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede7_1 + varRemoverRevestimentoParede7)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6454,8 +6404,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 //                    tableCozinhaServicos.addCell(cellCozinha2);
 //                    document.add(tableCozinhaServicos);
                 }
-                if (varRemoverPiso7 > 0 || varRemoverPiso7_1 > 0)
-                {
+                if (varRemoverPiso7 > 0 || varRemoverPiso7_1 > 0) {
 
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso7_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso7_1.getText().toString())) + " m²", boldServicosPrestados);
@@ -6476,9 +6425,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 }
-                if (varRemoverPia7 > 0 || varRemoverPia7_1 > 0)
-
-                {
+                if (varRemoverPia7 > 0 || varRemoverPia7_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia7.getText().toString()) + Double.parseDouble(valorRemocaoPia7_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia7 + varRemoverPia7_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6495,10 +6442,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria7 > 0 || varRemoverAlvenaria7_1 > 0){
+                if (varRemoverAlvenaria7 > 0 || varRemoverAlvenaria7_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria7.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria7_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria7 + varRemoverAlvenaria7)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria7 + varRemoverAlvenaria7)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6513,10 +6460,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverTanque7 > 0 || varRemoverTanque7_1 > 0)
-                {
+                if (varRemoverTanque7 > 0 || varRemoverTanque7_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque7.getText().toString()) + Double.parseDouble(valorRemocaoTanque7_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque7 + varRemoverTanque7_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque7 + varRemoverTanque7_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6531,10 +6477,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_7 > 0 || varRemoverCaixinha4x2_7_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_7 > 0 || varRemoverCaixinha4x2_7_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_7.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_7_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_7 + varRemoverCaixinha4x2_7_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_7 + varRemoverCaixinha4x2_7_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6549,10 +6494,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_7 > 0 || varRemoverCaixinha4x4_7_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_7 > 0 || varRemoverCaixinha4x4_7_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_7.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_7_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_7 + varRemoverCaixinha4x4_7_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_7 + varRemoverCaixinha4x4_7_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6569,7 +6513,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverHidraulica7 > 0 || varRemoverHidraulica7_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica7.getText().toString()) + Double.parseDouble(valorRasgarHidraulica7_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica7 + varRemoverHidraulica7_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica7 + varRemoverHidraulica7_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6584,8 +6528,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso7 > 0 || varRemoverGesso7_1 > 0)
-                {
+                if (varRemoverGesso7 > 0 || varRemoverGesso7_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso7_1.getText().toString()) + Double.parseDouble(valorRemoverGesso7.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso7 + varRemoverGesso7_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6605,8 +6548,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverVasoSanitario7 > 0 || varRemoverVasoSanitario7_1 > 0)
                     document.add(new Paragraph(">>> Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso7.getText().toString()) + Double.parseDouble(valorRemoverVaso7_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario7 + varRemoverVasoSanitario7_1) + "0", boldServicosPrestados));
-                if (varRemoverVao7 > 0 || varRemoverVao7_1 > 0)
-                {
+                if (varRemoverVao7 > 0 || varRemoverVao7_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao7.getText().toString()) + Double.parseDouble(valorRemoverVao7_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao7 + varRemoverVao7_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6625,7 +6567,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalSalaEstar > 0){
+            if (valorTotalSalaEstar > 0) {
                 int qtdDemoSalaEstar = 0;
 
                 if (varRemoverRevestimentoParede > 0) {
@@ -6704,10 +6646,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 tableCozinha.addCell(cellCozinha2);
 
                 document.add(tableCozinha);
-                if (varRemoverRevestimentoParede8 > 0 || varRemoverRevestimentoParede8_1 > 0)
-                {
+                if (varRemoverRevestimentoParede8 > 0 || varRemoverRevestimentoParede8_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede8.getText().toString()) + Double.parseDouble(valorRevestimentoParede8_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede8_1 + varRemoverRevestimentoParede8)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede8_1 + varRemoverRevestimentoParede8)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6730,8 +6671,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 //                    tableCozinhaServicos.addCell(cellCozinha2);
 //                    document.add(tableCozinhaServicos);
                 }
-                if (varRemoverPiso8 > 0 || varRemoverPiso8_1 > 0)
-                {
+                if (varRemoverPiso8 > 0 || varRemoverPiso8_1 > 0) {
 
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso8_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso8_1.getText().toString())) + " m²", boldServicosPrestados);
@@ -6752,8 +6692,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 }
-                if (varRemoverPia8 > 0 || varRemoverPia8_1 > 0)
-                {
+                if (varRemoverPia8 > 0 || varRemoverPia8_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia8.getText().toString()) + Double.parseDouble(valorRemocaoPia8_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia8 + varRemoverPia8_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6770,11 +6709,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria8 > 0 || varRemoverAlvenaria8_1 > 0)
-                {
+                if (varRemoverAlvenaria8 > 0 || varRemoverAlvenaria8_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria8.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria8_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria8 + varRemoverAlvenaria8)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria8 + varRemoverAlvenaria8)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6789,10 +6727,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverTanque8 > 0 || varRemoverTanque8_1 > 0)
-                {
+                if (varRemoverTanque8 > 0 || varRemoverTanque8_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque8.getText().toString()) + Double.parseDouble(valorRemocaoTanque8_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque8 + varRemoverTanque8_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque8 + varRemoverTanque8_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6807,10 +6744,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_8 > 0 || varRemoverCaixinha4x2_8_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_8 > 0 || varRemoverCaixinha4x2_8_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_8.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_8_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_8 + varRemoverCaixinha4x2_8_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_8 + varRemoverCaixinha4x2_8_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6825,10 +6761,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_8 > 0 || varRemoverCaixinha4x4_8_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_8 > 0 || varRemoverCaixinha4x4_8_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_8.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_8_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_8 + varRemoverCaixinha4x4_8_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_8 + varRemoverCaixinha4x4_8_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6843,10 +6778,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverHidraulica8 > 0 || varRemoverHidraulica8_1 > 0)
-                {
+                if (varRemoverHidraulica8 > 0 || varRemoverHidraulica8_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica8.getText().toString()) + Double.parseDouble(valorRasgarHidraulica8_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica8 + varRemoverHidraulica8_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica8 + varRemoverHidraulica8_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -6861,8 +6795,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso8 > 0 || varRemoverGesso8_1 > 0)
-                {
+                if (varRemoverGesso8 > 0 || varRemoverGesso8_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso8_1.getText().toString()) + Double.parseDouble(valorRemoverGesso8.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso8 + varRemoverGesso8_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6882,8 +6815,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverVasoSanitario8 > 0 || varRemoverVasoSanitario8_1 > 0)
                     document.add(new Paragraph(">>> Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso8.getText().toString()) + Double.parseDouble(valorRemoverVaso8_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario8 + varRemoverVasoSanitario8_1) + "0", boldServicosPrestados));
-                if (varRemoverVao8 > 0 || varRemoverVao8_1 > 0)
-                {
+                if (varRemoverVao8 > 0 || varRemoverVao8_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao8.getText().toString()) + Double.parseDouble(valorRemoverVao8_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao8 + varRemoverVao8_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -6902,7 +6834,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalQuarto1 > 0){
+            if (valorTotalQuarto1 > 0) {
                 int qtdDemoQuarto1 = 0;
 
                 if (varRemoverRevestimentoParede9 > 0) {
@@ -6984,11 +6916,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 document.add(tableCozinha);
 
 
-                if (varRemoverRevestimentoParede9 > 0 || varRemoverRevestimentoParede9_1 > 0)
-                {
+                if (varRemoverRevestimentoParede9 > 0 || varRemoverRevestimentoParede9_1 > 0) {
                     Toast.makeText(this, "Faixa 9", Toast.LENGTH_SHORT).show();
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede9.getText().toString()) + Double.parseDouble(valorRevestimentoParede9_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede9_1 + varRemoverRevestimentoParede9)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede9_1 + varRemoverRevestimentoParede9)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7011,8 +6942,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 //                    tableCozinhaServicos.addCell(cellCozinha2);
 //                    document.add(tableCozinhaServicos);
                 }
-                if (varRemoverPiso9 > 0 || varRemoverPiso9_1 > 0)
-                {
+                if (varRemoverPiso9 > 0 || varRemoverPiso9_1 > 0) {
 
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso9_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso9_1.getText().toString())) + " m²", boldServicosPrestados);
@@ -7033,8 +6963,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 }
-                if (varRemoverPia9 > 0 || varRemoverPia9_1 > 0)
-                {
+                if (varRemoverPia9 > 0 || varRemoverPia9_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia9.getText().toString()) + Double.parseDouble(valorRemocaoPia9_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia9 + varRemoverPia9_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7051,11 +6980,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria9 > 0 || varRemoverAlvenaria9_1 > 0)
-                {
+                if (varRemoverAlvenaria9 > 0 || varRemoverAlvenaria9_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria9.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria9_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria9 + varRemoverAlvenaria9)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria9 + varRemoverAlvenaria9)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7070,10 +6998,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverTanque9 > 0 || varRemoverTanque9_1 > 0)
-                {
+                if (varRemoverTanque9 > 0 || varRemoverTanque9_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque9.getText().toString()) + Double.parseDouble(valorRemocaoTanque9_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque9 + varRemoverTanque9_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque9 + varRemoverTanque9_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7088,10 +7015,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_9 > 0 || varRemoverCaixinha4x2_9_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_9 > 0 || varRemoverCaixinha4x2_9_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_9.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_9_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_9 + varRemoverCaixinha4x2_9_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_9 + varRemoverCaixinha4x2_9_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7106,10 +7032,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_9 > 0 || varRemoverCaixinha4x4_9_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_9 > 0 || varRemoverCaixinha4x4_9_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_9.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_9_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_9 + varRemoverCaixinha4x4_9_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_9 + varRemoverCaixinha4x4_9_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7124,10 +7049,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverHidraulica9 > 0 || varRemoverHidraulica9_1 > 0)
-                {
+                if (varRemoverHidraulica9 > 0 || varRemoverHidraulica9_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica9.getText().toString()) + Double.parseDouble(valorRasgarHidraulica9_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica9 + varRemoverHidraulica9_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica9 + varRemoverHidraulica9_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7142,8 +7066,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso9 > 0 || varRemoverGesso9_1 > 0)
-                {
+                if (varRemoverGesso9 > 0 || varRemoverGesso9_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso9_1.getText().toString()) + Double.parseDouble(valorRemoverGesso9.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso9 + varRemoverGesso9_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7163,8 +7086,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverVasoSanitario9 > 0 || varRemoverVasoSanitario9_1 > 0)
                     document.add(new Paragraph(">>> Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso9.getText().toString()) + Double.parseDouble(valorRemoverVaso9_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario9 + varRemoverVasoSanitario9_1) + "0", boldServicosPrestados));
-                if (varRemoverVao9 > 0 || varRemoverVao9_1 > 0)
-                {
+                if (varRemoverVao9 > 0 || varRemoverVao9_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao9.getText().toString()) + Double.parseDouble(valorRemoverVao9_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao9 + varRemoverVao9_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7183,7 +7105,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalQuarto2 > 0){
+            if (valorTotalQuarto2 > 0) {
                 int qtdDemoQuarto2 = 0;
 
                 if (varRemoverRevestimentoParede10 > 0) {
@@ -7265,11 +7187,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 document.add(tableCozinha);
 
 
-                if (varRemoverRevestimentoParede10 > 0 || varRemoverRevestimentoParede10_1 > 0)
-                {
+                if (varRemoverRevestimentoParede10 > 0 || varRemoverRevestimentoParede10_1 > 0) {
                     Toast.makeText(this, "Posicao 10", Toast.LENGTH_SHORT).show();
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede10.getText().toString()) + Double.parseDouble(valorRevestimentoParede10_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede10_1 + varRemoverRevestimentoParede10)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede10_1 + varRemoverRevestimentoParede10)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7292,8 +7213,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 //                    tableCozinhaServicos.addCell(cellCozinha2);
 //                    document.add(tableCozinhaServicos);
                 }
-                if (varRemoverPiso10 > 0 || varRemoverPiso10_1 > 0)
-                {
+                if (varRemoverPiso10 > 0 || varRemoverPiso10_1 > 0) {
 
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso10_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso10_1.getText().toString())) + " m²", boldServicosPrestados);
@@ -7314,8 +7234,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 }
-                if (varRemoverPia10 > 0 || varRemoverPia10_1 > 0)
-                {
+                if (varRemoverPia10 > 0 || varRemoverPia10_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia10.getText().toString()) + Double.parseDouble(valorRemocaoPia10_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia10 + varRemoverPia10_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7332,11 +7251,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria10 > 0 || varRemoverAlvenaria10_1 > 0)
-                {
+                if (varRemoverAlvenaria10 > 0 || varRemoverAlvenaria10_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria10.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria10_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria10 + varRemoverAlvenaria10)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria10 + varRemoverAlvenaria10)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7351,10 +7269,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverTanque10 > 0 || varRemoverTanque10_1 > 0)
-                {
+                if (varRemoverTanque10 > 0 || varRemoverTanque10_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque10.getText().toString()) + Double.parseDouble(valorRemocaoTanque10_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque10 + varRemoverTanque10_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque10 + varRemoverTanque10_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7369,10 +7286,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_10 > 0 || varRemoverCaixinha4x2_10_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_10 > 0 || varRemoverCaixinha4x2_10_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_10.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_10_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_10 + varRemoverCaixinha4x2_10_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_10 + varRemoverCaixinha4x2_10_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7387,10 +7303,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_10 > 0 || varRemoverCaixinha4x4_10_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_10 > 0 || varRemoverCaixinha4x4_10_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_10.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_10_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_10 + varRemoverCaixinha4x4_10_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_10 + varRemoverCaixinha4x4_10_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7405,10 +7320,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverHidraulica10 > 0 || varRemoverHidraulica10_1 > 0)
-                {
+                if (varRemoverHidraulica10 > 0 || varRemoverHidraulica10_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica10.getText().toString()) + Double.parseDouble(valorRasgarHidraulica10_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica10 + varRemoverHidraulica10_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica10 + varRemoverHidraulica10_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7423,8 +7337,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso10 > 0 || varRemoverGesso10_1 > 0)
-                {
+                if (varRemoverGesso10 > 0 || varRemoverGesso10_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso10_1.getText().toString()) + Double.parseDouble(valorRemoverGesso10.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso10 + varRemoverGesso10_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7444,8 +7357,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverVasoSanitario10 > 0 || varRemoverVasoSanitario10_1 > 0)
                     document.add(new Paragraph(">>> Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso10.getText().toString()) + Double.parseDouble(valorRemoverVaso10_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario10 + varRemoverVasoSanitario10_1) + "0", boldServicosPrestados));
-                if (varRemoverVao10 > 0 || varRemoverVao10_1 > 0)
-                {
+                if (varRemoverVao10 > 0 || varRemoverVao10_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao10.getText().toString()) + Double.parseDouble(valorRemoverVao10_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao10 + varRemoverVao10_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7464,7 +7376,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 document.add(espacoBranco1);
             }
-            if (valorTotalQuarto3 > 0){
+            if (valorTotalQuarto3 > 0) {
 
                 int qtdDemoQuartoSuite = 0;
 
@@ -7546,10 +7458,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                 document.add(tableCozinha);
 
-                if (varRemoverRevestimentoParede11 > 0 || varRemoverRevestimentoParede11_1 > 0)
-                {
+                if (varRemoverRevestimentoParede11 > 0 || varRemoverRevestimentoParede11_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede11.getText().toString()) + Double.parseDouble(valorRevestimentoParede11_1.getText().toString())) + " m² ", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede11_1 + varRemoverRevestimentoParede11)) , boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede11_1 + varRemoverRevestimentoParede11)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7572,8 +7483,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 //                    tableCozinhaServicos.addCell(cellCozinha2);
 //                    document.add(tableCozinhaServicos);
                 }
-                if (varRemoverPiso11 > 0 || varRemoverPiso11_1 > 0)
-                {
+                if (varRemoverPiso11 > 0 || varRemoverPiso11_1 > 0) {
 
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso11_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso11_1.getText().toString())) + " m²", boldServicosPrestados);
@@ -7594,8 +7504,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 }
-                if (varRemoverPia11 > 0 || varRemoverPia11_1 > 0)
-                {
+                if (varRemoverPia11 > 0 || varRemoverPia11_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia11.getText().toString()) + Double.parseDouble(valorRemocaoPia11_1.getText().toString())) + " un", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPia11 + varRemoverPia11_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7612,11 +7521,10 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverAlvenaria11 > 0 || varRemoverAlvenaria11_1 > 0)
-                {
+                if (varRemoverAlvenaria11 > 0 || varRemoverAlvenaria11_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria11.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria11_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria11 + varRemoverAlvenaria11)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverAlvenaria11 + varRemoverAlvenaria11)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7631,10 +7539,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverTanque11 > 0 || varRemoverTanque11_1 > 0)
-                {
+                if (varRemoverTanque11 > 0 || varRemoverTanque11_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Tanque: " + (Double.parseDouble(valorRemocaoTanque11.getText().toString()) + Double.parseDouble(valorRemocaoTanque11_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque11 + varRemoverTanque11_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverTanque11 + varRemoverTanque11_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7649,10 +7556,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x2_11 > 0 || varRemoverCaixinha4x2_11_1 > 0)
-                {
+                if (varRemoverCaixinha4x2_11 > 0 || varRemoverCaixinha4x2_11_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x2: " + (Double.parseDouble(valorRasgarCaixinha4x2_11.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x2_11_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_11 + varRemoverCaixinha4x2_11_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x2_11 + varRemoverCaixinha4x2_11_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7667,10 +7573,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverCaixinha4x4_11 > 0 || varRemoverCaixinha4x4_11_1 > 0)
-                {
+                if (varRemoverCaixinha4x4_11 > 0 || varRemoverCaixinha4x4_11_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Caixinha 4x4: " + (Double.parseDouble(valorRasgarCaixinha4x4_11.getText().toString()) + Double.parseDouble(valorRasgarCaixinha4x4_11_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_11 + varRemoverCaixinha4x4_11_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverCaixinha4x4_11 + varRemoverCaixinha4x4_11_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7685,10 +7590,9 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverHidraulica11 > 0 || varRemoverHidraulica11_1 > 0)
-                {
+                if (varRemoverHidraulica11 > 0 || varRemoverHidraulica11_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Rasgar Hidráulica: " + (Double.parseDouble(valorRasgarHidraulica11.getText().toString()) + Double.parseDouble(valorRasgarHidraulica11_1.getText().toString())) + " un", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica11 + varRemoverHidraulica11_1) ), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverHidraulica11 + varRemoverHidraulica11_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -7703,8 +7607,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
-                if (varRemoverGesso11 > 0 || varRemoverGesso11_1 > 0)
-                {
+                if (varRemoverGesso11 > 0 || varRemoverGesso11_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Gesso: " + (Double.parseDouble(valorRemoverGesso11_1.getText().toString()) + Double.parseDouble(valorRemoverGesso11.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverGesso11 + varRemoverGesso11_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7724,8 +7627,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 }
                 if (varRemoverVasoSanitario11 > 0 || varRemoverVasoSanitario11_1 > 0)
                     document.add(new Paragraph(">>> Remover Vaso Sanitário : " + (Double.parseDouble(valorRemoverVaso11.getText().toString()) + Double.parseDouble(valorRemoverVaso11_1.getText().toString())) + " un ----- " + "    R$" + (varRemoverVasoSanitario11 + varRemoverVasoSanitario11_1) + "0", boldServicosPrestados));
-                if (varRemoverVao11 > 0 || varRemoverVao11_1 > 0)
-                {
+                if (varRemoverVao11 > 0 || varRemoverVao11_1 > 0) {
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Vão para Nicho: " + (Double.parseDouble(valorRemoverVao11.getText().toString()) + Double.parseDouble(valorRemoverVao11_1.getText().toString())) + " m²", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverVao11 + varRemoverVao11_1)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7746,279 +7648,1679 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             }
         }
 
+
         //Impressao dos valores de Revestimento
-        if (valorTotalCategoriaRevestimento > 0){
+        if (valorTotalCategoriaRevestimento > 0) {
             PdfPTable tableRevestimento = new PdfPTable(1);
             tableRevestimento.setWidthPercentage(100);
             PdfPCell revestimento = new PdfPCell();
             revestimento.setBorder(Rectangle.NO_BORDER);
-            revestimento.addElement(paragrafoHidraulica);
+            revestimento.addElement(paragrafoRevestimento);
+            tableRevestimento.addCell(revestimento);
 
             document.add(paragrafoRevestimento);
             document.add(espacoBranco);
 
+            document.add(espacoBranco);
 
-            if (valorTotalRevestimentoCozinha > 0){
-                document.add(espacoBranco);
+
+            if (valorTotalRevestimentoCozinha > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
                 tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+                PdfPCell cellCozinha2 = new PdfPCell();
+                PdfPCell cellCozinha1 = new PdfPCell();
 
-                tableCozinha.addCell(paragrafoRevestimentoCozinha);
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                cellCozinha2.addElement(paragrafoRevestimentoCozinha);
+                cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+                tableCozinha.addCell(cellCozinha2);
+
                 document.add(tableCozinha);
-                if (varAdicionarAlvenaria > 0 || varAdicionarAlvenaria1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase1.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase1_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria + varAdicionarAlvenaria) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso > 0 || varAdicionarContraPiso1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso1.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso1_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso + varAdicionarContraPiso1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante > 0 || varAplicacaoImpermeabilizante1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade1.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade1_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante + varAplicacaoImpermeabilizante1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor > 0 || varAplicarPorcelanatoMenor1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor1.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor1_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMenor + varAplicarPorcelanatoMenor1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior > 0 || varAplicarPorcelanatoMaior1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima1.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima1_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior1 + varAplicarPorcelanatoMaior) + "0", boldServicosPrestados));
+                if (varAdicionarAlvenaria > 0 || varAdicionarAlvenaria1 > 0) {
 
-                if (varPastilhaVidro > 0 || varPastilhaVidro_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro1.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro1_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro + varPastilhaVidro_1) + "0", boldServicosPrestados));
-                if (varRevestimento3D > 0 || varRevestimento3D_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D1.getText().toString()) + Double.parseDouble(valorRevestimento3D1_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D + varRevestimento3D_1) + "0", boldServicosPrestados));
+                    Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase1.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase1_1.getText().toString())) + " m² ", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria + varAdicionarAlvenaria1), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                    tabela.addCell(celula);
+
+                    document.add(tabela);
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha2.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha2.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha2);
+//                    document.add(tableCozinhaServicos);
+                }
+                if (varAdicionarContraPiso > 0 || varAdicionarContraPiso1 > 0) {
+
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso1.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso + varAdicionarContraPiso1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAplicacaoImpermeabilizante > 0 || varAplicacaoImpermeabilizante1 > 0) {
+
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade1.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante + varAplicacaoImpermeabilizante1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
+                if (varAplicarPorcelanatoMenor > 0 || varAplicarPorcelanatoMenor1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor1.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor + varAplicarPorcelanatoMenor1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAplicarPorcelanatoMaior > 0 || varAplicarPorcelanatoMaior1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima1.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior + varAplicarPorcelanatoMaior1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+
+                if (varPastilhaVidro > 0 || varPastilhaVidro_1 > 0) {
+
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro1.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro + varPastilhaVidro_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varRevestimento3D > 0 || varRevestimento3D_1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D1.getText().toString()) + Double.parseDouble(valorRevestimento3D1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D + varRevestimento3D_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
-            if (valorTotalRevestimentoBanheiroSocial > 0){
+            if (valorTotalRevestimentoBanheiroSocial > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
                 tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+                PdfPCell cellCozinha2 = new PdfPCell();
+                PdfPCell cellCozinha1 = new PdfPCell();
 
-                tableCozinha.addCell(paragrafoRevestimentoBanheiro);
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                cellCozinha2.addElement(paragrafoRevestimentoBanheiro);
+                cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+                tableCozinha.addCell(cellCozinha2);
+
                 document.add(tableCozinha);
-                if (varAdicionarAlvenaria2 > 0 || varAdicionarAlvenaria2_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase2.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase2_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria2 + varAdicionarAlvenaria2_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso2 > 0 || varAdicionarContraPiso2_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso2.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso2_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso2 + varAdicionarContraPiso2_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante2 > 0 || varAplicacaoImpermeabilizante2_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade2.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade2_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante2 + varAplicacaoImpermeabilizante2_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor2 > 0 || varAplicarPorcelanatoMenor2_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor2.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor2_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior2_1 + varAplicarPorcelanatoMaior2) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior2 > 0 || varAplicarPorcelanatoMaior2_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima2.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima2_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior2 + varAplicarPorcelanatoMaior2_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_2 > 0 || varPastilhaVidro_2_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro2.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro2_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_2_1 + varPastilhaVidro_2) + "0", boldServicosPrestados));
-                if (varRevestimento3D_2 > 0 || varRevestimento3D_2_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D2.getText().toString()) + Double.parseDouble(valorRevestimento3D2_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_2 + varRevestimento3D_2_1) + "0", boldServicosPrestados));
+                if (varAdicionarAlvenaria2 > 0 || varAdicionarAlvenaria2_1 > 0) {
+                    Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase2.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase2_1.getText().toString())) + " m² ", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria2 + varAdicionarAlvenaria2_1), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                    tabela.addCell(celula);
+
+                    document.add(tabela);
+                }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha2.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha2.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha2);
+//                    document.add(tableCozinhaServicos);                }
+                if (varAdicionarContraPiso2 > 0 || varAdicionarContraPiso2_1 > 0) {
+
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso2.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso2 + varAdicionarContraPiso2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAplicacaoImpermeabilizante2 > 0 || varAplicacaoImpermeabilizante2_1 > 0) {
+
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade2.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante2 + varAplicacaoImpermeabilizante2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
+                if (varAplicarPorcelanatoMenor2 > 0 || varAplicarPorcelanatoMenor2_1 > 0) {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor2.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor2 + varAplicarPorcelanatoMenor2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAplicarPorcelanatoMaior2 > 0 || varAplicarPorcelanatoMaior2_1 > 0) {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima2.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior2 + varAplicarPorcelanatoMaior2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varPastilhaVidro_2 > 0 || varPastilhaVidro_2_1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro2.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_2 + varPastilhaVidro_2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varRevestimento3D_2 > 0 || varRevestimento3D_2_1 > 0) {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D2.getText().toString()) + Double.parseDouble(valorRevestimento3D2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_2 + varRevestimento3D_2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
 
-            if (valorTotalRevestimentoAreaServico > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
 
-                tableCozinha.addCell(paragrafoRevestimentoAreaServico);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria3 > 0 || varAdicionarAlvenaria3_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase3.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase3_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria3 + varAdicionarAlvenaria3_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso3 > 0 || varAdicionarContraPiso3_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso3.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso3_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso3 + varAdicionarContraPiso3_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante3 > 0 || varAplicacaoImpermeabilizante3_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade3.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade3_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante3 + varAplicacaoImpermeabilizante3_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor3 > 0 || varAplicarPorcelanatoMenor3_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor3.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor3_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior3_1 + varAplicarPorcelanatoMaior3) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior3 > 0 || varAplicarPorcelanatoMaior3_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima3.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima3_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior3 + varAplicarPorcelanatoMaior3_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_3 > 0 || varPastilhaVidro_3_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro3.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro3_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_3_1 + varPastilhaVidro_3) + "0", boldServicosPrestados));
-                if (varRevestimento3D_3 > 0 || varRevestimento3D_3_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D3.getText().toString()) + Double.parseDouble(valorRevestimento3D3_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_3 + varRevestimento3D_3_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1);
+            if (varAdicionarAlvenaria3 > 0 || varAdicionarAlvenaria3_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase3.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase3_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria3 + varAdicionarAlvenaria3_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha3.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
             }
-            if (valorTotalRevestimentoBanheiroSuite > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha3.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha3.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha3);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso3 > 0 || varAdicionarContraPiso3_1 > 0) {
 
-                tableCozinha.addCell(paragrafoRevestimentoBanheiro2);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria4 > 0 || varAdicionarAlvenaria4_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase4.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase4_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria4 + varAdicionarAlvenaria4_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso4 > 0 || varAdicionarContraPiso4_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso4.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso4_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso4 + varAdicionarContraPiso4_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante4 > 0 || varAplicacaoImpermeabilizante4_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade4.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade4_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante4 + varAplicacaoImpermeabilizante4_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor4 > 0 || varAplicarPorcelanatoMenor4_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor4.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor4_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior4_1 + varAplicarPorcelanatoMaior4) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior4 > 0 || varAplicarPorcelanatoMaior4_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima4.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima4_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior4 + varAplicarPorcelanatoMaior4_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_4 > 0 || varPastilhaVidro_4_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro4.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro4_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_4_1 + varPastilhaVidro_4) + "0", boldServicosPrestados));
-                if (varRevestimento3D_4 > 0 || varRevestimento3D_4_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D4.getText().toString()) + Double.parseDouble(valorRevestimento3D4_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_4 + varRevestimento3D_4_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1);
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso3.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso3_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso3 + varAdicionarContraPiso3_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
-            if (valorTotalRevestimentoLavabo > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+            if (varAplicacaoImpermeabilizante3 > 0 || varAplicacaoImpermeabilizante3_1 > 0) {
 
-                tableCozinha.addCell(paragrafoRevestimentoLavabo);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria5 > 0 || varAdicionarAlvenaria5_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase5.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase5_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria5 + varAdicionarAlvenaria5_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso5 > 0 || varAdicionarContraPiso5_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso5.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso5_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso5 + varAdicionarContraPiso5_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante5 > 0 || varAplicacaoImpermeabilizante5_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade5.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade5_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante5 + varAplicacaoImpermeabilizante5_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor5 > 0 || varAplicarPorcelanatoMenor5_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor5.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor5_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior5_1 + varAplicarPorcelanatoMaior5) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior5 > 0 || varAplicarPorcelanatoMaior5_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima5.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima5_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior5 + varAplicarPorcelanatoMaior5_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_5 > 0 || varPastilhaVidro_5_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro5.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro5_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_5_1 + varPastilhaVidro_5) + "0", boldServicosPrestados));
-                if (varRevestimento3D_5 > 0 || varRevestimento3D_5_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D5.getText().toString()) + Double.parseDouble(valorRevestimento3D5_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_5 + varRevestimento3D_5_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1);
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade3.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade3_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante3 + varAplicacaoImpermeabilizante3_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
             }
-            if (valorTotalRevestimentoSacada > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+            if (varAplicarPorcelanatoMenor3 > 0 || varAplicarPorcelanatoMenor3_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor3.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor3_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor3 + varAplicarPorcelanatoMenor3_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
 
-                tableCozinha.addCell(paragrafoRevestimentoSacadaVaranda);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria6 > 0 || varAdicionarAlvenaria6_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase6.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase6_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria6 + varAdicionarAlvenaria6_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso6 > 0 || varAdicionarContraPiso6_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso6.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso6_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso6 + varAdicionarContraPiso6_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante6 > 0 || varAplicacaoImpermeabilizante6_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade6.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade6_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante6 + varAplicacaoImpermeabilizante6_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor6 > 0 || varAplicarPorcelanatoMenor6_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor6.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor6_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior6_1 + varAplicarPorcelanatoMaior6) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior6 > 0 || varAplicarPorcelanatoMaior6_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima6.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima6_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior6 + varAplicarPorcelanatoMaior6_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_6 > 0 || varPastilhaVidro_6_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro6.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro6_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_6_1 + varPastilhaVidro_6) + "0", boldServicosPrestados));
-                if (varRevestimento3D_6 > 0 || varRevestimento3D_6_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D6.getText().toString()) + Double.parseDouble(valorRevestimento3D6_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_6 + varRevestimento3D_6_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1);
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
-            if (valorTotalRevestimentoSalaJantar > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+            if (varAplicarPorcelanatoMaior3 > 0 || varAplicarPorcelanatoMaior3_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima3.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima3_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior3 + varAplicarPorcelanatoMaior3_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
 
-                tableCozinha.addCell(paragrafoRevestimentoSalaJantar);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria7 > 0 || varAdicionarAlvenaria7_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase7.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase7_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria7 + varAdicionarAlvenaria7_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso7 > 0 || varAdicionarContraPiso7_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso7.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso7_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso7 + varAdicionarContraPiso7_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante7 > 0 || varAplicacaoImpermeabilizante7_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade7.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade7_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante7 + varAplicacaoImpermeabilizante7_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor7 > 0 || varAplicarPorcelanatoMenor7_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 70cm x 70cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor7.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor7_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior7_1 + varAplicarPorcelanatoMaior7) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior7 > 0 || varAplicarPorcelanatoMaior7_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 70cm x 70cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima7.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima7_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior7 + varAplicarPorcelanatoMaior7_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_7 > 0 || varPastilhaVidro_7_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro7.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro7_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_7_1 + varPastilhaVidro_7) + "0", boldServicosPrestados));
-                if (varRevestimento3D_7 > 0 || varRevestimento3D_7_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D7.getText().toString()) + Double.parseDouble(valorRevestimento3D7_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_7 + varRevestimento3D_7_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1) ;
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
-            if (valorTotalRevestimentoSalaEstar > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+            if (varPastilhaVidro_3 > 0 || varPastilhaVidro_3_1 > 0) {
 
-                tableCozinha.addCell(paragrafoRevestimentoSalaEstar);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria8 > 0 || varAdicionarAlvenaria8_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase8.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase8_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria8 + varAdicionarAlvenaria8_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso8 > 0 || varAdicionarContraPiso8_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso8.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso8_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso8 + varAdicionarContraPiso8_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante8 > 0 || varAplicacaoImpermeabilizante8_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade8.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade8_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante8 + varAplicacaoImpermeabilizante8_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor8 > 0 || varAplicarPorcelanatoMenor8_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor8.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor8_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior8_1 + varAplicarPorcelanatoMaior8) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior8 > 0 || varAplicarPorcelanatoMaior8_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima8.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima8_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior8 + varAplicarPorcelanatoMaior8_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_8 > 0 || varPastilhaVidro_8_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro8.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro8_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_8_1 + varPastilhaVidro_8) + "0", boldServicosPrestados));
-                if (varRevestimento3D_8 > 0 || varRevestimento3D_8_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D8.getText().toString()) + Double.parseDouble(valorRevestimento3D8_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_8 + varRevestimento3D_8_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1);
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro3.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro3_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_3 + varPastilhaVidro_3_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
+            if (varRevestimento3D_3 > 0 || varRevestimento3D_3_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D3.getText().toString()) + Double.parseDouble(valorRevestimento3D3_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_3 + varRevestimento3D_3_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
 
-            if (valorTotalRevestimentoQuarto1 > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
 
-                tableCozinha.addCell(paragrafoRevestimentoQuarto1);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria9 > 0 || varAdicionarAlvenaria9_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase9.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase9_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria9 + varAdicionarAlvenaria9_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso9 > 0 || varAdicionarContraPiso9_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso9.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso9_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso9 + varAdicionarContraPiso9_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante9 > 0 || varAplicacaoImpermeabilizante9_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade9.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade9_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante9 + varAplicacaoImpermeabilizante9_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor9 > 0 || varAplicarPorcelanatoMenor9_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor9.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor9_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior9_1 + varAplicarPorcelanatoMaior9) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior9 > 0 || varAplicarPorcelanatoMaior9_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima9.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima9_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior9 + varAplicarPorcelanatoMaior9_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_9 > 0 || varPastilhaVidro_9_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro9.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro9_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_9_1 + varPastilhaVidro_9) + "0", boldServicosPrestados));
-                if (varRevestimento3D_9 > 0 || varRevestimento3D_9_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D9.getText().toString()) + Double.parseDouble(valorRevestimento3D9_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_9 + varRevestimento3D_9_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
-            if (valorTotalRevestimentoQuarto2 > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+            document.add(espacoBranco1);
+        }
+        if (valorTotalRevestimentoBanheiroSuite > 0) {
+            PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinha.setWidthPercentage(100);
+            PdfPCell cellCozinha2 = new PdfPCell();
+            PdfPCell cellCozinha1 = new PdfPCell();
 
-                tableCozinha.addCell(paragrafoRevestimentoQuarto2);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria10 > 0 || varAdicionarAlvenaria10_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase10.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase10_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria10 + varAdicionarAlvenaria10_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso10 > 0 || varAdicionarContraPiso10_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso10.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso10_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso10 + varAdicionarContraPiso10_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante10 > 0 || varAplicacaoImpermeabilizante10_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade10.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade10_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante10 + varAplicacaoImpermeabilizante10_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor10 > 0 || varAplicarPorcelanatoMenor10_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor10.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor10_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior10_1 + varAplicarPorcelanatoMaior10) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior10 > 0 || varAplicarPorcelanatoMaior10_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima10.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima10_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior10 + varAplicarPorcelanatoMaior10_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_10 > 0 || varPastilhaVidro_10_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro10.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro10_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_10_1 + varPastilhaVidro_10) + "0", boldServicosPrestados));
-                if (varRevestimento3D_10 > 0 || varRevestimento3D_10_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D10.getText().toString()) + Double.parseDouble(valorRevestimento3D10_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_10 + varRevestimento3D_10_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1);
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha2.addElement(paragrafoRevestimentoBanheiro2);
+            cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+            tableCozinha.addCell(cellCozinha2);
+
+            document.add(tableCozinha);
+
+            if (varAdicionarAlvenaria4 > 0 || varAdicionarAlvenaria4_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase4.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase4_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria4 + varAdicionarAlvenaria4_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha4.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
             }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha4.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha4.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha4);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso4 > 0 || varAdicionarContraPiso4_1 > 0) {
 
-            if (valorTotalRevestimentoQuartoSuite > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
 
-                tableCozinha.addCell(paragrafoRevestimentoQuarto3);
-                document.add(tableCozinha);
-                if (varAdicionarAlvenaria11 > 0 || varAdicionarAlvenaria11_1 > 0)
-                    document.add(new Paragraph(">>> Criar Alvenaria /Base " + (Double.parseDouble(valorRevestimentoAlvenariaBase11.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase11_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarAlvenaria11 + varAdicionarAlvenaria11_1) + "0", boldServicosPrestados));
-                if (varAdicionarContraPiso11 > 0 || varAdicionarContraPiso11_1 > 0)
-                    document.add(new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso11.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso11_1.getText().toString())) + " m² -----" + "R$" + (varAdicionarContraPiso11 + varAdicionarContraPiso11_1) + "0", boldServicosPrestados));
-                if (varAplicacaoImpermeabilizante11 > 0 || varAplicacaoImpermeabilizante11_1 > 0)
-                    document.add(new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade11.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade11_1.getText().toString())) + " m² ----- " + "R$" + (varAplicacaoImpermeabilizante11 + varAplicacaoImpermeabilizante11_1) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMenor11 > 0 || varAplicarPorcelanatoMenor11_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor11.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor11_1.getText().toString())) + " m² ----- " + "    R$" + (varAplicarPorcelanatoMaior11_1 + varAplicarPorcelanatoMaior11) + "0", boldServicosPrestados));
-                if (varAplicarPorcelanatoMaior11 > 0 || varAplicarPorcelanatoMaior11_1 > 0)
-                    document.add(new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima11.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima11_1.getText().toString())) + " m² -----" + "  R$" + (varAplicarPorcelanatoMaior11 + varAplicarPorcelanatoMaior11_1) + "0", boldServicosPrestados));
-                if (varPastilhaVidro_11 > 0 || varPastilhaVidro_11_1 > 0)
-                    document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro11.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro11_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_11_1 + varPastilhaVidro_11) + "0", boldServicosPrestados));
-                if (varRevestimento3D_11 > 0 || varRevestimento3D_11_1 > 0)
-                    document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D11.getText().toString()) + Double.parseDouble(valorRevestimento3D11_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_11 + varRevestimento3D_11_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1);
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso4.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso4_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso4 + varAdicionarContraPiso4_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
+            if (varAplicacaoImpermeabilizante4 > 0 || varAplicacaoImpermeabilizante4_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade4.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade4_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante4 + varAplicacaoImpermeabilizante4_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
+            }
+            if (varAplicarPorcelanatoMenor4 > 0 || varAplicarPorcelanatoMenor4_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor4.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor4_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor4 + varAplicarPorcelanatoMenor4_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicarPorcelanatoMaior4 > 0 || varAplicarPorcelanatoMaior4_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima4.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima4_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior4 + varAplicarPorcelanatoMaior4_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varPastilhaVidro_4 > 0 || varPastilhaVidro_4_1 > 0) {
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro4.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro4_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_4 + varPastilhaVidro_4_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varRevestimento3D_4 > 0 || varRevestimento3D_4_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D4.getText().toString()) + Double.parseDouble(valorRevestimento3D4_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_4 + varRevestimento3D_4_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            document.add(espacoBranco1);
+        }
+        if (valorTotalRevestimentoLavabo > 0) {
+            PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinha.setWidthPercentage(100);
+            PdfPCell cellCozinha2 = new PdfPCell();
+            PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha2.addElement(paragrafoRevestimentoLavabo);
+            cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+            tableCozinha.addCell(cellCozinha2);
+
+            document.add(tableCozinha);
+
+            if (varAdicionarAlvenaria5 > 0 || varAdicionarAlvenaria5_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase5.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase5_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria5 + varAdicionarAlvenaria5_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha5.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
+            }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha5.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha5.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha5);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso5 > 0 || varAdicionarContraPiso5_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso5.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso5_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso5 + varAdicionarContraPiso5_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicacaoImpermeabilizante5 > 0 || varAplicacaoImpermeabilizante5_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade5.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade5_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante5 + varAplicacaoImpermeabilizante5_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
+            }
+            if (varAplicarPorcelanatoMenor5 > 0 || varAplicarPorcelanatoMenor5_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor5.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor5_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor5 + varAplicarPorcelanatoMenor5_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicarPorcelanatoMaior5 > 0 || varAplicarPorcelanatoMaior5_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima5.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima5_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior5 + varAplicarPorcelanatoMaior5_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varPastilhaVidro_5 > 0 || varPastilhaVidro_5_1 > 0) {
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro5.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro5_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_5 + varPastilhaVidro_5_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varRevestimento3D_5 > 0 || varRevestimento3D_5_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D5.getText().toString()) + Double.parseDouble(valorRevestimento3D5_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_5 + varRevestimento3D_5_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            document.add(espacoBranco1);
+        }
+        if (valorTotalRevestimentoSacada > 0) {
+            PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinha.setWidthPercentage(100);
+            PdfPCell cellCozinha2 = new PdfPCell();
+            PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha2.addElement(paragrafoRevestimentoSacadaVaranda);
+            cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+            tableCozinha.addCell(cellCozinha2);
+
+            document.add(tableCozinha);
+
+            if (varAdicionarAlvenaria6 > 0 || varAdicionarAlvenaria6_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase6.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase6_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria6 + varAdicionarAlvenaria6_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha6.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
+            }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha6.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha6.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha6);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso6 > 0 || varAdicionarContraPiso6_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso6.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso6_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso6 + varAdicionarContraPiso6_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicacaoImpermeabilizante6 > 0 || varAplicacaoImpermeabilizante6_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade6.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade6_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante6 + varAplicacaoImpermeabilizante6_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
+            }
+            if (varAplicarPorcelanatoMenor6 > 0 || varAplicarPorcelanatoMenor6_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor6.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor6_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor6 + varAplicarPorcelanatoMenor6_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicarPorcelanatoMaior6 > 0 || varAplicarPorcelanatoMaior6_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima6.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima6_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior6 + varAplicarPorcelanatoMaior6_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varPastilhaVidro_6 > 0 || varPastilhaVidro_6_1 > 0) {
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro6.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro6_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_6 + varPastilhaVidro_6_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varRevestimento3D_6 > 0 || varRevestimento3D_6_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D6.getText().toString()) + Double.parseDouble(valorRevestimento3D6_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_6 + varRevestimento3D_6_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            document.add(espacoBranco1);
+        }
+        if (valorTotalRevestimentoSalaJantar > 0) {
+            PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinha.setWidthPercentage(100);
+            PdfPCell cellCozinha2 = new PdfPCell();
+            PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha2.addElement(paragrafoRevestimentoSalaJantar);
+            cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+            tableCozinha.addCell(cellCozinha2);
+
+            document.add(tableCozinha);
+
+            if (varAdicionarAlvenaria7 > 0 || varAdicionarAlvenaria7_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase7.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase7_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria7 + varAdicionarAlvenaria7_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha7.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
+            }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha7.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha7.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha7);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso7 > 0 || varAdicionarContraPiso7_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso7.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso7_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso7 + varAdicionarContraPiso7_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicacaoImpermeabilizante7 > 0 || varAplicacaoImpermeabilizante7_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade7.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade7_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante7 + varAplicacaoImpermeabilizante7_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
+            }
+            if (varAplicarPorcelanatoMenor7 > 0 || varAplicarPorcelanatoMenor7_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor7.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor7_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor7 + varAplicarPorcelanatoMenor7_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicarPorcelanatoMaior7 > 0 || varAplicarPorcelanatoMaior7_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima7.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima7_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior7 + varAplicarPorcelanatoMaior7_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varPastilhaVidro_7 > 0 || varPastilhaVidro_7_1 > 0) {
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro7.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro7_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_7 + varPastilhaVidro_7_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varRevestimento3D_7 > 0 || varRevestimento3D_7_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D7.getText().toString()) + Double.parseDouble(valorRevestimento3D7_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_7 + varRevestimento3D_7_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            document.add(espacoBranco1);
         }
 
-        if (valorTotalCategoriaPintura > 0){
+        if (valorTotalRevestimentoSalaEstar > 0) {
+            PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinha.setWidthPercentage(100);
+            PdfPCell cellCozinha2 = new PdfPCell();
+            PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha2.addElement(paragrafoRevestimentoSalaEstar);
+            cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+            tableCozinha.addCell(cellCozinha2);
+
+            document.add(tableCozinha);
+
+            if (varAdicionarAlvenaria8 > 0 || varAdicionarAlvenaria8_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase8.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase8_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria8 + varAdicionarAlvenaria8_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha8.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
+            }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha8.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha8.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha8);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso8 > 0 || varAdicionarContraPiso8_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso8.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso8_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso8 + varAdicionarContraPiso8_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicacaoImpermeabilizante8 > 0 || varAplicacaoImpermeabilizante8_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade8.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade8_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante8 + varAplicacaoImpermeabilizante8_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
+            }
+            if (varAplicarPorcelanatoMenor8 > 0 || varAplicarPorcelanatoMenor8_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor8.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor8_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor8 + varAplicarPorcelanatoMenor8_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicarPorcelanatoMaior8 > 0 || varAplicarPorcelanatoMaior8_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima8.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima8_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior8 + varAplicarPorcelanatoMaior8_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varPastilhaVidro_8 > 0 || varPastilhaVidro_8_1 > 0) {
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro8.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro8_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_8 + varPastilhaVidro_8_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varRevestimento3D_8 > 0 || varRevestimento3D_8_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D8.getText().toString()) + Double.parseDouble(valorRevestimento3D8_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_8 + varRevestimento3D_8_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            document.add(espacoBranco1);
+        }
+
+        if (valorTotalRevestimentoQuarto1 > 0) {
+            PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinha.setWidthPercentage(100);
+            PdfPCell cellCozinha2 = new PdfPCell();
+            PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha2.addElement(paragrafoRevestimentoQuarto1);
+            cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+            tableCozinha.addCell(cellCozinha2);
+
+            document.add(tableCozinha);
+
+            if (varAdicionarAlvenaria9 > 0 || varAdicionarAlvenaria9_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase9.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase9_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria9 + varAdicionarAlvenaria9_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha9.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
+            }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha9.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha9.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha9);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso9 > 0 || varAdicionarContraPiso9_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso9.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso9_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso9 + varAdicionarContraPiso9_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicacaoImpermeabilizante9 > 0 || varAplicacaoImpermeabilizante9_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade9.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade9_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante9 + varAplicacaoImpermeabilizante9_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
+            }
+            if (varAplicarPorcelanatoMenor9 > 0 || varAplicarPorcelanatoMenor9_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor9.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor9_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor9 + varAplicarPorcelanatoMenor9_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicarPorcelanatoMaior9 > 0 || varAplicarPorcelanatoMaior9_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima9.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima9_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior9 + varAplicarPorcelanatoMaior9_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varPastilhaVidro_9 > 0 || varPastilhaVidro_9_1 > 0) {
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro9.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro9_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_9 + varPastilhaVidro_9_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varRevestimento3D_9 > 0 || varRevestimento3D_9_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D9.getText().toString()) + Double.parseDouble(valorRevestimento3D9_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_9 + varRevestimento3D_9_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            document.add(espacoBranco1);
+        }
+        if (valorTotalRevestimentoQuarto2 > 0) {
+            PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinha.setWidthPercentage(100);
+            PdfPCell cellCozinha2 = new PdfPCell();
+            PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha2.addElement(paragrafoRevestimentoQuarto2);
+            cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+            tableCozinha.addCell(cellCozinha2);
+
+            document.add(tableCozinha);
+
+            if (varAdicionarAlvenaria10 > 0 || varAdicionarAlvenaria10_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase10.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase10_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria10 + varAdicionarAlvenaria10_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha10.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
+            }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha10.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha10.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha10);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso10 > 0 || varAdicionarContraPiso10_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso10.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso10_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso10 + varAdicionarContraPiso10_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicacaoImpermeabilizante10 > 0 || varAplicacaoImpermeabilizante10_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade10.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade10_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante10 + varAplicacaoImpermeabilizante10_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
+            }
+            if (varAplicarPorcelanatoMenor10 > 0 || varAplicarPorcelanatoMenor10_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor10.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor10_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor10 + varAplicarPorcelanatoMenor10_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicarPorcelanatoMaior10 > 0 || varAplicarPorcelanatoMaior10_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima10.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima10_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior10 + varAplicarPorcelanatoMaior10_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varPastilhaVidro_10 > 0 || varPastilhaVidro_10_1 > 0) {
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro10.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro10_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_10 + varPastilhaVidro_10_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varRevestimento3D_10 > 0 || varRevestimento3D_10_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D10.getText().toString()) + Double.parseDouble(valorRevestimento3D10_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_10 + varRevestimento3D_10_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            document.add(espacoBranco1);
+        }
+
+        if (valorTotalRevestimentoQuartoSuite > 0) {
+            PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinha.setWidthPercentage(100);
+            PdfPCell cellCozinha2 = new PdfPCell();
+            PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha2.addElement(paragrafoRevestimentoQuarto3);
+            cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+            tableCozinha.addCell(cellCozinha2);
+
+            document.add(tableCozinha);
+
+            if (varAdicionarAlvenaria11 > 0 || varAdicionarAlvenaria11_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Criar Alvenaria / Base  " + (Double.parseDouble(valorRevestimentoAlvenariaBase11.getText().toString()) + Double.parseDouble(valorRevestimentoAlvenariaBase11_1.getText().toString())) + " m² ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(varAdicionarAlvenaria11 + varAdicionarAlvenaria11_1), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+//                cellCozinha11.addHeader(paragrafoCozinha);
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+//                tableCozinha.addCell(cellCozinha1);
+                tabela.addCell(celula);
+
+                document.add(tabela);
+            }
+//                  valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+//                    cellCozinha11.addElement(valorRemoverRevestimentoParede);
+//                    cellCozinha11.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//                    tableCozinhaServicos.addCell(cellCozinha11);
+//                    document.add(tableCozinhaServicos);                }
+            if (varAdicionarContraPiso11 > 0 || varAdicionarContraPiso11_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Adicionar Contra Piso: " + (Double.parseDouble(valorRevestimentoContraPiso11.getText().toString()) + Double.parseDouble(valorRevestimentoContraPiso11_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarContraPiso11 + varAdicionarContraPiso11_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicacaoImpermeabilizante11 > 0 || varAplicacaoImpermeabilizante11_1 > 0) {
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Aplicação de Impermeabilizante: " + (Double.parseDouble(valorRevestimentoImpermeabilidade11.getText().toString()) + Double.parseDouble(valorRevestimentoImpermeabilidade11_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicacaoImpermeabilizante11 + varAplicacaoImpermeabilizante11_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
+            }
+            if (varAplicarPorcelanatoMenor11 > 0 || varAplicarPorcelanatoMenor11_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Menor que 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoMenor11.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoMenor11_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMenor11 + varAplicarPorcelanatoMenor11_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varAplicarPorcelanatoMaior11 > 0 || varAplicarPorcelanatoMaior11_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Porcelanato Maior/Igual a 60cm x 60cm: " + (Double.parseDouble(valorRevestimentoPorcelanatoAcima11.getText().toString()) + Double.parseDouble(valorRevestimentoPorcelanatoAcima11_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAplicarPorcelanatoMaior11 + varAplicarPorcelanatoMaior11_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varPastilhaVidro_11 > 0 || varPastilhaVidro_11_1 > 0) {
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pastilha de Vidro: " + (Double.parseDouble(valorRevestimentoPastilhaVidro11.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro11_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPastilhaVidro_11 + varPastilhaVidro_11_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            if (varRevestimento3D_11 > 0 || varRevestimento3D_11_1 > 0) {
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Revestimento 3D: " + (Double.parseDouble(valorRevestimento3D11.getText().toString()) + Double.parseDouble(valorRevestimento3D11_1.getText().toString())) + " m²", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRevestimento3D_11 + varRevestimento3D_11_1)), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+            }
+            document.add(espacoBranco1);
+        }
+
+
+        if (valorTotalCategoriaPintura > 0) {
 
             PdfPTable tablePintura = new PdfPTable(1);
             tablePintura.setWidthPercentage(100);
@@ -8029,53 +9331,210 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             document.add(paragrafoPintura);
 
 
-
-            if (valorTotalPinturaApartamento > 0){
+            if (valorTotalPinturaApartamento > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
 
                 tableCozinha.addCell(paragrafoPinturaApartamento);
                 document.add(tableCozinha);
-                if (varM2 > 0 || varM2_1 > 0)
-                    document.add(new Paragraph(">>> Metro Quadrado do Apartamento: " + (Double.parseDouble(valorPinturaApartamento1.getText().toString()) + Double.parseDouble(valorPinturaApartamento1_1.getText().toString())) + " m² -----" + "R$" + (varM2 + varM2_1) + "0", boldServicosPrestados));
-                document.add(espacoBranco1);
-            }
-            if (valorTotalPinturaCozinha > 0){
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+                if (varM2 > 0 || varM2_1 > 0) {
 
-                tableCozinha.addCell(paragrafoPinturaCozinha);
-                document.add(tableCozinha);
-                if (varPorta1 > 0 || varPorta > 0)
-                    document.add(new Paragraph(">>> Porta " + (Double.parseDouble(valorPinturaPorta1.getText().toString()) + Double.parseDouble(valorPinturaPorta1_1.getText().toString())) + " un -----" + "R$" + (varPorta1 + varPorta) + "0", boldServicosPrestados));
-                if (varJanela > 0 || varJanela1 > 0)
-                    document.add(new Paragraph(">>> Janela: " + (Double.parseDouble(valorPinturaJanela1.getText().toString()) + Double.parseDouble(valorPinturaJanela1_1.getText().toString())) + " un -----" + "R$" + (varJanela1 + varJanela) + "0", boldServicosPrestados));
-                if (varEfeitoDecorativo > 0 || varEfeitoDecorativo1 > 0)
-                    document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo1.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo1_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo1 + varEfeitoDecorativo) + "0", boldServicosPrestados));
-                if (varReparoGesso > 0 || varReparoGesso1 > 0)
-                    document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo1.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo1_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso1 + varReparoGesso) + "0", boldServicosPrestados));
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Metro Quadrado do Apartamento: " + (Double.parseDouble(valorPinturaApartamento1.getText().toString()) + Double.parseDouble(valorPinturaApartamento1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varM2 + varM2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaBanheiroSocial > 0){
+            if (valorTotalPinturaCozinha > 0) {
+
+                PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+                tableCozinha.setWidthPercentage(100);
+                PdfPCell cellCozinha2 = new PdfPCell();
+                PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                cellCozinha2.addElement(paragrafoPinturaCozinha);
+                cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+                tableCozinha.addCell(cellCozinha2);
+
+                document.add(tableCozinha);
+
+
+                if (varPorta1 > 0 || varPorta > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Porta: " + (Double.parseDouble(valorPinturaPorta1.getText().toString()) + Double.parseDouble(valorPinturaPorta1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPorta1 + varPorta)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varJanela > 0 || varJanela1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Janela: " + (Double.parseDouble(valorPinturaJanela1.getText().toString()) + Double.parseDouble(valorPinturaJanela1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varJanela1 + varJanela)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varEfeitoDecorativo > 0 || varEfeitoDecorativo1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo1.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varEfeitoDecorativo1 + varEfeitoDecorativo)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varReparoGesso > 0 || varReparoGesso1 > 0) {
+
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaReparoGesso1.getText().toString()) + Double.parseDouble(valorPinturaReparoGesso1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varReparoGesso + varReparoGesso1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
+                document.add(espacoBranco1);
+            }
+            if (valorTotalPinturaBanheiroSocial > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
 
                 tableCozinha.addCell(paragrafoPinturaBanheiro);
                 document.add(tableCozinha);
-                if (varPorta2 > 0 || varPorta2_1 > 0)
-                    document.add(new Paragraph(">>> Porta " + (Double.parseDouble(valorPinturaPorta2.getText().toString()) + Double.parseDouble(valorPinturaPorta2_1.getText().toString())) + " un -----" + "R$" + (varPorta2 + varPorta2_1) + "0", boldServicosPrestados));
-                if (varJanela2 > 0 || varJanela2_1 > 0)
-                    document.add(new Paragraph(">>> Janela: " + (Double.parseDouble(valorPinturaJanela2.getText().toString()) + Double.parseDouble(valorPinturaJanela2_1.getText().toString())) + " un -----" + "R$" + (varJanela2_1 + varJanela2) + "0", boldServicosPrestados));
-                if (varEfeitoDecorativo2 > 0 || varEfeitoDecorativo2_1 > 0)
-                    document.add(new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo2.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo2_1.getText().toString())) + " m² ----- " + "R$" + (varEfeitoDecorativo2_1 + varEfeitoDecorativo2) + "0", boldServicosPrestados));
-                if (varReparoGesso2 > 0 || varReparoGesso2_1 > 0)
-                    document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo2.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo2_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso2_1 + varReparoGesso2) + "0", boldServicosPrestados));
+                if (varPorta2 > 0 || varPorta2_1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Porta: " + (Double.parseDouble(valorPinturaPorta2.getText().toString()) + Double.parseDouble(valorPinturaPorta2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varPorta2 + varPorta2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varJanela2 > 0 || varJanela2_1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Janela: " + (Double.parseDouble(valorPinturaJanela2.getText().toString()) + Double.parseDouble(valorPinturaJanela2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varJanela2_1 + varJanela2)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varEfeitoDecorativo2 > 0 || varEfeitoDecorativo2_1 > 0) {
+
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Efeitos Decorativos: " + (Double.parseDouble(valorPinturaEfeitoDecorativo2.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varEfeitoDecorativo2_1 + varEfeitoDecorativo2)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varReparoGesso2 > 0 || varReparoGesso2_1 > 0) {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo2.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varReparoGesso2_1 + varReparoGesso2)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaAreaServico > 0){
+            if (valorTotalPinturaAreaServico > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8092,7 +9551,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo3.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo3_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso3_1 + varReparoGesso3) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaBanheiroSuite > 0){
+            if (valorTotalPinturaBanheiroSuite > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8109,7 +9568,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo4.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo4_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso4_1 + varReparoGesso4) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaLavabo > 0){
+            if (valorTotalPinturaLavabo > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8126,7 +9585,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo5.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo5_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso5_1 + varReparoGesso5) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaSacada > 0){
+            if (valorTotalPinturaSacada > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8143,7 +9602,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo6.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo6_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso6_1 + varReparoGesso6) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaSalaJantar > 0){
+            if (valorTotalPinturaSalaJantar > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8160,7 +9619,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaReparoGesso7.getText().toString()) + Double.parseDouble(valorPinturaReparoGesso7_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso7_1 + varReparoGesso7) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaSalaEstar > 0){
+            if (valorTotalPinturaSalaEstar > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8177,7 +9636,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo8.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo8_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso8_1 + varReparoGesso8) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaQuarto1 > 0){
+            if (valorTotalPinturaQuarto1 > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8194,7 +9653,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo9.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo9_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso9_1 + varReparoGesso9) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaQuarto2 > 0){
+            if (valorTotalPinturaQuarto2 > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8211,7 +9670,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Reparos de Gesso: " + (Double.parseDouble(valorPinturaEfeitoDecorativo10.getText().toString()) + Double.parseDouble(valorPinturaEfeitoDecorativo10_1.getText().toString())) + " un ----- " + "    R$" + (varReparoGesso10_1 + varReparoGesso10) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalPinturaQuartoSuite > 0){
+            if (valorTotalPinturaQuartoSuite > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(110);
                 PdfPCell cellCozinha;
@@ -8232,7 +9691,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             }
         }
 
-        if (valorTotalCategoriaHidraulica > 0){
+        if (valorTotalCategoriaHidraulica > 0) {
             PdfPTable tableHidraulica = new PdfPTable(1);
             tableHidraulica.setWidthPercentage(100);
             PdfPCell hidraulica = new PdfPCell();
@@ -8244,8 +9703,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             document.add(espacoBranco);
 
 
-
-            if (valorTotalHidraulicaCozinha > 0){
+            if (valorTotalHidraulicaCozinha > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8279,7 +9737,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario1.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario1_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario + varAdicionarVasoSanitario1) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaBanheiroSocial > 0){
+            if (valorTotalHidraulicaBanheiroSocial > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8312,7 +9770,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario2.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario2_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario2_1 + varAdicionarVasoSanitario2) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaAreaServico > 0){
+            if (valorTotalHidraulicaAreaServico > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8345,7 +9803,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario3.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario3_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario3_1 + varAdicionarVasoSanitario3) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaBanheiroSuite > 0){
+            if (valorTotalHidraulicaBanheiroSuite > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8378,7 +9836,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario4.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario4_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario4_1 + varAdicionarVasoSanitario4) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaLavabo > 0){
+            if (valorTotalHidraulicaLavabo > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8411,7 +9869,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario5.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario5_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario5_1 + varAdicionarVasoSanitario5) + "0", boldServicosPrestados));
                 document.add(espacoBranco1);
             }
-            if (valorTotalHidraulicaSacada > 0){
+            if (valorTotalHidraulicaSacada > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha;
@@ -8446,21 +9904,18 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
         if (BtncheckBoxArtArCondicionado.isChecked() || BtncheckboxArtBox.isChecked() || BtncheckboxArtDemolicao.isChecked() || BtncheckboxArtDeslocamento.isChecked() || BtncheckboxArtEletrica.isChecked() || BtncheckboxArtEnvidracamento.isChecked() || BtncheckboxArtHidraulica.isChecked() || BtncheckboxArtMoveisPlanejados.isChecked() || BtncheckboxArtGesso.isChecked() || BtncheckboxArtNovosRevestimentos.isChecked() || BtncheckboxArtPedrasMarmore.isChecked()) {
 
-            PdfPTable tableDemolicao = new PdfPTable(1);
-            tableDemolicao.setWidthPercentage(100);
-            PdfPCell demolicao = new PdfPCell();
-            demolicao.setBorder(Rectangle.NO_BORDER);
-            demolicao.addElement(paragrafoAreaServico);
+//            PdfPTable tableDemolicao = new PdfPTable(1);
+//            tableDemolicao.setWidthPercentage(100);
+//            PdfPCell demolicao = new PdfPCell();
+//            demolicao.setBorder(Rectangle.NO_BORDER);
+//            demolicao.addElement(paragrafoAreaServico);
+//
+//            document.add(paragrafoArt);
+//            document.add(espacoBranco1);
+
+
 
             document.add(paragrafoArt);
-            document.add(espacoBranco1);
-
-
-            PdfPTable tableCozinha = new PdfPTable(1);
-            tableCozinha.setWidthPercentage(100);
-            PdfPCell cellCozinha;
-
-
             if (BtncheckBoxArtArCondicionado.isChecked()) {
                 valorTotalCategoriaArt = valorTotalCategoriaArt + valorTotalArtArcondicionado;
             }
@@ -8503,59 +9958,258 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             }
 
 
+//            tableCozinha.addCell(paragrafoArtTotal);
+            valorTotalCategoriaArt = valorTotalCategoriaArt + valorTotalArtTaxa;
 
-            tableCozinha.addCell(paragrafoArtTotal);
-            document.add(tableCozinha);
+            Paragraph paragrafoArtTotal = new Paragraph(0, "ART", boldServicos);
+            Paragraph paragrafoArtTotalValor = new Paragraph("Total R$" + df.format(valorTotalCategoriaArt));
+            paragrafoArtTotalValor.setAlignment(Element.ALIGN_RIGHT);
+            paragrafoArtTotal.add(0, paragrafoArtTotalValor);
+            paragrafoArtTotal.setLeading(0.70f);
+
+
+
+
+
+            PdfPTable tableCozinhaa = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+            tableCozinhaa.setWidthPercentage(100);
+            PdfPCell cellCozinha22 = new PdfPCell();
+            PdfPCell cellCozinha12 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+            cellCozinha22.addElement(paragrafoRevestimentoCozinha);
+            cellCozinha12.setBorder(Rectangle.BOX);
+            cellCozinha12.addElement(paragrafoArtTotal);
+            tableCozinhaa.addCell(cellCozinha12);
+            document.add(tableCozinhaa);
 
 
             if (BtncheckBoxArtArCondicionado.isChecked()) {
-                document.add(new Paragraph(">>> Ar Condicionado " + "R$" + (valorTotalArtArcondicionado), boldServicosPrestados));
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Ar Condicionado: ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParedee = new Paragraph("R$" + df.format(valorTotalArtArcondicionado), boldServicosPrestados);
+                valorRemoverRevestimentoParedee.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParedee);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
+
             if (BtncheckboxArtEnvidracamento.isChecked()) {
-                document.add(new Paragraph(">>> Envidraçamento de sacada " + "R$" + (valorTotalArtEnvidracamento), boldServicosPrestados));
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Envidraçamento de sacada: ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtEnvidracamento), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
             if (BtncheckboxArtPedrasMarmore.isChecked()) {
-                document.add(new Paragraph(">>> Pedras de mármores/granito (Pia, lavatório e tanque) " + "R$" + (valorTotalArtPedrasMarmore), boldServicosPrestados));
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Pedras de mármores/granito (Pia, lavatório e tanque): ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtPedrasMarmore), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
             if (BtncheckboxArtNovosRevestimentos.isChecked()) {
-                document.add(new Paragraph(">>> Novos revestimentos (demolição e instalação de porcelanato/cerâmica)" + "R$" + (valorTotalArtNovosRevestimentos), boldServicosPrestados));
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Novos revestimentos (demolição e instalação de porcelanato/cerâmica): ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtNovosRevestimentos), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
             if (BtncheckboxArtEletrica.isChecked()) {
-                document.add(new Paragraph(">>> Elétrica (Instalações, ramificações e deslocamento)" + "R$" + (valorTotalArtEletrica), boldServicosPrestados));
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Elétrica (Instalações, ramificações e deslocamento): ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtEletrica), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
             if (BtncheckboxArtHidraulica.isChecked()) {
-                document.add(new Paragraph(">>> Hidráulica (Instalações, ramificações e deslocamento)" + "R$" + (valorTotalArtHidraulica), boldServicosPrestados));
 
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Hidráulica (Instalações, ramificações e deslocamento): ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtHidraulica), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
             if (BtncheckboxArtBox.isChecked()) {
-                document.add(new Paragraph(">>> Box, espelhos, laminados/vinílico e Acessórios (chuveiro, prateleira, cortinas, etc.)" + "R$" + (valorTotalArtBox), boldServicosPrestados));
 
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Box, espelhos, laminados/vinílico e Acessórios (chuveiro, prateleira, cortinas, etc.): ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtBox), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
             if (BtncheckboxArtGesso.isChecked()) {
-                document.add(new Paragraph(">>> Gesso (Sanca, rebaixo, golas, molduras, Dry-wall) e Pintura Decorativa" + "R$" + (valorTotalArtGesso), boldServicosPrestados));
 
 
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Gesso (Sanca, rebaixo, golas, molduras, Dry-wall) e Pintura Decorativa: ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtBox), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
             if (BtncheckboxArtDemolicao.isChecked()) {
-                document.add(new Paragraph(">>> Demolição de parede não estrutural" + "R$" + (valorTotalArtDemolicaoParedeNaoEstrutural), boldServicosPrestados));
 
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Demolição de parede não estrutural: ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtDemolicaoParedeNaoEstrutural), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
             }
             if (BtncheckboxArtMoveisPlanejados.isChecked()) {
-                document.add(new Paragraph(">>> Móveis planejados" + "R$" + (valorTotalArtMoveisPlanejados), boldServicosPrestados));
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Móveis planejados: ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtMoveisPlanejados), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
+
 
             }
             if (BtncheckboxArtDeslocamento.isChecked()) {
-                document.add(new Paragraph(">>> Deslocamento do ponto de abastecimento de gás." + "R$" + (valorTotalArtDeslocamentoPontoGas), boldServicosPrestados));
+
+
+                Paragraph removerRevestimentoParede = new Paragraph(">>> Deslocamento do ponto de abastecimento de gás: ", boldServicosPrestados);
+                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtDeslocamentoPontoGas), boldServicosPrestados);
+                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                removerRevestimentoParede.setLeading(0.70f);
+
+                //
+                PdfPTable tabela = new PdfPTable(1);
+                tabela.setWidthPercentage(100);
+                PdfPCell celula = new PdfPCell();
+
+                celula.addElement(removerRevestimentoParede);
+                celula.setBorder(Rectangle.NO_BORDER);
+                tabela.addCell(celula);
+                document.add(tabela);
 
             }
-            document.add(new Paragraph(">>> Taxas do CREA (R$ 85,96) ", boldServicosPrestados));
+            Paragraph removerRevestimentoParedee = new Paragraph(">>> Taxas do CREA: ", boldServicosPrestados);
+            Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format(valorTotalArtTaxa), boldServicosPrestados);
+            valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+            removerRevestimentoParedee.add(0, valorRemoverRevestimentoParede);
+            removerRevestimentoParedee.setLeading(0.70f);
+
+            //
+            PdfPTable tabela = new PdfPTable(1);
+            tabela.setWidthPercentage(100);
+            PdfPCell celula = new PdfPCell();
+
+            celula.addElement(removerRevestimentoParedee);
+            celula.setBorder(Rectangle.NO_BORDER);
+            tabela.addCell(celula);
+            document.add(tabela);
             document.add(espacoBranco1);
 
-            valorTotalCategoriaArt = valorTotalCategoriaArt + valorTotalArtTaxa;
-
-
         }
-
         latitude = totalDemolicao + valorTotalCategoriaHidraulica + valorTotalCategoriaPintura + valorTotalCategoriaRevestimento + valorTotalCategoriaArt;
 
 
