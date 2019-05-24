@@ -4293,7 +4293,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         Date now = new Date();
         android.text.format.DateFormat.format("dd-MM-yyyy_hh:mm:ss", now);
 
-        File docsFolder = new File(Environment.getExternalStorageDirectory() + "/RelatóriosRagonezi/Orcamentos");
+        File docsFolder = new File(Environment.getExternalStorageDirectory() + "/RelatóriosRagonezi/OrcamentosClientes");
         if (!docsFolder.exists()) {
             docsFolder.mkdir();
             // Log.i(TAG, "Created a new directory for PDF");
@@ -4307,8 +4307,8 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         Font boldTitulo2 = FontFactory.getFont("Times-Roman, Bold", 16, Font.BOLD);
         Font boldTotal = FontFactory.getFont("Times-Roman, Bold", 17, Font.BOLD);
         Font boldTota2 = FontFactory.getFont("Times-Roman, Bold", 17, Font.NORMAL);
-        Font boldServicos = FontFactory.getFont("Times-Roman, Bold", 14, Font.NORMAL);
-        Font boldServicosPrestados = FontFactory.getFont("Times-Roman, Bold", 12, Font.NORMAL);
+        Font boldServicos = FontFactory.getFont("Times-Roman, Bold", 13, Font.NORMAL);
+        Font boldServicosPrestados = FontFactory.getFont("Times-Roman", 10, Font.NORMAL);
         Font fontData = FontFactory.getFont("Times-Roman, Bold", 10, Font.BOLD);
         pdfFile = new File(docsFolder.getAbsolutePath(), "Orcamento" + "000" + alterarNumeroNota + ".pdf");
         OutputStream output = new FileOutputStream(pdfFile);
@@ -4427,12 +4427,12 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         paragrafoSalaEstar.add(0,paragrafoSalaEstarValor);
         paragrafoSalaEstar.setLeading(0.70f);
         Paragraph paragrafoQuarto1 = new Paragraph(0,"Quarto 1", boldServicos);
-        Paragraph paragrafoQuarto1Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto1), boldServicos);
+        Paragraph paragrafoQuarto1Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto2), boldServicos);
         paragrafoQuarto1Valor.setAlignment(Element.ALIGN_RIGHT);
         paragrafoQuarto1.add(0,paragrafoQuarto1Valor);
         paragrafoQuarto1.setLeading(0.70f);
-        Paragraph paragrafoQuarto2 = new Paragraph("Quarto 2", boldServicos);
-        Paragraph paragrafoQuarto2Valor = new Paragraph(0,"Total R$" + df.format(valorTotalQuarto2), boldServicos);
+        Paragraph paragrafoQuarto2 = new Paragraph(0,"Quarto 2", boldServicos);
+        Paragraph paragrafoQuarto2Valor = new Paragraph("Total R$" + df.format(valorTotalQuarto1), boldServicos);
         paragrafoQuarto2Valor.setAlignment(Element.ALIGN_RIGHT);
         paragrafoQuarto2.add(0,paragrafoQuarto2Valor);
         paragrafoQuarto2.setLeading(0.70f);
@@ -4566,7 +4566,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         paragrafoPinturaQuarto2Valor.setAlignment(Element.ALIGN_RIGHT);
         paragrafoPinturaQuarto2.add(0,paragrafoPinturaQuarto2Valor);
         paragrafoPinturaQuarto2.setLeading(0.70f);
-        Paragraph paragrafoPinturaQuarto3 = new Paragraph(0,"Quarto Suíte", boldServicos);
+        Paragraph paragrafoPinturaQuarto3 = new Paragraph(0,"Quarto 2", boldServicos);
         Paragraph paragrafoPinturaQuarto3Valor = new Paragraph("Total R$" + df.format(valorTotalPinturaQuartoSuite), boldServicos);
         paragrafoPinturaQuarto3Valor.setAlignment(Element.ALIGN_RIGHT);
         paragrafoPinturaQuarto3.add(0,paragrafoPinturaQuarto3Valor);
@@ -4892,8 +4892,6 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverVao1 > 0) {
                     qtdDemoCozinha = qtdDemoCozinha + 1;
                 }
-
-
                 PdfPTable tableCozinha = new PdfPTable(1);
                 PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
 //                tableCozinhaServicos.
@@ -5101,6 +5099,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     tabela.addCell(celula);
                     document.add(tabela);
                 }
+                document.add(espacoBranco1);
             }
             if (valorTotalBanheiro1 > 0){
 
@@ -5422,23 +5421,23 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 //                    document.add(tableCozinhaServicos);
 
                 }
-                    if (varRemoverPiso3 > 0 || varRemoverPiso3_1 > 0) {
-                        Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso3_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso3_1.getText().toString())) + " m²", boldServicosPrestados);
-                        Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPiso3 + varRemoverPiso3_1)), boldServicosPrestados);
-                        valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
-                        removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
-                        removerRevestimentoParede.setLeading(0.70f);
+                if (varRemoverPiso3 > 0 || varRemoverPiso3_1 > 0) {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Piso: " + (Double.parseDouble(valorRemocaoPiso3_1.getText().toString()) + Double.parseDouble(valorRemocaoPiso3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverPiso3 + varRemoverPiso3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
 
-                        //
-                        PdfPTable tabela = new PdfPTable(1);
-                        tabela.setWidthPercentage(100);
-                        PdfPCell celula = new PdfPCell();
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
 
-                        celula.addElement(removerRevestimentoParede);
-                        celula.setBorder(Rectangle.NO_BORDER);
-                        tabela.addCell(celula);
-                        document.add(tabela);
-                    }
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varRemoverPia3 > 0 || varRemoverPia3_1 > 0) {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Pia: " + (Double.parseDouble(valorRemocaoPia3.getText().toString()) + Double.parseDouble(valorRemocaoPia3_1.getText().toString())) + " un", boldServicosPrestados);
@@ -5938,20 +5937,20 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 if (varRemoverAlvenaria5 > 0 || varRemoverAlvenaria5_1 > 0){
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Remover Alvenaria: " + (Double.parseDouble(valorRemocacAlvenaria5.getText().toString()) + Double.parseDouble(valorRemocacAlvenaria5_1.getText().toString())) + " m²", boldServicosPrestados);
-                Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria5 + varRemoverAlvenaria5)), boldServicosPrestados);
-                valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
-                removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
-                removerRevestimentoParede.setLeading(0.70f);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format( (varRemoverAlvenaria5 + varRemoverAlvenaria5)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
 
-                //
-                PdfPTable tabela = new PdfPTable(1);
-                tabela.setWidthPercentage(100);
-                PdfPCell celula = new PdfPCell();
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
 
-                celula.addElement(removerRevestimentoParede);
-                celula.setBorder(Rectangle.NO_BORDER);
-                tabela.addCell(celula);
-                document.add(tabela);
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
                 }
                 if (varRemoverTanque5 > 0 || varRemoverTanque5_1 > 0)
                 {
@@ -6906,66 +6905,66 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             if (valorTotalQuarto1 > 0){
                 int qtdDemoQuarto1 = 0;
 
-                if (varRemoverRevestimentoParede > 0) {
+                if (varRemoverRevestimentoParede9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverRevestimentoParede1 > 0) {
+                if (varRemoverRevestimentoParede9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverPiso > 0) {
+                if (varRemoverPiso9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverPiso1 > 0) {
+                if (varRemoverPiso9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverAlvenaria > 0) {
+                if (varRemoverAlvenaria9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverAlvenaria1 > 0) {
+                if (varRemoverAlvenaria9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverTanque > 0) {
+                if (varRemoverTanque9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverTanque1 > 0) {
+                if (varRemoverTanque9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverCaixinha4x2 > 0) {
+                if (varRemoverCaixinha4x2_9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverCaixinha4x2_1 > 0) {
-                    qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
-                }
-
-                if (varRemoverCaixinha4x4 > 0) {
+                if (varRemoverCaixinha4x2_9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
 
-                if (varRemoverCaixinha4x4_1 > 0) {
+                if (varRemoverCaixinha4x4_9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverHidraulica > 0) {
+
+                if (varRemoverCaixinha4x4_9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverHidraulica1 > 0) {
+                if (varRemoverHidraulica9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverGesso > 0) {
+                if (varRemoverHidraulica9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverGesso1 > 0) {
+                if (varRemoverGesso9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverVasoSanitario > 0) {
+                if (varRemoverGesso9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverVasoSanitario1 > 0) {
+                if (varRemoverVasoSanitario9 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverVao > 0) {
+                if (varRemoverVasoSanitario9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
-                if (varRemoverVao1 > 0) {
+                if (varRemoverVao9 > 0) {
+                    qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
+                }
+                if (varRemoverVao9_1 > 0) {
                     qtdDemoQuarto1 = qtdDemoQuarto1 + 1;
                 }
 
@@ -6977,7 +6976,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 PdfPCell cellCozinha1 = new PdfPCell();
 
 //                cellCozinha2.addHeader(paragrafoCozinha);
-                cellCozinha2.addElement(paragrafoLavabo);
+                cellCozinha2.addElement(paragrafoDemolicaoQuarto3);
                 cellCozinha1.setBorder(Rectangle.BOX);
 //                tableCozinha.addCell(cellCozinha1);
                 tableCozinha.addCell(cellCozinha2);
@@ -6987,6 +6986,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                 if (varRemoverRevestimentoParede9 > 0 || varRemoverRevestimentoParede9_1 > 0)
                 {
+                    Toast.makeText(this, "Faixa 9", Toast.LENGTH_SHORT).show();
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede9.getText().toString()) + Double.parseDouble(valorRevestimentoParede9_1.getText().toString())) + " m² ", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede9_1 + varRemoverRevestimentoParede9)) , boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7186,66 +7186,66 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             if (valorTotalQuarto2 > 0){
                 int qtdDemoQuarto2 = 0;
 
-                if (varRemoverRevestimentoParede > 0) {
+                if (varRemoverRevestimentoParede10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverRevestimentoParede1 > 0) {
+                if (varRemoverRevestimentoParede10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverPiso > 0) {
+                if (varRemoverPiso10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverPiso1 > 0) {
+                if (varRemoverPiso10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverAlvenaria > 0) {
+                if (varRemoverAlvenaria10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverAlvenaria1 > 0) {
+                if (varRemoverAlvenaria10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverTanque > 0) {
+                if (varRemoverTanque10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverTanque1 > 0) {
+                if (varRemoverTanque10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverCaixinha4x2 > 0) {
+                if (varRemoverCaixinha4x2_10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverCaixinha4x2_1 > 0) {
-                    qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
-                }
-
-                if (varRemoverCaixinha4x4 > 0) {
+                if (varRemoverCaixinha4x2_10_1 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
 
-                if (varRemoverCaixinha4x4_1 > 0) {
+                if (varRemoverCaixinha4x4_10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverHidraulica > 0) {
+
+                if (varRemoverCaixinha4x4_10_1 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverHidraulica1 > 0) {
+                if (varRemoverHidraulica10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverGesso > 0) {
+                if (varRemoverHidraulica10_1 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverGesso1 > 0) {
+                if (varRemoverGesso10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverVasoSanitario > 0) {
+                if (varRemoverGesso10_1 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverVasoSanitario1 > 0) {
+                if (varRemoverVasoSanitario10 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverVao > 0) {
+                if (varRemoverVasoSanitario10_1 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
-                if (varRemoverVao1 > 0) {
+                if (varRemoverVao10 > 0) {
+                    qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
+                }
+                if (varRemoverVao10_1 > 0) {
                     qtdDemoQuarto2 = qtdDemoQuarto2 + 1;
                 }
 
@@ -7257,7 +7257,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 PdfPCell cellCozinha1 = new PdfPCell();
 
 //                cellCozinha2.addHeader(paragrafoCozinha);
-                cellCozinha2.addElement(paragrafoLavabo);
+                cellCozinha2.addElement(paragrafoQuarto1);
                 cellCozinha1.setBorder(Rectangle.BOX);
 //                tableCozinha.addCell(cellCozinha1);
                 tableCozinha.addCell(cellCozinha2);
@@ -7267,6 +7267,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                 if (varRemoverRevestimentoParede10 > 0 || varRemoverRevestimentoParede10_1 > 0)
                 {
+                    Toast.makeText(this, "Posicao 10", Toast.LENGTH_SHORT).show();
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede10.getText().toString()) + Double.parseDouble(valorRevestimentoParede10_1.getText().toString())) + " m² ", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede10_1 + varRemoverRevestimentoParede10)) , boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7465,81 +7466,80 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             }
             if (valorTotalQuarto3 > 0){
 
-                int qtdQuartoSuite = 0;
+                int qtdDemoQuartoSuite = 0;
 
-                if (varRemoverRevestimentoParede > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverRevestimentoParede11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverRevestimentoParede1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverRevestimentoParede11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverPiso > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverPiso11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverPiso1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverPiso11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverAlvenaria > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverAlvenaria11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverAlvenaria1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverAlvenaria11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverTanque > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverTanque11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverTanque1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverTanque11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverCaixinha4x2 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverCaixinha4x2_11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
-                if (varRemoverCaixinha4x2_1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-
-                if (varRemoverCaixinha4x4 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverCaixinha4x2_11_1 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
 
-                if (varRemoverCaixinha4x4_1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-                if (varRemoverHidraulica > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-                if (varRemoverHidraulica1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-                if (varRemoverGesso > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-                if (varRemoverGesso1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-                if (varRemoverVasoSanitario > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-                if (varRemoverVasoSanitario1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-                if (varRemoverVao > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
-                }
-                if (varRemoverVao1 > 0) {
-                    qtdQuartoSuite = qtdQuartoSuite + 1;
+                if (varRemoverCaixinha4x4_11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
                 }
 
+                if (varRemoverCaixinha4x4_11_1 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
+                if (varRemoverHidraulica11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
+                if (varRemoverHidraulica11_1 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
+                if (varRemoverGesso11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
+                if (varRemoverGesso11_1 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
+                if (varRemoverVasoSanitario11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
+                if (varRemoverVasoSanitario11_1 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
+                if (varRemoverVao11 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
+                if (varRemoverVao11_1 > 0) {
+                    qtdDemoQuartoSuite = qtdDemoQuartoSuite + 1;
+                }
 
                 PdfPTable tableCozinha = new PdfPTable(1);
-                PdfPTable tableCozinhaServicos = new PdfPTable(qtdQuartoSuite);
+                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoQuartoSuite);
 //                tableCozinhaServicos.
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha2 = new PdfPCell();
                 PdfPCell cellCozinha1 = new PdfPCell();
 
 //                cellCozinha2.addHeader(paragrafoCozinha);
-                cellCozinha2.addElement(paragrafoLavabo);
+                cellCozinha2.addElement(paragrafoQuarto2);
                 cellCozinha1.setBorder(Rectangle.BOX);
 //                tableCozinha.addCell(cellCozinha1);
                 tableCozinha.addCell(cellCozinha2);
@@ -7556,7 +7556,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
 //                cellCozinha2.addHeader(paragrafoCozinha);
@@ -7584,7 +7584,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
                     celula.addElement(removerRevestimentoParede);
@@ -7604,7 +7604,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
                     celula.addElement(removerRevestimentoParede);
@@ -7623,7 +7623,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
                     celula.addElement(removerRevestimentoParede);
@@ -7659,7 +7659,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
                     celula.addElement(removerRevestimentoParede);
@@ -7677,7 +7677,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
                     celula.addElement(removerRevestimentoParede);
@@ -7695,7 +7695,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
                     celula.addElement(removerRevestimentoParede);
@@ -7713,7 +7713,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
                     celula.addElement(removerRevestimentoParede);
@@ -7734,7 +7734,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                     //
                     PdfPTable tabela = new PdfPTable(1);
-                    tabela.setWidthPercentage(110);
+                    tabela.setWidthPercentage(100);
                     PdfPCell celula = new PdfPCell();
 
                     celula.addElement(removerRevestimentoParede);
@@ -7920,7 +7920,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(new Paragraph(">>> Pastilha de Vidro : " + (Double.parseDouble(valorRevestimentoPastilhaVidro7.getText().toString()) + Double.parseDouble(valorRevestimentoPastilhaVidro7_1.getText().toString())) + " m² ----- " + "    R$" + (varPastilhaVidro_7_1 + varPastilhaVidro_7) + "0", boldServicosPrestados));
                 if (varRevestimento3D_7 > 0 || varRevestimento3D_7_1 > 0)
                     document.add(new Paragraph(">>> Revestimento 3D : " + (Double.parseDouble(valorRevestimento3D7.getText().toString()) + Double.parseDouble(valorRevestimento3D7_1.getText().toString())) + " m² ----- " + "   R$" + (varRevestimento3D_7 + varRevestimento3D_7_1) + "0", boldServicosPrestados));
-                 document.add(espacoBranco1) ;
+                document.add(espacoBranco1) ;
             }
             if (valorTotalRevestimentoSalaEstar > 0){
                 PdfPTable tableCozinha = new PdfPTable(1);
