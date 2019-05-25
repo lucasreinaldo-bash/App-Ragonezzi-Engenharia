@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.multidex.MultiDex;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,6 +62,8 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
+import vostore.orcamento.ragonezi.app.CastLayout;
+import vostore.orcamento.ragonezi.app.CriarPdf;
 import vostore.orcamento.ragonezi.app.Firebase.ConfiguracaoFirebase;
 import vostore.orcamento.ragonezi.app.Firebase.ValoresCompartilhados;
 import vostore.orcamento.ragonezi.app.PermissionsChecker;
@@ -1066,6 +1068,8 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demolicao);
+        MultiDex.install(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         database = FirebaseDatabase.getInstance();
@@ -1122,904 +1126,8 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
         checker = new PermissionsChecker(this);
 
-        //Botao Gerar Relatorio
-        btn_finish = findViewById(R.id.btnFinalizar);
-        relativeLayout = findViewById(R.id.layout_demolicao);
-
-        //Fazendo cast/ instanciando os checklists aos seus respectivos views
-        checkBoxCozinha = findViewById(R.id.checkbox_cozinha);
-        checkBoxBanheiroSocial = findViewById(R.id.checkbox_banheiro_social);
-        checkBoxBanheiroSuite = findViewById(R.id.checkbox_banheiro_suite);
-        checkBoxAreaServico = findViewById(R.id.checkbox_areaservico);
-        checkBoxLavabo = findViewById(R.id.checkbox_banheiro_lavabo);
-        checkBoxSacadaVaranda = findViewById(R.id.checkbox_sacada);
-        checkBoxSalaEstar = findViewById(R.id.checkbox_salaEstar);
-        checkBoxSalaJantar = findViewById(R.id.checkbox_salaJantar);
-        checkBoxQuarto1 = findViewById(R.id.checkbox_quarto1);
-        checkBoxQuarto2 = findViewById(R.id.checkbox_quarto2);
-        checkBoxQuartoSuite = findViewById(R.id.checkbox_quartoSuite);
-
-        //CheckBox Revestimento
-        checkBoxRevestimentoCozinha = findViewById(R.id.checkboxRevestimento_cozinha);
-        checkBoxRevestimentoBanheiroSocial = findViewById(R.id.checkboxRevestimento_banheiro_social);
-        checkBoxRevestimentoBanheiroSuite = findViewById(R.id.checkboxRevestimento_banheiro_suite);
-        checkBoxRevestimentoAreaServico = findViewById(R.id.checkboxRevestimento_areaservico);
-        checkBoxRevestimentoLavabo = findViewById(R.id.checkboxRevestimento_banheiro_lavabo);
-        checkBoxRevestimentoSalaEstar = findViewById(R.id.checkboxRevestimento_salaEstar);
-        checkBoxRevestimentoSalaJantar = findViewById(R.id.checkboxRevestimento_salaJantar);
-        checkBoxRevestimentoQuarto1 = findViewById(R.id.checkboxRevestimento_quarto1);
-        checkBoxRevestimentoQuarto2 = findViewById(R.id.checkboxRevestimento_quarto2);
-        checkBoxRevestimentoQuartoSuite = findViewById(R.id.checkboxRevestimento_quartoSuite);
-        checkBoxRevestimentoSacadaVaranda = findViewById(R.id.checkboxRevestimento_sacada);
-
-        //CheckBox Hidraulica
-        checkBoxHidraulicaCozinha = findViewById(R.id.checkboxHidraulica_cozinha);
-        checkBoxHidraulicaBanheiroSocial = findViewById(R.id.checkboxHidraulica_banheiro_social);
-        checkBoxHidraulicaBanheiroSuite = findViewById(R.id.checkboxHidraulica_banheiro_suite);
-        checkBoxHidraulicaAreaServico = findViewById(R.id.checkboxHidraulica_areaservico);
-        checkBoxHidraulicaLavabo = findViewById(R.id.checkboxHidraulica_banheiro_lavabo);
-        checkBoxHidraulicaSacadaVaranda = findViewById(R.id.checkboxHidraulica_sacada);
-
-
-        //Checkbox Pintura
-        checkBoxPinturaCozinha = findViewById(R.id.checkboxPintura_cozinha);
-        checkBoxPinturaBanheiroSocial = findViewById(R.id.checkboxPintura_banheiro_social);
-        checkBoxPinturaBanheiroSuite = findViewById(R.id.checkboxPintura_banheiro_suite);
-        checkBoxPinturaAreaServico = findViewById(R.id.checkboxPintura_areaservico);
-        checkBoxPinturaLavabo = findViewById(R.id.checkboxPintura_banheiro_lavabo);
-        checkBoxPinturaSalaEstar = findViewById(R.id.checkboxPintura_salaEstar);
-        checkBoxPinturaSalaJantar = findViewById(R.id.checkboxPintura_salaJantar);
-        checkBoxPinturaQuarto1 = findViewById(R.id.checkboxPintura_quarto1);
-        checkBoxPinturaQuarto2 = findViewById(R.id.checkboxPintura_quarto2);
-        checkBoxPinturaM2 = findViewById(R.id.checkboxPintura_m2);
-        checkBoxPinturaQuartoSuite = findViewById(R.id.checkboxPintura_quartoSuite);
-        checkBoxPinturaSacadaVaranda = findViewById(R.id.checkboxPintura_sacada);
-
-
-        //CheckBox ART
-        BtncheckBoxArtArCondicionado = findViewById(R.id.checknoxArtArcondicionado);
-        BtncheckboxArtEnvidracamento = findViewById(R.id.checkboxArtEnvidracamento);
-        BtncheckboxArtPedrasMarmore = findViewById(R.id.checkboxArtPedrasMarmore);
-        BtncheckboxArtNovosRevestimentos = findViewById(R.id.checkboxArtNovosRevestimentos);
-        BtncheckboxArtEletrica = findViewById(R.id.checkboxArtEletrica);
-        BtncheckboxArtHidraulica = findViewById(R.id.checkboxArtHidraulica);
-        BtncheckboxArtBox = findViewById(R.id.checkboxArtBox);
-        BtncheckboxArtGesso = findViewById(R.id.checkboxArtGesso);
-        BtncheckboxArtDemolicao = findViewById(R.id.checkboxArtDemolicao);
-        BtncheckboxArtMoveisPlanejados = findViewById(R.id.checkboxArtMoveisPlanejados);
-        BtncheckboxArtDeslocamento = findViewById(R.id.checkboxArtDeslocamento);
-
-        //Cast dos LinearLayouts
-        linearLayout1 = findViewById(R.id.linearCozinha);
-        linearLayout2 = findViewById(R.id.linearBanheiroSocial);
-        linearLayout3 = findViewById(R.id.linearAreaServico);
-        linearLayout4 = findViewById(R.id.linearBanheiroSuite);
-        linearLayout5 = findViewById(R.id.linearLavabo);
-        linearLayout6 = findViewById(R.id.linearSacada);
-        linearLayout7 = findViewById(R.id.linearSalaJantar);
-        linearLayout8 = findViewById(R.id.linearSalaEstar);
-        linearLayout9 = findViewById(R.id.linearQuarto1);
-        linearLayout10 = findViewById(R.id.linearQuarto2);
-        linearLayout11 = findViewById(R.id.linearQuartoSuite);
-
-
-        //Linear Revestimento
-        linearLayoutRevestimento1 = findViewById(R.id.linearRevestimentoCozinha);
-        linearLayoutRevestimento2 = findViewById(R.id.linearRevestimentoBanheiroSocial);
-        linearLayoutRevestimento3 = findViewById(R.id.linearRevestimentoAreaServico);
-        linearLayoutRevestimento4 = findViewById(R.id.linearRevestimentoBanheiroSuite);
-        linearLayoutRevestimento5 = findViewById(R.id.linearRevestimentoLavabo);
-        linearLayoutRevestimento6 = findViewById(R.id.linearRevestimentoSacada);
-        linearLayoutRevestimento7 = findViewById(R.id.linearRevestimentoSalaJantar);
-        linearLayoutRevestimento8 = findViewById(R.id.linearRevestimentoSalaEstar);
-        linearLayoutRevestimento9 = findViewById(R.id.linearRevestimentoQuarto1);
-        linearLayoutRevestimento10 = findViewById(R.id.linearRevestimentoQuarto2);
-        linearLayoutRevestimento11 = findViewById(R.id.linearRevestimentoQuartoSuite);
-
-
-        //Linear Hidraulica
-
-        linearLayoutHidraulica1 = findViewById(R.id.linearHidraulicaCozinha);
-        linearLayoutHidraulica2 = findViewById(R.id.linearHidraulicaBanheiroSocial);
-        linearLayoutHidraulica3 = findViewById(R.id.linearHidraulicaAreaServico);
-        linearLayoutHidraulica4 = findViewById(R.id.linearHidraulicaBanheiroSuite);
-        linearLayoutHidraulica5 = findViewById(R.id.linearHidraulicaLavabo);
-        linearLayoutHidraulica6 = findViewById(R.id.linearHidraulicaSacada);
-        linearLayoutHidraulica7 = findViewById(R.id.linearHidraulicaSalaJantar);
-        linearLayoutHidraulica8 = findViewById(R.id.linearHidraulicaSalaEstar);
-        linearLayoutHidraulica9 = findViewById(R.id.linearHidraulicaQuarto1);
-        linearLayoutHidraulica10 = findViewById(R.id.linearHidraulicaQuarto2);
-        linearLayoutHidraulica11 = findViewById(R.id.linearHidraulicaQuartoSuite);
-
-
-        //Linear Pintura
-        linearLayoutPintura1 = findViewById(R.id.linearCozinhaPintura);
-        linearLayoutPintura2 = findViewById(R.id.linearPinturaBanheiroSocial);
-        linearLayoutPintura3 = findViewById(R.id.linearPinturaAreaServico);
-        linearLayoutPintura4 = findViewById(R.id.linearPinturaBanheiroSuite);
-        linearLayoutPintura5 = findViewById(R.id.linearPinturaLavabo);
-        linearLayoutPintura6 = findViewById(R.id.linearPinturaSacada);
-        linearLayoutPintura7 = findViewById(R.id.linearPinturaSalaJantar);
-        linearLayoutPintura8 = findViewById(R.id.linearPinturaSalaEstar);
-        linearLayoutPintura9 = findViewById(R.id.linearPinturaQuarto1);
-        linearLayoutPintura10 = findViewById(R.id.linearPinturaQuarto2);
-        linearLayoutPintura11 = findViewById(R.id.linearPinturaQuartoSuite);
-        linearLayoutPintura12 = findViewById(R.id.linearPinturam2);
-
-
-        //Revestimento Parede
-        valorRevestimentoParede1 = findViewById(R.id.removerRevestimentoParede);
-        valorRevestimentoParede1_1 = findViewById(R.id.removerRevestimentoParede1);
-        valorRevestimentoParede2 = findViewById(R.id.removerRevestimentoParede2);
-        valorRevestimentoParede2_1 = findViewById(R.id.removerRevestimentoParede2_1);
-        valorRevestimentoParede3 = findViewById(R.id.removerRevestimentoParede3);
-        valorRevestimentoParede3_1 = findViewById(R.id.removerRevestimentoParede3);
-        valorRevestimentoParede4 = findViewById(R.id.removerRevestimentoParede4);
-        valorRevestimentoParede4_1 = findViewById(R.id.removerRevestimentoParede4_1);
-        valorRevestimentoParede5 = findViewById(R.id.removerRevestimentoParede5);
-        valorRevestimentoParede5_1 = findViewById(R.id.removerRevestimentoParede5_1);
-        valorRevestimentoParede6 = findViewById(R.id.removerRevestimentoParede6);
-        valorRevestimentoParede6_1 = findViewById(R.id.removerRevestimentoParede6_1);
-        valorRevestimentoParede7 = findViewById(R.id.removerRevestimentoParede7);
-        valorRevestimentoParede7_1 = findViewById(R.id.removerRevestimentoParede7_1);
-        valorRevestimentoParede8 = findViewById(R.id.removerRevestimentoParede8);
-        valorRevestimentoParede8_1 = findViewById(R.id.removerRevestimentoParede8_1);
-        valorRevestimentoParede9 = findViewById(R.id.removerRevestimentoParede9);
-        valorRevestimentoParede9_1 = findViewById(R.id.removerRevestimentoParede9_1);
-        valorRevestimentoParede10 = findViewById(R.id.removerRevestimentoParede10);
-        valorRevestimentoParede10_1 = findViewById(R.id.removerRevestimentoParede10_1);
-        valorRevestimentoParede11 = findViewById(R.id.removerRevestimentoParede11);
-        valorRevestimentoParede11_1 = findViewById(R.id.removerRevestimentoParede11_1);
-
-        //Remocao de Piso
-        valorRemocaoPiso1 = findViewById(R.id.removerPiso);
-        valorRemocaoPiso1_1 = findViewById(R.id.removerPiso1);
-        valorRemocaoPiso2 = findViewById(R.id.removerPiso2);
-        valorRemocaoPiso2_1 = findViewById(R.id.removerPiso2_1);
-        valorRemocaoPiso3 = findViewById(R.id.removerPiso3);
-        valorRemocaoPiso3_1 = findViewById(R.id.removerPiso3_2);
-        valorRemocaoPiso4 = findViewById(R.id.removerPiso4);
-        valorRemocaoPiso4_1 = findViewById(R.id.removerPiso4_1);
-        valorRemocaoPiso5 = findViewById(R.id.removerPiso5);
-        valorRemocaoPiso5_1 = findViewById(R.id.removerPiso5_1);
-        valorRemocaoPiso6 = findViewById(R.id.removerPiso6);
-        valorRemocaoPiso6_1 = findViewById(R.id.removerPiso6_1);
-        valorRemocaoPiso7 = findViewById(R.id.removerPiso7);
-        valorRemocaoPiso7_1 = findViewById(R.id.removerPiso7_1);
-        valorRemocaoPiso8 = findViewById(R.id.removerPiso8);
-        valorRemocaoPiso8_1 = findViewById(R.id.removerPiso8_1);
-        valorRemocaoPiso9 = findViewById(R.id.removerPiso9);
-        valorRemocaoPiso9_1 = findViewById(R.id.removerPiso9_1);
-        valorRemocaoPiso10 = findViewById(R.id.removerPiso10);
-        valorRemocaoPiso10_1 = findViewById(R.id.removerPiso10_1);
-        valorRemocaoPiso11 = findViewById(R.id.removerPiso11);
-        valorRemocaoPiso11_1 = findViewById(R.id.removerPiso11_1);
-
-        //Remocao de Pia
-        valorRemocaoPia1 = findViewById(R.id.removerPia);
-        valorRemocaoPia1_1 = findViewById(R.id.removerPia1);
-        valorRemocaoPia2 = findViewById(R.id.removerPia2);
-        valorRemocaoPia2_1 = findViewById(R.id.removerPia2_1);
-        valorRemocaoPia3 = findViewById(R.id.removerPia3);
-        valorRemocaoPia3_1 = findViewById(R.id.removerPia3_1);
-        valorRemocaoPia4 = findViewById(R.id.removerPia4);
-        valorRemocaoPia4_1 = findViewById(R.id.removerPia4_1);
-        valorRemocaoPia5 = findViewById(R.id.removerPia5);
-        valorRemocaoPia5_1 = findViewById(R.id.removerPia5_1);
-        valorRemocaoPia6 = findViewById(R.id.removerPia6);
-        valorRemocaoPia6_1 = findViewById(R.id.removerPia6_1);
-        valorRemocaoPia7 = findViewById(R.id.removerPia7);
-        valorRemocaoPia7_1 = findViewById(R.id.removerPia7_1);
-        valorRemocaoPia8 = findViewById(R.id.removerPia8);
-        valorRemocaoPia8_1 = findViewById(R.id.removerPia8_1);
-        valorRemocaoPia9 = findViewById(R.id.removerPia9);
-        valorRemocaoPia9_1 = findViewById(R.id.removerPia9_1);
-        valorRemocaoPia10 = findViewById(R.id.removerPia10);
-        valorRemocaoPia10_1 = findViewById(R.id.removerPia10_1);
-        valorRemocaoPia11 = findViewById(R.id.removerPia11);
-        valorRemocaoPia11_1 = findViewById(R.id.removerPia11_1);
-
-        //Remocao de Alvenaria
-        valorRemocacAlvenaria1 = findViewById(R.id.removerAlvenaria);
-        valorRemocacAlvenaria1_1 = findViewById(R.id.removerAlvenaria1);
-        valorRemocacAlvenaria2 = findViewById(R.id.removerAlvenaria2);
-        valorRemocacAlvenaria2_1 = findViewById(R.id.removerAlvenaria2_1);
-        valorRemocacAlvenaria3 = findViewById(R.id.removerAlvenaria3);
-        valorRemocacAlvenaria3_1 = findViewById(R.id.removerAlvenaria2_3);
-        valorRemocacAlvenaria4 = findViewById(R.id.removerAlvenaria4);
-        valorRemocacAlvenaria4_1 = findViewById(R.id.removerAlvenaria4_1);
-        valorRemocacAlvenaria5 = findViewById(R.id.removerAlvenaria5);
-        valorRemocacAlvenaria5_1 = findViewById(R.id.removerAlvenaria5_1);
-        valorRemocacAlvenaria6 = findViewById(R.id.removerAlvenaria6);
-        valorRemocacAlvenaria6_1 = findViewById(R.id.removerAlvenaria6_1);
-        valorRemocacAlvenaria7 = findViewById(R.id.removerAlvenaria7);
-        valorRemocacAlvenaria7_1 = findViewById(R.id.removerAlvenaria7_1);
-        valorRemocacAlvenaria8 = findViewById(R.id.removerAlvenaria8);
-        valorRemocacAlvenaria8_1 = findViewById(R.id.removerAlvenaria8_1);
-        valorRemocacAlvenaria9 = findViewById(R.id.removerAlvenaria9);
-        valorRemocacAlvenaria9_1 = findViewById(R.id.removerAlvenaria9_1);
-        valorRemocacAlvenaria10 = findViewById(R.id.removerAlvenaria10);
-        valorRemocacAlvenaria10_1 = findViewById(R.id.removerAlvenaria10_1);
-        valorRemocacAlvenaria11 = findViewById(R.id.removerAlvenaria11);
-        valorRemocacAlvenaria11_1 = findViewById(R.id.removerAlvenaria11_1);
-
-        //Remover Tanque
-        valorRemocaoTanque1 = findViewById(R.id.removerTanque);
-        valorRemocaoTanque1_1 = findViewById(R.id.removerTanque1);
-        valorRemocaoTanque2 = findViewById(R.id.removerTanque2);
-        valorRemocaoTanque2_1 = findViewById(R.id.removerTanque2_1);
-        valorRemocaoTanque3 = findViewById(R.id.removerTanque3);
-        valorRemocaoTanque3_1 = findViewById(R.id.removerTanque2_3);
-        valorRemocaoTanque4 = findViewById(R.id.removerTanque4);
-        valorRemocaoTanque4_1 = findViewById(R.id.removerTanque4_1);
-        valorRemocaoTanque5 = findViewById(R.id.removerTanque5);
-        valorRemocaoTanque5_1 = findViewById(R.id.removerTanque5_1);
-        valorRemocaoTanque6 = findViewById(R.id.removerTanque6);
-        valorRemocaoTanque6_1 = findViewById(R.id.removerTanque6_1);
-        valorRemocaoTanque7 = findViewById(R.id.removerTanque7);
-        valorRemocaoTanque7_1 = findViewById(R.id.removerTanque7_1);
-        valorRemocaoTanque8 = findViewById(R.id.removerTanque8);
-        valorRemocaoTanque8_1 = findViewById(R.id.removerTanque8_1);
-        valorRemocaoTanque9 = findViewById(R.id.removerTanque9);
-        valorRemocaoTanque9_1 = findViewById(R.id.removerTanque9_1);
-        valorRemocaoTanque10 = findViewById(R.id.removerTanque10);
-        valorRemocaoTanque10_1 = findViewById(R.id.removerTanque10_1);
-        valorRemocaoTanque11 = findViewById(R.id.removerTanque11);
-        valorRemocaoTanque11_1 = findViewById(R.id.removerTanque11_1);
-
-        //Rasgar Caixnha
-        valorRasgarCaixinha4x2_1 = findViewById(R.id.rasgarCaixinha4x2);
-        valorRasgarCaixinha4x2_1_1 = findViewById(R.id.rasgarCaixinha4x2_1);
-        valorRasgarCaixinha4x2_2 = findViewById(R.id.rasgarCaixinha4x2_2);
-        valorRasgarCaixinha4x2_2_1 = findViewById(R.id.rasgarCaixinha4x2_2_1);
-        valorRasgarCaixinha4x2_3 = findViewById(R.id.rasgarCaixinha4x2_3);
-        valorRasgarCaixinha4x2_3_1 = findViewById(R.id.rasgarCaixinha4x2_1);
-        valorRasgarCaixinha4x2_4 = findViewById(R.id.rasgarCaixinha4x2_4);
-        valorRasgarCaixinha4x2_4_1 = findViewById(R.id.rasgarCaixinha4x2_4_1);
-        valorRasgarCaixinha4x2_5 = findViewById(R.id.rasgarCaixinha4x2_5);
-        valorRasgarCaixinha4x2_5_1 = findViewById(R.id.rasgarCaixinha4x2_5_1);
-        valorRasgarCaixinha4x2_6 = findViewById(R.id.rasgarCaixinha4x2_6);
-        valorRasgarCaixinha4x2_6_1 = findViewById(R.id.rasgarCaixinha4x2_6_1);
-        valorRasgarCaixinha4x2_7 = findViewById(R.id.rasgarCaixinha4x2_7);
-        valorRasgarCaixinha4x2_7_1 = findViewById(R.id.rasgarCaixinha4x2_7_1);
-        valorRasgarCaixinha4x2_8 = findViewById(R.id.rasgarCaixinha4x2_8);
-        valorRasgarCaixinha4x2_8_1 = findViewById(R.id.rasgarCaixinha4x2_8_1);
-        valorRasgarCaixinha4x2_9 = findViewById(R.id.rasgarCaixinha4x2_9);
-        valorRasgarCaixinha4x2_9_1 = findViewById(R.id.rasgarCaixinha4x2_9_1);
-        valorRasgarCaixinha4x2_10 = findViewById(R.id.rasgarCaixinha4x2_10);
-        valorRasgarCaixinha4x2_10_1 = findViewById(R.id.rasgarCaixinha4x2_10_1);
-        valorRasgarCaixinha4x2_11 = findViewById(R.id.rasgarCaixinha4x2_11);
-        valorRasgarCaixinha4x2_11_1 = findViewById(R.id.rasgarCaixinha4x2_11_1);
-
-        //Rasgar Caixinha 4x4
-
-        valorRasgarCaixinha4x4_1 = findViewById(R.id.rasgarCaixinha4x4);
-        valorRasgarCaixinha4x4_1_1 = findViewById(R.id.rasgarCaixinha4x4_1);
-        valorRasgarCaixinha4x4_2 = findViewById(R.id.rasgarCaixinha4x4_2);
-        valorRasgarCaixinha4x4_2_1 = findViewById(R.id.rasgarCaixinha4x4_2_1);
-        valorRasgarCaixinha4x4_3 = findViewById(R.id.rasgarCaixinha4x4_3);
-        valorRasgarCaixinha4x4_3_1 = findViewById(R.id.rasgarCaixinha4x4_3_1);
-        valorRasgarCaixinha4x4_4 = findViewById(R.id.rasgarCaixinha4x4_4);
-        valorRasgarCaixinha4x4_4_1 = findViewById(R.id.rasgarCaixinha4x4_4_1);
-        valorRasgarCaixinha4x4_5 = findViewById(R.id.rasgarCaixinha4x4_5);
-        valorRasgarCaixinha4x4_5_1 = findViewById(R.id.rasgarCaixinha4x4_5_1);
-        valorRasgarCaixinha4x4_6 = findViewById(R.id.rasgarCaixinha4x4_6);
-        valorRasgarCaixinha4x4_6_1 = findViewById(R.id.rasgarCaixinha4x4_6_1);
-        valorRasgarCaixinha4x4_7 = findViewById(R.id.rasgarCaixinha4x4_7);
-        valorRasgarCaixinha4x4_7_1 = findViewById(R.id.rasgarCaixinha4x4_7_1);
-        valorRasgarCaixinha4x4_8 = findViewById(R.id.rasgarCaixinha4x4_8);
-        valorRasgarCaixinha4x4_8_1 = findViewById(R.id.rasgarCaixinha4x4_8_1);
-        valorRasgarCaixinha4x4_9 = findViewById(R.id.rasgarCaixinha4x4_9);
-        valorRasgarCaixinha4x4_9_1 = findViewById(R.id.rasgarCaixinha4x4_9_1);
-        valorRasgarCaixinha4x4_10 = findViewById(R.id.rasgarCaixinha4x4_10);
-        valorRasgarCaixinha4x4_10_1 = findViewById(R.id.rasgarCaixinha4x4_10_1);
-        valorRasgarCaixinha4x4_11 = findViewById(R.id.rasgarCaixinha4x4_11);
-        valorRasgarCaixinha4x4_11_1 = findViewById(R.id.rasgarCaixinha4x4_11_1);
-
-        //Rasgar Hidraulica
-        valorRasgarHidraulica1 = findViewById(R.id.rasgarHidraulica);
-        valorRasgarHidraulica1_1 = findViewById(R.id.rasgarHidraulica1);
-        valorRasgarHidraulica2 = findViewById(R.id.rasgarHidraulica2);
-        valorRasgarHidraulica2_1 = findViewById(R.id.rasgarHidraulica2_1);
-        valorRasgarHidraulica3 = findViewById(R.id.rasgarHidraulica3);
-        valorRasgarHidraulica3_1 = findViewById(R.id.rasgarHidraulica3_1);
-        valorRasgarHidraulica4 = findViewById(R.id.rasgarHidraulica4);
-        valorRasgarHidraulica4_1 = findViewById(R.id.rasgarHidraulica4_1);
-        valorRasgarHidraulica5 = findViewById(R.id.rasgarHidraulica5);
-        valorRasgarHidraulica5_1 = findViewById(R.id.rasgarHidraulica5_1);
-        valorRasgarHidraulica6 = findViewById(R.id.rasgarHidraulica6);
-        valorRasgarHidraulica6_1 = findViewById(R.id.rasgarHidraulica6_1);
-        valorRasgarHidraulica7 = findViewById(R.id.rasgarHidraulica7);
-        valorRasgarHidraulica7_1 = findViewById(R.id.rasgarHidraulica7_1);
-        valorRasgarHidraulica8 = findViewById(R.id.rasgarHidraulica8);
-        valorRasgarHidraulica8_1 = findViewById(R.id.rasgarHidraulica8_1);
-        valorRasgarHidraulica9 = findViewById(R.id.rasgarHidraulica9);
-        valorRasgarHidraulica9_1 = findViewById(R.id.rasgarHidraulica9_1);
-        valorRasgarHidraulica10 = findViewById(R.id.rasgarHidraulica10);
-        valorRasgarHidraulica10_1 = findViewById(R.id.rasgarHidraulica10_1);
-        valorRasgarHidraulica11 = findViewById(R.id.rasgarHidraulica11);
-        valorRasgarHidraulica11_1 = findViewById(R.id.rasgarHidraulica11_1);
-
-        //Remocao Gesso
-
-        valorRemoverGesso1 = findViewById(R.id.removerGesso);
-        valorRemoverGesso1_1 = findViewById(R.id.removerGesso1);
-        valorRemoverGesso2 = findViewById(R.id.removerGesso2);
-        valorRemoverGesso2_1 = findViewById(R.id.removerGesso2_1);
-        valorRemoverGesso3 = findViewById(R.id.removerGesso3);
-        valorRemoverGesso3_1 = findViewById(R.id.removerGesso3_1);
-        valorRemoverGesso4 = findViewById(R.id.removerGesso4);
-        valorRemoverGesso4_1 = findViewById(R.id.removerGesso4_1);
-        valorRemoverGesso5 = findViewById(R.id.removerGesso5);
-        valorRemoverGesso5_1 = findViewById(R.id.removerGesso5_1);
-        valorRemoverGesso6 = findViewById(R.id.removerGesso6);
-        valorRemoverGesso6_1 = findViewById(R.id.removerGesso6_1);
-        valorRemoverGesso7 = findViewById(R.id.removerGesso7);
-        valorRemoverGesso7_1 = findViewById(R.id.removerGesso7_1);
-        valorRemoverGesso8 = findViewById(R.id.removerGesso8);
-        valorRemoverGesso8_1 = findViewById(R.id.removerGesso8_1);
-        valorRemoverGesso9 = findViewById(R.id.removerGesso9);
-        valorRemoverGesso9_1 = findViewById(R.id.removerGesso9_1);
-        valorRemoverGesso10 = findViewById(R.id.removerGesso10);
-        valorRemoverGesso10_1 = findViewById(R.id.removerGesso10_1);
-        valorRemoverGesso11 = findViewById(R.id.removerGesso11);
-        valorRemoverGesso11_1 = findViewById(R.id.removerGesso11_1);
-
-        //Remocao Vaso Sanitario
-
-        valorRemoverVaso1 = findViewById(R.id.removerVaso);
-        valorRemoverVaso1_1 = findViewById(R.id.removerVaso1);
-        valorRemoverVaso2 = findViewById(R.id.removerVaso2);
-        valorRemoverVaso2_1 = findViewById(R.id.removerVaso2_1);
-        valorRemoverVaso3 = findViewById(R.id.removerVaso3);
-        valorRemoverVaso3_1 = findViewById(R.id.removerVaso3_1);
-        valorRemoverVaso4 = findViewById(R.id.removerVaso4);
-        valorRemoverVaso4_1 = findViewById(R.id.removerVaso4_1);
-        valorRemoverVaso5 = findViewById(R.id.removerVaso5);
-        valorRemoverVaso5_1 = findViewById(R.id.removerVaso5_1);
-        valorRemoverVaso6 = findViewById(R.id.removerVaso6);
-        valorRemoverVaso6_1 = findViewById(R.id.removerVaso6_1);
-        valorRemoverVaso7 = findViewById(R.id.removerVaso7);
-        valorRemoverVaso7_1 = findViewById(R.id.removerVaso7_1);
-        valorRemoverVaso8 = findViewById(R.id.removerVaso8);
-        valorRemoverVaso8_1 = findViewById(R.id.removerVaso8_1);
-        valorRemoverVaso9 = findViewById(R.id.removerVaso9);
-        valorRemoverVaso9_1 = findViewById(R.id.removerVaso9_1);
-        valorRemoverVaso10 = findViewById(R.id.removerVaso10);
-        valorRemoverVaso10_1 = findViewById(R.id.removerVaso10_1);
-        valorRemoverVaso11 = findViewById(R.id.removerVaso11);
-        valorRemoverVaso11_1 = findViewById(R.id.removerVaso11_1);
-
-        //vao
-
-        valorRemoverVao1 = findViewById(R.id.removerVao);
-        valorRemoverVao1_1 = findViewById(R.id.removerVao1);
-        valorRemoverVao2 = findViewById(R.id.removerVao2);
-        valorRemoverVao2_1 = findViewById(R.id.removerVao2_1);
-        valorRemoverVao3 = findViewById(R.id.removerVao3);
-        valorRemoverVao3_1 = findViewById(R.id.removerVao3_1);
-        valorRemoverVao4 = findViewById(R.id.removerVao4);
-        valorRemoverVao4_1 = findViewById(R.id.removerVao4_1);
-        valorRemoverVao5 = findViewById(R.id.removerVao5);
-        valorRemoverVao5_1 = findViewById(R.id.removerVao5_1);
-        valorRemoverVao6 = findViewById(R.id.removerVao6);
-        valorRemoverVao6_1 = findViewById(R.id.removerVao6_1);
-        valorRemoverVao7 = findViewById(R.id.removerVao7);
-        valorRemoverVao7_1 = findViewById(R.id.removerVao7_1);
-        valorRemoverVao8 = findViewById(R.id.removerVao8);
-        valorRemoverVao8_1 = findViewById(R.id.removerVao8_1);
-        valorRemoverVao9 = findViewById(R.id.removerVao9);
-        valorRemoverVao9_1 = findViewById(R.id.removerVao9_1);
-        valorRemoverVao10 = findViewById(R.id.removerVao10);
-        valorRemoverVao10_1 = findViewById(R.id.removerVao10_1);
-        valorRemoverVao11 = findViewById(R.id.removerVao11);
-        valorRemoverVao11_1 = findViewById(R.id.removerVao11_1);
-
-
-        //Revestimento
-        valorRevestimentoAlvenariaBase1 = findViewById(R.id.criarAlvenariaBase);
-        valorRevestimentoAlvenariaBase1_1 = findViewById(R.id.criarAlvenariaBase1);
-        valorRevestimentoAlvenariaBase2 = findViewById(R.id.criarAlvenariaBase2);
-        valorRevestimentoAlvenariaBase2_1 = findViewById(R.id.criarAlvenariaBase2_1);
-        valorRevestimentoAlvenariaBase3 = findViewById(R.id.criarAlvenariaBase3);
-        valorRevestimentoAlvenariaBase3_1 = findViewById(R.id.criarAlvenariaBase3_1);
-        valorRevestimentoAlvenariaBase4 = findViewById(R.id.criarAlvenariaBase4);
-        valorRevestimentoAlvenariaBase4_1 = findViewById(R.id.criarAlvenariaBase4_1);
-        valorRevestimentoAlvenariaBase5 = findViewById(R.id.criarAlvenariaBase5);
-        valorRevestimentoAlvenariaBase5_1 = findViewById(R.id.criarAlvenariaBase5_1);
-        valorRevestimentoAlvenariaBase6 = findViewById(R.id.criarAlvenariaBase6);
-        valorRevestimentoAlvenariaBase6_1 = findViewById(R.id.criarAlvenariaBase6_1);
-        valorRevestimentoAlvenariaBase7 = findViewById(R.id.criarAlvenariaBase7);
-        valorRevestimentoAlvenariaBase7_1 = findViewById(R.id.criarAlvenariaBase7_1);
-        valorRevestimentoAlvenariaBase8 = findViewById(R.id.criarAlvenariaBase8);
-        valorRevestimentoAlvenariaBase8_1 = findViewById(R.id.criarAlvenariaBase8_1);
-        valorRevestimentoAlvenariaBase9 = findViewById(R.id.criarAlvenariaBase9);
-        valorRevestimentoAlvenariaBase9_1 = findViewById(R.id.criarAlvenariaBase9_1);
-        valorRevestimentoAlvenariaBase10 = findViewById(R.id.criarAlvenariaBase10);
-        valorRevestimentoAlvenariaBase10_1 = findViewById(R.id.criarAlvenariaBase10_1);
-        valorRevestimentoAlvenariaBase11 = findViewById(R.id.criarAlvenariaBase11);
-        valorRevestimentoAlvenariaBase11_1 = findViewById(R.id.criarAlvenariaBase11_1);
-
-        valorRevestimentoContraPiso1 = findViewById(R.id.criarContraPiso);
-        valorRevestimentoContraPiso1_1 = findViewById(R.id.criarContraPiso1);
-        valorRevestimentoContraPiso2 = findViewById(R.id.criarContraPiso2);
-        valorRevestimentoContraPiso2_1 = findViewById(R.id.criarContraPiso2_1);
-        valorRevestimentoContraPiso3 = findViewById(R.id.criarContraPiso3);
-        valorRevestimentoContraPiso3_1 = findViewById(R.id.criarContraPiso3_2);
-        valorRevestimentoContraPiso4 = findViewById(R.id.criarContraPiso4);
-        valorRevestimentoContraPiso4_1 = findViewById(R.id.criarContraPiso4_1);
-        valorRevestimentoContraPiso5 = findViewById(R.id.criarContraPiso5);
-        valorRevestimentoContraPiso5_1 = findViewById(R.id.criarContraPiso5_1);
-        valorRevestimentoContraPiso6 = findViewById(R.id.criarContraPiso6);
-        valorRevestimentoContraPiso6_1 = findViewById(R.id.criarContraPiso6_1);
-        valorRevestimentoContraPiso7 = findViewById(R.id.criarContraPiso7);
-        valorRevestimentoContraPiso7_1 = findViewById(R.id.criarContraPiso7_1);
-        valorRevestimentoContraPiso8 = findViewById(R.id.criarContraPiso8);
-        valorRevestimentoContraPiso8_1 = findViewById(R.id.criarContraPiso8_1);
-        valorRevestimentoContraPiso9 = findViewById(R.id.criarContraPiso9);
-        valorRevestimentoContraPiso9_1 = findViewById(R.id.criarContraPiso9_1);
-        valorRevestimentoContraPiso10 = findViewById(R.id.criarContraPiso10);
-        valorRevestimentoContraPiso10_1 = findViewById(R.id.criarContraPiso10_1);
-        valorRevestimentoContraPiso11 = findViewById(R.id.criarContraPiso11);
-        valorRevestimentoContraPiso11_1 = findViewById(R.id.criarContraPiso11_1);
-
-        valorRevestimentoImpermeabilidade1 = findViewById(R.id.aplicarImpermeabilidade);
-        valorRevestimentoImpermeabilidade1_1 = findViewById(R.id.aplicarImpermeabilidade1);
-        valorRevestimentoImpermeabilidade2 = findViewById(R.id.aplicarImpermeabilidade2);
-        valorRevestimentoImpermeabilidade2_1 = findViewById(R.id.aplicarImpermeabilidade2_1);
-        valorRevestimentoImpermeabilidade3 = findViewById(R.id.aplicarImpermeabilidade3);
-        valorRevestimentoImpermeabilidade3_1 = findViewById(R.id.aplicarImpermeabilidade3_1);
-        valorRevestimentoImpermeabilidade4 = findViewById(R.id.aplicarImpermeabilidade4);
-        valorRevestimentoImpermeabilidade4_1 = findViewById(R.id.aplicarImpermeabilidade4_1);
-        valorRevestimentoImpermeabilidade5 = findViewById(R.id.aplicarImpermeabilidade5);
-        valorRevestimentoImpermeabilidade5_1 = findViewById(R.id.aplicarImpermeabilidade5_1);
-        valorRevestimentoImpermeabilidade6 = findViewById(R.id.aplicarImpermeabilidade6);
-        valorRevestimentoImpermeabilidade6_1 = findViewById(R.id.aplicarImpermeabilidade6_1);
-        valorRevestimentoImpermeabilidade7 = findViewById(R.id.aplicarImpermeabilidade7);
-        valorRevestimentoImpermeabilidade7_1 = findViewById(R.id.aplicarImpermeabilidade7_1);
-        valorRevestimentoImpermeabilidade8 = findViewById(R.id.aplicarImpermeabilidade8);
-        valorRevestimentoImpermeabilidade8_1 = findViewById(R.id.aplicarImpermeabilidade8_1);
-        valorRevestimentoImpermeabilidade9 = findViewById(R.id.aplicarImpermeabilidade9);
-        valorRevestimentoImpermeabilidade9_1 = findViewById(R.id.aplicarImpermeabilidade9_1);
-        valorRevestimentoImpermeabilidade10 = findViewById(R.id.aplicarImpermeabilidade10);
-        valorRevestimentoImpermeabilidade10_1 = findViewById(R.id.aplicarImpermeabilidade10_1);
-        valorRevestimentoImpermeabilidade11 = findViewById(R.id.aplicarImpermeabilidade11);
-        valorRevestimentoImpermeabilidade11_1 = findViewById(R.id.aplicarImpermeabilidade11_1);
-
-        valorRevestimentoPorcelanatoAcima1 = findViewById(R.id.porcelanatoMaior);
-        valorRevestimentoPorcelanatoAcima1_1 = findViewById(R.id.porcelanatoMaior1);
-        valorRevestimentoPorcelanatoAcima2 = findViewById(R.id.porcelanatoMaior2);
-        valorRevestimentoPorcelanatoAcima2_1 = findViewById(R.id.porcelanatoMaior2_1);
-        valorRevestimentoPorcelanatoAcima3 = findViewById(R.id.porcelanatoMaior3);
-        valorRevestimentoPorcelanatoAcima3_1 = findViewById(R.id.porcelanatoMaior2_3);
-        valorRevestimentoPorcelanatoAcima4 = findViewById(R.id.porcelanatoMaior4);
-        valorRevestimentoPorcelanatoAcima4_1 = findViewById(R.id.porcelanatoMaior4_1);
-        valorRevestimentoPorcelanatoAcima5 = findViewById(R.id.porcelanatoMaior5);
-        valorRevestimentoPorcelanatoAcima5_1 = findViewById(R.id.porcelanatoMaior5_1);
-        valorRevestimentoPorcelanatoAcima6 = findViewById(R.id.porcelanatoMaior6);
-        valorRevestimentoPorcelanatoAcima6_1 = findViewById(R.id.porcelanatoMaior6_1);
-        valorRevestimentoPorcelanatoAcima7 = findViewById(R.id.porcelanatoMaior7);
-        valorRevestimentoPorcelanatoAcima7_1 = findViewById(R.id.porcelanatoMaior7_1);
-        valorRevestimentoPorcelanatoAcima8 = findViewById(R.id.porcelanatoMaior8);
-        valorRevestimentoPorcelanatoAcima8_1 = findViewById(R.id.porcelanatoMaior8_1);
-        valorRevestimentoPorcelanatoAcima9 = findViewById(R.id.porcelanatoMaior9);
-        valorRevestimentoPorcelanatoAcima9_1 = findViewById(R.id.porcelanatoMaior9_1);
-        valorRevestimentoPorcelanatoAcima10 = findViewById(R.id.porcelanatoMaior10);
-        valorRevestimentoPorcelanatoAcima10_1 = findViewById(R.id.porcelanatoMaior10_1);
-        valorRevestimentoPorcelanatoAcima11 = findViewById(R.id.porcelanatoMaior11);
-        valorRevestimentoPorcelanatoAcima11_1 = findViewById(R.id.porcelanatoMaior11_1);
-
-
-        valorRevestimentoPorcelanatoMenor1 = findViewById(R.id.porcelanatoMenor);
-        valorRevestimentoPorcelanatoMenor1_1 = findViewById(R.id.porcelanatoMenor1);
-        valorRevestimentoPorcelanatoMenor2 = findViewById(R.id.porcelanatoMenor2);
-        valorRevestimentoPorcelanatoMenor2_1 = findViewById(R.id.porcelanatoMenor2_1);
-        valorRevestimentoPorcelanatoMenor3 = findViewById(R.id.porcelanatoMenor3);
-        valorRevestimentoPorcelanatoMenor3_1 = findViewById(R.id.porcelanatoMenor2_3);
-        valorRevestimentoPorcelanatoMenor4 = findViewById(R.id.porcelanatoMenor4);
-        valorRevestimentoPorcelanatoMenor4_1 = findViewById(R.id.porcelanatoMenor4_1);
-        valorRevestimentoPorcelanatoMenor5 = findViewById(R.id.porcelanatoMenor5);
-        valorRevestimentoPorcelanatoMenor5_1 = findViewById(R.id.porcelanatoMenor5_1);
-        valorRevestimentoPorcelanatoMenor6 = findViewById(R.id.porcelanatoMenor6);
-        valorRevestimentoPorcelanatoMenor6_1 = findViewById(R.id.porcelanatoMenor6_1);
-        valorRevestimentoPorcelanatoMenor7 = findViewById(R.id.porcelanatoMenor7);
-        valorRevestimentoPorcelanatoMenor7_1 = findViewById(R.id.porcelanatoMenor7_1);
-        valorRevestimentoPorcelanatoMenor8 = findViewById(R.id.porcelanatoMenor8);
-        valorRevestimentoPorcelanatoMenor8_1 = findViewById(R.id.porcelanatoMenor8_1);
-        valorRevestimentoPorcelanatoMenor9 = findViewById(R.id.porcelanatoMenor9);
-        valorRevestimentoPorcelanatoMenor9_1 = findViewById(R.id.porcelanatoMenor9_1);
-        valorRevestimentoPorcelanatoMenor10 = findViewById(R.id.porcelanatoMenor10);
-        valorRevestimentoPorcelanatoMenor10_1 = findViewById(R.id.porcelanatoMenor10_1);
-        valorRevestimentoPorcelanatoMenor11 = findViewById(R.id.porcelanatoMenor11);
-        valorRevestimentoPorcelanatoMenor11_1 = findViewById(R.id.porcelanatoMenor11_1);
-
-
-        valorRevestimentoPastilhaVidro1 = findViewById(R.id.pastilhaVidro);
-        valorRevestimentoPastilhaVidro1_1 = findViewById(R.id.pastilhaVidro_1);
-        valorRevestimentoPastilhaVidro2 = findViewById(R.id.pastilhaVidro_2);
-        valorRevestimentoPastilhaVidro2_1 = findViewById(R.id.pastilhaVidro_2_1);
-        valorRevestimentoPastilhaVidro3 = findViewById(R.id.pastilhaVidro_3);
-        valorRevestimentoPastilhaVidro3_1 = findViewById(R.id.pastilhaVidro_3_1);
-        valorRevestimentoPastilhaVidro4 = findViewById(R.id.pastilhaVidro_4);
-        valorRevestimentoPastilhaVidro4_1 = findViewById(R.id.pastilhaVidro_4_1);
-        valorRevestimentoPastilhaVidro5 = findViewById(R.id.pastilhaVidro_5);
-        valorRevestimentoPastilhaVidro5_1 = findViewById(R.id.pastilhaVidro_5_1);
-        valorRevestimentoPastilhaVidro6 = findViewById(R.id.pastilhaVidro_6);
-        valorRevestimentoPastilhaVidro6_1 = findViewById(R.id.pastilhaVidro_6_1);
-        valorRevestimentoPastilhaVidro7 = findViewById(R.id.pastilhaVidro_7);
-        valorRevestimentoPastilhaVidro7_1 = findViewById(R.id.pastilhaVidro_7_1);
-        valorRevestimentoPastilhaVidro8 = findViewById(R.id.pastilhaVidro_8);
-        valorRevestimentoPastilhaVidro8_1 = findViewById(R.id.pastilhaVidro_8_1);
-        valorRevestimentoPastilhaVidro9 = findViewById(R.id.pastilhaVidro_9);
-        valorRevestimentoPastilhaVidro9_1 = findViewById(R.id.pastilhaVidro_9_1);
-        valorRevestimentoPastilhaVidro10 = findViewById(R.id.pastilhaVidro_10);
-        valorRevestimentoPastilhaVidro10_1 = findViewById(R.id.pastilhaVidro_10_1);
-        valorRevestimentoPastilhaVidro11 = findViewById(R.id.pastilhaVidro_11);
-        valorRevestimentoPastilhaVidro11_1 = findViewById(R.id.pastilhaVidro_11_1);
-
-        valorRevestimento3D1 = findViewById(R.id.revestimento3D);
-        valorRevestimento3D1_1 = findViewById(R.id.revestimento3D_1);
-        valorRevestimento3D2 = findViewById(R.id.revestimento3D_2);
-        valorRevestimento3D2_1 = findViewById(R.id.revestimento3D_2_1);
-        valorRevestimento3D3 = findViewById(R.id.revestimento3D_3);
-        valorRevestimento3D3_1 = findViewById(R.id.revestimento3D_3_1);
-        valorRevestimento3D4 = findViewById(R.id.revestimento3D_4);
-        valorRevestimento3D4_1 = findViewById(R.id.revestimento3D_4_1);
-        valorRevestimento3D5 = findViewById(R.id.revestimento3D_5);
-        valorRevestimento3D5_1 = findViewById(R.id.revestimento3D_5_1);
-        valorRevestimento3D6 = findViewById(R.id.revestimento3D_6);
-        valorRevestimento3D6_1 = findViewById(R.id.revestimento3D_6_1);
-        valorRevestimento3D7 = findViewById(R.id.revestimento3D_7);
-        valorRevestimento3D7_1 = findViewById(R.id.revestimento3D_7_1);
-        valorRevestimento3D8 = findViewById(R.id.revestimento3D_8);
-        valorRevestimento3D8_1 = findViewById(R.id.revestimento3D_8_1);
-        valorRevestimento3D9 = findViewById(R.id.revestimento3D_9);
-        valorRevestimento3D9_1 = findViewById(R.id.revestimento3D_9_1);
-        valorRevestimento3D10 = findViewById(R.id.revestimento3D_10);
-        valorRevestimento3D10_1 = findViewById(R.id.revestimento3D_10_1);
-        valorRevestimento3D11 = findViewById(R.id.revestimento3D_11);
-        valorRevestimento3D11_1 = findViewById(R.id.revestimento3D_11_1);
-
-
-        //Valores Pintura
-
-        valorPinturaPorta1 = findViewById(R.id.pinturaPorta);
-        valorPinturaPorta1_1 = findViewById(R.id.pinturaPorta1);
-        valorPinturaPorta2 = findViewById(R.id.pinturaPorta2);
-        valorPinturaPorta2_1 = findViewById(R.id.pinturaPorta2_1);
-        valorPinturaPorta3 = findViewById(R.id.pinturaPorta3);
-        valorPinturaPorta3_1 = findViewById(R.id.pinturaPorta3_1);
-        valorPinturaPorta4 = findViewById(R.id.pinturaPorta4);
-        valorPinturaPorta4_1 = findViewById(R.id.pinturaPorta4_1);
-        valorPinturaPorta5 = findViewById(R.id.pinturaPorta5);
-        valorPinturaPorta5_1 = findViewById(R.id.pinturaPorta5_1);
-        valorPinturaPorta6 = findViewById(R.id.pinturaPorta6);
-        valorPinturaPorta6_1 = findViewById(R.id.pinturaPorta6_1);
-        valorPinturaPorta7 = findViewById(R.id.pinturaPorta7);
-        valorPinturaPorta7_1 = findViewById(R.id.pinturaPorta7_1);
-        valorPinturaPorta8 = findViewById(R.id.pinturaPorta8);
-        valorPinturaPorta8_1 = findViewById(R.id.pinturaPorta8_1);
-        valorPinturaPorta9 = findViewById(R.id.pinturaPorta9);
-        valorPinturaPorta9_1 = findViewById(R.id.pinturaPorta9_1);
-        valorPinturaPorta10 = findViewById(R.id.pinturaPorta10);
-        valorPinturaPorta10_1 = findViewById(R.id.pinturaPorta10_1);
-        valorPinturaPorta11 = findViewById(R.id.pinturaPorta11);
-        valorPinturaPorta11_1 = findViewById(R.id.pinturaPorta11_1);
-
-        valorPinturaJanela1 = findViewById(R.id.pinturaJanela);
-        valorPinturaJanela1_1 = findViewById(R.id.pinturaJanela1);
-        valorPinturaJanela2 = findViewById(R.id.pinturaJanela2);
-        valorPinturaJanela2_1 = findViewById(R.id.pinturaJanela2_1);
-        valorPinturaJanela3 = findViewById(R.id.pinturaJanela3);
-        valorPinturaJanela3_1 = findViewById(R.id.pinturaJanela3_2);
-        valorPinturaJanela4 = findViewById(R.id.pinturaJanela4);
-        valorPinturaJanela4_1 = findViewById(R.id.pinturaJanela4_1);
-        valorPinturaJanela5 = findViewById(R.id.pinturaJanela5);
-        valorPinturaJanela5_1 = findViewById(R.id.pinturaJanela5_1);
-        valorPinturaJanela6 = findViewById(R.id.pinturaJanela6);
-        valorPinturaJanela6_1 = findViewById(R.id.pinturaJanela6_1);
-        valorPinturaJanela7 = findViewById(R.id.pinturaJanela7);
-        valorPinturaJanela7_1 = findViewById(R.id.pinturaJanela7_1);
-        valorPinturaJanela8 = findViewById(R.id.pinturaJanela8);
-        valorPinturaJanela8_1 = findViewById(R.id.pinturaJanela8_1);
-        valorPinturaJanela9 = findViewById(R.id.pinturaJanela9);
-        valorPinturaJanela9_1 = findViewById(R.id.pinturaJanela9_1);
-        valorPinturaJanela10 = findViewById(R.id.pinturaJanela10);
-        valorPinturaJanela10_1 = findViewById(R.id.pinturaJanela10_1);
-        valorPinturaJanela11 = findViewById(R.id.pinturaJanela11);
-        valorPinturaJanela11_1 = findViewById(R.id.pinturaJanela11_1);
-
-
-        valorPinturaEfeitoDecorativo1 = findViewById(R.id.pinturaEfeitoDecorativo);
-        valorPinturaEfeitoDecorativo1_1 = findViewById(R.id.pinturaEfeitoDecorativo1);
-        valorPinturaEfeitoDecorativo2 = findViewById(R.id.pinturaEfeitoDecorativo2);
-        valorPinturaEfeitoDecorativo2_1 = findViewById(R.id.pinturaEfeitoDecorativo2_1);
-        valorPinturaEfeitoDecorativo3 = findViewById(R.id.pinturaEfeitoDecorativo3);
-        valorPinturaEfeitoDecorativo3_1 = findViewById(R.id.pinturaEfeitoDecorativo3_1);
-        valorPinturaEfeitoDecorativo4 = findViewById(R.id.pinturaEfeitoDecorativo4);
-        valorPinturaEfeitoDecorativo4_1 = findViewById(R.id.pinturaEfeitoDecorativo4_1);
-        valorPinturaEfeitoDecorativo5 = findViewById(R.id.pinturaEfeitoDecorativo5);
-        valorPinturaEfeitoDecorativo5_1 = findViewById(R.id.pinturaEfeitoDecorativo5_1);
-        valorPinturaEfeitoDecorativo6 = findViewById(R.id.pinturaEfeitoDecorativo6);
-        valorPinturaEfeitoDecorativo6_1 = findViewById(R.id.pinturaEfeitoDecorativo6_1);
-        valorPinturaEfeitoDecorativo7 = findViewById(R.id.pinturaEfeitoDecorativo7);
-        valorPinturaEfeitoDecorativo7_1 = findViewById(R.id.pinturaEfeitoDecorativo7_1);
-        valorPinturaEfeitoDecorativo8 = findViewById(R.id.pinturaEfeitoDecorativo8);
-        valorPinturaEfeitoDecorativo8_1 = findViewById(R.id.pinturaEfeitoDecorativo8_1);
-        valorPinturaEfeitoDecorativo9 = findViewById(R.id.pinturaEfeitoDecorativo9);
-        valorPinturaEfeitoDecorativo9_1 = findViewById(R.id.pinturaEfeitoDecorativo9_1);
-        valorPinturaEfeitoDecorativo10 = findViewById(R.id.pinturaEfeitoDecorativo10);
-        valorPinturaEfeitoDecorativo10_1 = findViewById(R.id.pinturaEfeitoDecorativo10_1);
-        valorPinturaEfeitoDecorativo11 = findViewById(R.id.pinturaEfeitoDecorativo11);
-        valorPinturaEfeitoDecorativo11_1 = findViewById(R.id.pinturaEfeitoDecorativo11_1);
-
-        valorPinturaReparoGesso1 = findViewById(R.id.pinturaReparoGesso);
-        valorPinturaReparoGesso1_1 = findViewById(R.id.pinturaReparoGesso1);
-        valorPinturaReparoGesso2 = findViewById(R.id.pinturaReparoGesso2);
-        valorPinturaReparoGesso2_1 = findViewById(R.id.pinturaReparoGesso2_1);
-        valorPinturaReparoGesso3 = findViewById(R.id.pinturaReparoGesso3);
-        valorPinturaReparoGesso3_1 = findViewById(R.id.pinturaReparoGesso2_3);
-        valorPinturaReparoGesso4 = findViewById(R.id.pinturaReparoGesso4);
-        valorPinturaReparoGesso4_1 = findViewById(R.id.pinturaReparoGesso4_1);
-        valorPinturaReparoGesso5 = findViewById(R.id.pinturaReparoGesso5);
-        valorPinturaReparoGesso5_1 = findViewById(R.id.pinturaReparoGesso5_1);
-        valorPinturaReparoGesso6 = findViewById(R.id.pinturaReparoGesso6);
-        valorPinturaReparoGesso6_1 = findViewById(R.id.pinturaReparoGesso6_1);
-        valorPinturaReparoGesso7 = findViewById(R.id.pinturaReparoGesso7);
-        valorPinturaReparoGesso7_1 = findViewById(R.id.pinturaReparoGesso7_1);
-        valorPinturaReparoGesso8 = findViewById(R.id.pinturaReparoGesso8);
-        valorPinturaReparoGesso8_1 = findViewById(R.id.pinturaReparoGesso8_1);
-        valorPinturaReparoGesso9 = findViewById(R.id.pinturaReparoGesso9);
-        valorPinturaReparoGesso9_1 = findViewById(R.id.pinturaReparoGesso9_1);
-        valorPinturaReparoGesso10 = findViewById(R.id.pinturaReparoGesso10);
-        valorPinturaReparoGesso10_1 = findViewById(R.id.pinturaReparoGesso10_1);
-        valorPinturaReparoGesso11 = findViewById(R.id.pinturaReparoGesso11);
-        valorPinturaReparoGesso11_1 = findViewById(R.id.pinturaReparoGesso11_1);
-
-
-
-
-        //Pintura Apartamento
-        valorPinturaApartamento1 = findViewById(R.id.pinturaApartamento1);
-        valorPinturaApartamento1_1 = findViewById(R.id.pinturaApartamento1_1);
-        //Hidraulica
-
-        valorHidraulicaTorneiraEletrica1 = findViewById(R.id.torneiraEletrica);
-        valorHidraulicaTorneiraEletrica1_1 = findViewById(R.id.torneiraEletrica1);
-        valorHidraulicaTorneiraEletrica2 = findViewById(R.id.torneiraEletrica2);
-        valorHidraulicaTorneiraEletrica2_1 = findViewById(R.id.torneiraEletrica2_1);
-        valorHidraulicaTorneiraEletrica3 = findViewById(R.id.torneiraEletrica3);
-        valorHidraulicaTorneiraEletrica3_1 = findViewById(R.id.torneiraEletrica3_1);
-        valorHidraulicaTorneiraEletrica4 = findViewById(R.id.torneiraEletrica4);
-        valorHidraulicaTorneiraEletrica4_1 = findViewById(R.id.torneiraEletrica4_1);
-        valorHidraulicaTorneiraEletrica5 = findViewById(R.id.torneiraEletrica5);
-        valorHidraulicaTorneiraEletrica5_1 = findViewById(R.id.torneiraEletrica5_1);
-        valorHidraulicaTorneiraEletrica6 = findViewById(R.id.torneiraEletrica6);
-        valorHidraulicaTorneiraEletrica6_1 = findViewById(R.id.torneiraEletrica6_1);
-        valorHidraulicaTorneiraEletrica7 = findViewById(R.id.torneiraEletrica7);
-        valorHidraulicaTorneiraEletrica7_1 = findViewById(R.id.torneiraEletrica7_1);
-        valorHidraulicaTorneiraEletrica8 = findViewById(R.id.torneiraEletrica8);
-        valorHidraulicaTorneiraEletrica8_1 = findViewById(R.id.torneiraEletrica8_1);
-        valorHidraulicaTorneiraEletrica9 = findViewById(R.id.torneiraEletrica9);
-        valorHidraulicaTorneiraEletrica9_1 = findViewById(R.id.torneiraEletrica9_1);
-        valorHidraulicaTorneiraEletrica10 = findViewById(R.id.torneiraEletrica10);
-        valorHidraulicaTorneiraEletrica10_1 = findViewById(R.id.torneiraEletrica10_1);
-        valorHidraulicaTorneiraEletrica11 = findViewById(R.id.torneiraEletrica11);
-        valorHidraulicaTorneiraEletrica11_1 = findViewById(R.id.torneiraEletrica11_1);
-
-
-        valorHidraulicaTorneiraSimples1 = findViewById(R.id.torneiraSimples);
-        valorHidraulicaTorneiraSimples1_1 = findViewById(R.id.torneiraSimples1);
-        valorHidraulicaTorneiraSimples2 = findViewById(R.id.torneiraSimples2);
-        valorHidraulicaTorneiraSimples2_1 = findViewById(R.id.torneiraSimples2_1);
-        valorHidraulicaTorneiraSimples3 = findViewById(R.id.torneiraSimples3);
-        valorHidraulicaTorneiraSimples3_1 = findViewById(R.id.torneiraSimples3_1);
-        valorHidraulicaTorneiraSimples4 = findViewById(R.id.torneiraSimples4);
-        valorHidraulicaTorneiraSimples4_1 = findViewById(R.id.torneiraSimples4_1);
-        valorHidraulicaTorneiraSimples5 = findViewById(R.id.torneiraSimples5);
-        valorHidraulicaTorneiraSimples5_1 = findViewById(R.id.torneiraSimples5_1);
-        valorHidraulicaTorneiraSimples6 = findViewById(R.id.torneiraSimples6);
-        valorHidraulicaTorneiraSimples6_1 = findViewById(R.id.torneiraSimples6_1);
-        valorHidraulicaTorneiraSimples7 = findViewById(R.id.torneiraSimples7);
-        valorHidraulicaTorneiraSimples7_1 = findViewById(R.id.torneiraSimples7_1);
-        valorHidraulicaTorneiraSimples8 = findViewById(R.id.torneiraSimples8);
-        valorHidraulicaTorneiraSimples8_1 = findViewById(R.id.torneiraSimples8_1);
-        valorHidraulicaTorneiraSimples9 = findViewById(R.id.torneiraSimples9);
-        valorHidraulicaTorneiraSimples9_1 = findViewById(R.id.torneiraSimples9_1);
-        valorHidraulicaTorneiraSimples10 = findViewById(R.id.torneiraSimples10);
-        valorHidraulicaTorneiraSimples10_1 = findViewById(R.id.torneiraSimples10_1);
-        valorHidraulicaTorneiraSimples11 = findViewById(R.id.torneiraSimples11);
-        valorHidraulicaTorneiraSimples11_1 = findViewById(R.id.torneiraSimples11_1);
-
-
-        valorHidraulicaTorneiraMonocomando1 = findViewById(R.id.torneiraMonocomando);
-        valorHidraulicaTorneiraMonocomando1_1 = findViewById(R.id.torneiraMonocomando1);
-        valorHidraulicaTorneiraMonocomando2 = findViewById(R.id.torneiraMonocomando2);
-        valorHidraulicaTorneiraMonocomando2_1 = findViewById(R.id.torneiraMonocomando2_1);
-        valorHidraulicaTorneiraMonocomando3 = findViewById(R.id.torneiraMonocomando3);
-        valorHidraulicaTorneiraMonocomando3_1 = findViewById(R.id.torneiraMonocomando3_2);
-        valorHidraulicaTorneiraMonocomando4 = findViewById(R.id.torneiraMonocomando4);
-        valorHidraulicaTorneiraMonocomando4_1 = findViewById(R.id.torneiraMonocomando4_1);
-        valorHidraulicaTorneiraMonocomando5 = findViewById(R.id.torneiraMonocomando5);
-        valorHidraulicaTorneiraMonocomando5_1 = findViewById(R.id.torneiraMonocomando5_1);
-        valorHidraulicaTorneiraMonocomando6 = findViewById(R.id.torneiraMonocomando6);
-        valorHidraulicaTorneiraMonocomando6_1 = findViewById(R.id.torneiraMonocomando6_1);
-        valorHidraulicaTorneiraMonocomando7 = findViewById(R.id.torneiraMonocomando7);
-        valorHidraulicaTorneiraMonocomando7_1 = findViewById(R.id.torneiraMonocomando7_1);
-        valorHidraulicaTorneiraMonocomando8 = findViewById(R.id.torneiraMonocomando8);
-        valorHidraulicaTorneiraMonocomando8_1 = findViewById(R.id.torneiraMonocomando8_1);
-        valorHidraulicaTorneiraMonocomando9 = findViewById(R.id.torneiraMonocomando9);
-        valorHidraulicaTorneiraMonocomando9_1 = findViewById(R.id.torneiraMonocomando9_1);
-        valorHidraulicaTorneiraMonocomando10 = findViewById(R.id.torneiraMonocomando10);
-        valorHidraulicaTorneiraMonocomando10_1 = findViewById(R.id.torneiraMonocomando10_1);
-        valorHidraulicaTorneiraMonocomando11 = findViewById(R.id.torneiraMonocomando11);
-        valorHidraulicaTorneiraMonocomando11_1 = findViewById(R.id.torneiraMonocomando11_1);
-
-
-        valorHidraulicaValvulaSifao1 = findViewById(R.id.valvulaSifao);
-        valorHidraulicaValvulaSifao1_1 = findViewById(R.id.valvulaSifao1);
-        valorHidraulicaValvulaSifao2 = findViewById(R.id.valvulaSifao2);
-        valorHidraulicaValvulaSifao2_1 = findViewById(R.id.valvulaSifao2_1);
-        valorHidraulicaValvulaSifao3 = findViewById(R.id.valvulaSifao3);
-        valorHidraulicaValvulaSifao3_1 = findViewById(R.id.valvulaSifao2_3);
-        valorHidraulicaValvulaSifao4 = findViewById(R.id.valvulaSifao4);
-        valorHidraulicaValvulaSifao4_1 = findViewById(R.id.valvulaSifao4_1);
-        valorHidraulicaValvulaSifao5 = findViewById(R.id.valvulaSifao5);
-        valorHidraulicaValvulaSifao5_1 = findViewById(R.id.valvulaSifao5_1);
-        valorHidraulicaValvulaSifao6 = findViewById(R.id.valvulaSifao6);
-        valorHidraulicaValvulaSifao6_1 = findViewById(R.id.valvulaSifao6_1);
-        valorHidraulicaValvulaSifao7 = findViewById(R.id.valvulaSifao7);
-        valorHidraulicaValvulaSifao7_1 = findViewById(R.id.valvulaSifao7_1);
-        valorHidraulicaValvulaSifao8 = findViewById(R.id.valvulaSifao8);
-        valorHidraulicaValvulaSifao8_1 = findViewById(R.id.valvulaSifao8_1);
-        valorHidraulicaValvulaSifao9 = findViewById(R.id.valvulaSifao9);
-        valorHidraulicaValvulaSifao9_1 = findViewById(R.id.valvulaSifao9_1);
-        valorHidraulicaValvulaSifao10 = findViewById(R.id.valvulaSifao10);
-        valorHidraulicaValvulaSifao10_1 = findViewById(R.id.valvulaSifao10_1);
-        valorHidraulicaValvulaSifao11 = findViewById(R.id.valvulaSifao11);
-        valorHidraulicaValvulaSifao11_1 = findViewById(R.id.valvulaSifao11_1);
-
-
-        valorHidraulicaRegistroAcabamento1 = findViewById(R.id.registrosAcabamento);
-        valorHidraulicaRegistroAcabamento1_1 = findViewById(R.id.registrosAcabamento1);
-        valorHidraulicaRegistroAcabamento2 = findViewById(R.id.registrosAcabamento2);
-        valorHidraulicaRegistroAcabamento2_1 = findViewById(R.id.registrosAcabamento2_1);
-        valorHidraulicaRegistroAcabamento3 = findViewById(R.id.registrosAcabamento3);
-        valorHidraulicaRegistroAcabamento3_1 = findViewById(R.id.registrosAcabamento2_3);
-        valorHidraulicaRegistroAcabamento4 = findViewById(R.id.registrosAcabamento4);
-        valorHidraulicaRegistroAcabamento4_1 = findViewById(R.id.registrosAcabamento4_1);
-        valorHidraulicaRegistroAcabamento5 = findViewById(R.id.registrosAcabamento5);
-        valorHidraulicaRegistroAcabamento5_1 = findViewById(R.id.registrosAcabamento5_1);
-        valorHidraulicaRegistroAcabamento6 = findViewById(R.id.registrosAcabamento6);
-        valorHidraulicaRegistroAcabamento6_1 = findViewById(R.id.registrosAcabamento6_1);
-        valorHidraulicaRegistroAcabamento7 = findViewById(R.id.registrosAcabamento7);
-        valorHidraulicaRegistroAcabamento7_1 = findViewById(R.id.registrosAcabamento7_1);
-        valorHidraulicaRegistroAcabamento8 = findViewById(R.id.registrosAcabamento8);
-        valorHidraulicaRegistroAcabamento8_1 = findViewById(R.id.registrosAcabamento8_1);
-        valorHidraulicaRegistroAcabamento9 = findViewById(R.id.registrosAcabamento9);
-        valorHidraulicaRegistroAcabamento9_1 = findViewById(R.id.registrosAcabamento9_1);
-        valorHidraulicaRegistroAcabamento10 = findViewById(R.id.registrosAcabamento10);
-        valorHidraulicaRegistroAcabamento10_1 = findViewById(R.id.registrosAcabamento10_1);
-        valorHidraulicaRegistroAcabamento11 = findViewById(R.id.registrosAcabamento11);
-        valorHidraulicaRegistroAcabamento11_1 = findViewById(R.id.registrosAcabamento11_1);
-
-
-        valorHidraulicaCriacaoAgua1 = findViewById(R.id.criacaoPontoAgua);
-        valorHidraulicaCriacaoAgua1_1 = findViewById(R.id.criacaoPontoAgua_1);
-        valorHidraulicaCriacaoAgua2 = findViewById(R.id.criacaoPontoAgua_2);
-        valorHidraulicaCriacaoAgua2_1 = findViewById(R.id.criacaoPontoAgua_2_1);
-        valorHidraulicaCriacaoAgua3 = findViewById(R.id.criacaoPontoAgua_3);
-        valorHidraulicaCriacaoAgua3_1 = findViewById(R.id.criacaoPontoAgua_3_1);
-        valorHidraulicaCriacaoAgua4 = findViewById(R.id.criacaoPontoAgua_4);
-        valorHidraulicaCriacaoAgua4_1 = findViewById(R.id.criacaoPontoAgua_4_1);
-        valorHidraulicaCriacaoAgua5 = findViewById(R.id.criacaoPontoAgua_5);
-        valorHidraulicaCriacaoAgua5_1 = findViewById(R.id.criacaoPontoAgua_5_1);
-        valorHidraulicaCriacaoAgua6 = findViewById(R.id.criacaoPontoAgua_6);
-        valorHidraulicaCriacaoAgua6_1 = findViewById(R.id.criacaoPontoAgua_6_1);
-        valorHidraulicaCriacaoAgua7 = findViewById(R.id.criacaoPontoAgua_7);
-        valorHidraulicaCriacaoAgua7_1 = findViewById(R.id.criacaoPontoAgua_7_1);
-        valorHidraulicaCriacaoAgua8 = findViewById(R.id.criacaoPontoAgua_8);
-        valorHidraulicaCriacaoAgua8_1 = findViewById(R.id.criacaoPontoAgua_8_1);
-        valorHidraulicaCriacaoAgua9 = findViewById(R.id.criacaoPontoAgua_9);
-        valorHidraulicaCriacaoAgua9_1 = findViewById(R.id.criacaoPontoAgua_9_1);
-        valorHidraulicaCriacaoAgua10 = findViewById(R.id.criacaoPontoAgua_10);
-        valorHidraulicaCriacaoAgua10_1 = findViewById(R.id.criacaoPontoAgua_10_1);
-        valorHidraulicaCriacaoAgua11 = findViewById(R.id.criacaoPontoAgua_11);
-        valorHidraulicaCriacaoAgua11_1 = findViewById(R.id.criacaoPontoAgua_11_1);
-
-        valorHidraulicaCriacaoEsgoto1 = findViewById(R.id.criacaoPontoEsgoto);
-        valorHidraulicaCriacaoEsgoto1_1 = findViewById(R.id.criacaoPontoEsgoto_1);
-        valorHidraulicaCriacaoEsgoto2 = findViewById(R.id.criacaoPontoEsgoto_2);
-        valorHidraulicaCriacaoEsgoto2_1 = findViewById(R.id.criacaoPontoEsgoto_2_1);
-        valorHidraulicaCriacaoEsgoto3 = findViewById(R.id.criacaoPontoEsgoto_3);
-        valorHidraulicaCriacaoEsgoto3_1 = findViewById(R.id.criacaoPontoEsgoto_3_1);
-        valorHidraulicaCriacaoEsgoto4 = findViewById(R.id.criacaoPontoEsgoto_4);
-        valorHidraulicaCriacaoEsgoto4_1 = findViewById(R.id.criacaoPontoEsgoto_4_1);
-        valorHidraulicaCriacaoEsgoto5 = findViewById(R.id.criacaoPontoEsgoto_5);
-        valorHidraulicaCriacaoEsgoto5_1 = findViewById(R.id.criacaoPontoEsgoto_5_1);
-        valorHidraulicaCriacaoEsgoto6 = findViewById(R.id.criacaoPontoEsgoto_6);
-        valorHidraulicaCriacaoEsgoto6_1 = findViewById(R.id.criacaoPontoEsgoto_6_1);
-        valorHidraulicaCriacaoEsgoto7 = findViewById(R.id.criacaoPontoEsgoto_7);
-        valorHidraulicaCriacaoEsgoto7_1 = findViewById(R.id.criacaoPontoEsgoto_7_1);
-        valorHidraulicaCriacaoEsgoto8 = findViewById(R.id.criacaoPontoEsgoto_8);
-        valorHidraulicaCriacaoEsgoto8_1 = findViewById(R.id.criacaoPontoEsgoto_8_1);
-        valorHidraulicaCriacaoEsgoto9 = findViewById(R.id.criacaoPontoEsgoto_9);
-        valorHidraulicaCriacaoEsgoto9_1 = findViewById(R.id.criacaoPontoEsgoto_9_1);
-        valorHidraulicaCriacaoEsgoto10 = findViewById(R.id.criacaoPontoEsgoto_10);
-        valorHidraulicaCriacaoEsgoto10_1 = findViewById(R.id.criacaoPontoEsgoto_10_1);
-        valorHidraulicaCriacaoEsgoto11 = findViewById(R.id.criacaoPontoEsgoto_11);
-        valorHidraulicaCriacaoEsgoto11_1 = findViewById(R.id.criacaoPontoEsgoto_11_1);
-
-
-        valorHidraulicaRalo10cm1 = findViewById(R.id.instalacaoRalo10cm);
-        valorHidraulicaRalo10cm1_1 = findViewById(R.id.instalacaoRalo10cm1);
-        valorHidraulicaRalo10cm2 = findViewById(R.id.instalacaoRalo10cm2);
-        valorHidraulicaRalo10cm2_1 = findViewById(R.id.instalacaoRalo10cm2_1);
-        valorHidraulicaRalo10cm3 = findViewById(R.id.instalacaoRalo10cm3);
-        valorHidraulicaRalo10cm3_1 = findViewById(R.id.instalacaoRalo10cm3_1);
-        valorHidraulicaRalo10cm4 = findViewById(R.id.instalacaoRalo10cm4);
-        valorHidraulicaRalo10cm4_1 = findViewById(R.id.instalacaoRalo10cm4_1);
-        valorHidraulicaRalo10cm5 = findViewById(R.id.instalacaoRalo10cm5);
-        valorHidraulicaRalo10cm5_1 = findViewById(R.id.instalacaoRalo10cm5_1);
-        valorHidraulicaRalo10cm6 = findViewById(R.id.instalacaoRalo10cm6);
-        valorHidraulicaRalo10cm6_1 = findViewById(R.id.instalacaoRalo10cm6_1);
-        valorHidraulicaRalo10cm7 = findViewById(R.id.instalacaoRalo10cm7);
-        valorHidraulicaRalo10cm7_1 = findViewById(R.id.instalacaoRalo10cm7_1);
-        valorHidraulicaRalo10cm8 = findViewById(R.id.instalacaoRalo10cm8);
-        valorHidraulicaRalo10cm8_1 = findViewById(R.id.instalacaoRalo10cm8_1);
-        valorHidraulicaRalo10cm9 = findViewById(R.id.instalacaoRalo10cm9);
-        valorHidraulicaRalo10cm9_1 = findViewById(R.id.instalacaoRalo10cm9_1);
-        valorHidraulicaRalo10cm10 = findViewById(R.id.instalacaoRalo10cm10);
-        valorHidraulicaRalo10cm10_1 = findViewById(R.id.instalacaoRalo10cm10_1);
-        valorHidraulicaRalo10cm11 = findViewById(R.id.instalacaoRalo10cm11);
-        valorHidraulicaRalo10cm11_1 = findViewById(R.id.instalacaoRalo10cm11_1);
-
-
-        valorHidraulicaRalo15cm1 = findViewById(R.id.instalacaoRalo15cm);
-        valorHidraulicaRalo15cm1_1 = findViewById(R.id.instalacaoRalo15cm1);
-        valorHidraulicaRalo15cm2 = findViewById(R.id.instalacaoRalo15cm2);
-        valorHidraulicaRalo15cm2_1 = findViewById(R.id.instalacaoRalo15cm2_1);
-        valorHidraulicaRalo15cm3 = findViewById(R.id.instalacaoRalo15cm3);
-        valorHidraulicaRalo15cm3_1 = findViewById(R.id.instalacaoRalo15cm3_1);
-        valorHidraulicaRalo15cm4 = findViewById(R.id.instalacaoRalo15cm4);
-        valorHidraulicaRalo15cm4_1 = findViewById(R.id.instalacaoRalo15cm4_1);
-        valorHidraulicaRalo15cm5 = findViewById(R.id.instalacaoRalo15cm5);
-        valorHidraulicaRalo15cm5_1 = findViewById(R.id.instalacaoRalo15cm5_1);
-        valorHidraulicaRalo15cm6 = findViewById(R.id.instalacaoRalo15cm6);
-        valorHidraulicaRalo15cm6_1 = findViewById(R.id.instalacaoRalo15cm6_1);
-        valorHidraulicaRalo15cm7 = findViewById(R.id.instalacaoRalo15cm7);
-        valorHidraulicaRalo15cm7_1 = findViewById(R.id.instalacaoRalo15cm7_1);
-        valorHidraulicaRalo15cm8 = findViewById(R.id.instalacaoRalo15cm8);
-        valorHidraulicaRalo15cm8_1 = findViewById(R.id.instalacaoRalo15cm8_1);
-        valorHidraulicaRalo15cm9 = findViewById(R.id.instalacaoRalo15cm9);
-        valorHidraulicaRalo15cm9_1 = findViewById(R.id.instalacaoRalo15cm9_1);
-        valorHidraulicaRalo15cm10 = findViewById(R.id.instalacaoRalo15cm10);
-        valorHidraulicaRalo15cm10_1 = findViewById(R.id.instalacaoRalo15cm10_1);
-        valorHidraulicaRalo15cm11 = findViewById(R.id.instalacaoRalo15cm11);
-        valorHidraulicaRalo15cm11_1 = findViewById(R.id.instalacaoRalo15cm11_1);
-
-
-        valorHidraulicaChuveiro2 = findViewById(R.id.chuveiro2);
-        valorHidraulicaChuveiro2_1 = findViewById(R.id.chuveiro2_1);
-        valorHidraulicaChuveiro4 = findViewById(R.id.chuveiro4);
-        valorHidraulicaChuveiro4_1 = findViewById(R.id.chuveiro4_1);
-        valorHidraulicaChuveiro5 = findViewById(R.id.chuveiro4_1);
-
-
-        valorHidraulicaInstalarVasoSanitario2 = findViewById(R.id.instalacaoVasoSanitario2);
-        valorHidraulicaInstalarVasoSanitario2_1 = findViewById(R.id.instalacaoVasoSanitario2_1);
-        valorHidraulicaInstalarVasoSanitario4 = findViewById(R.id.instalacaoVasoSanitario4);
-        valorHidraulicaInstalarVasoSanitario4_1 = findViewById(R.id.instalacaoVasoSanitario4_1);
-        valorHidraulicaInstalarVasoSanitario5 = findViewById(R.id.instalarVaso5);
-        valorHidraulicaInstalarVasoSanitario5_1 = findViewById(R.id.instalarVaso5_1);
-
-
-        valorHidraulicaRaloLinear2 = findViewById(R.id.instalacaoRaloLinear2);
-        valorHidraulicaRaloLinear2_1 = findViewById(R.id.instalacaoRaloLinear2_1);
-        valorHidraulicaRaloLinear4 = findViewById(R.id.instalacaoRaloLinear4);
-        valorHidraulicaRaloLinear4_1 = findViewById(R.id.instalacaoRaloLinear4_1);
-        valorHidraulicaRaloLinear5 = findViewById(R.id.instalarRaloLinear5);
-        valorHidraulicaRaloLinear5_1 = findViewById(R.id.instalarRaloLinear5_1);
+        CastLayout castLayout = new CastLayout();
+        castLayout.casts();
 
 
         btnCam.setOnClickListener(new View.OnClickListener() {
@@ -6917,7 +6025,6 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 if (varRemoverRevestimentoParede9 > 0 || varRemoverRevestimentoParede9_1 > 0) {
-                    Toast.makeText(this, "Faixa 9", Toast.LENGTH_SHORT).show();
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede9.getText().toString()) + Double.parseDouble(valorRevestimentoParede9_1.getText().toString())) + " m² ", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede9_1 + varRemoverRevestimentoParede9)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -7188,7 +6295,6 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
 
                 if (varRemoverRevestimentoParede10 > 0 || varRemoverRevestimentoParede10_1 > 0) {
-                    Toast.makeText(this, "Posicao 10", Toast.LENGTH_SHORT).show();
                     Paragraph removerRevestimentoParede = new Paragraph(0, ">>> Remover Revestimento de Parede: " + (Double.parseDouble(valorRevestimentoParede10.getText().toString()) + Double.parseDouble(valorRevestimentoParede10_1.getText().toString())) + " m² ", boldServicosPrestados);
                     Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varRemoverRevestimentoParede10_1 + varRemoverRevestimentoParede10)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
@@ -10400,7 +9506,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                 {
 
                     Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira elétrica: " + (Double.parseDouble(valorHidraulicaTorneiraEletrica1.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica1_1.getText().toString())) + " m²", boldServicosPrestados);
-                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraEletrica1 + varAdicionarTorneiraEletrica1_1)), boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraEletrica1 + varAdicionarTorneiraEletrica)), boldServicosPrestados);
                     valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
                     removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
                     removerRevestimentoParede.setLeading(0.70f);
@@ -10474,184 +9580,1396 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
                     document.add(tabela);
                 }
                 if (varAdicionarRegistroAcabamento > 0 || varAdicionarRegistroAcabamento1 > 0)
-                    document.add(new Paragraph(">>> Registros e acabamento : " + (Double.parseDouble(valorHidraulicaRegistroAcabamento1_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento1.getText().toString())) + " un ----- " + "    R$" + (varAdicionarRegistroAcabamento + varAdicionarRegistroAcabamento1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Registros e acabamento: " + (Double.parseDouble(valorHidraulicaRegistroAcabamento1_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRegistroAcabamento + varAdicionarRegistroAcabamento1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoAgua > 0 || varAdicionarPontoAgua_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de água : " + (Double.parseDouble(valorHidraulicaCriacaoAgua1.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua1_1.getText().toString())) + " un -----" + "  R$" + (varAdicionarPontoAgua_1 + varAdicionarPontoAgua) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de água: " + (Double.parseDouble(valorHidraulicaCriacaoAgua1.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoAgua_1 + varAdicionarPontoAgua)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoEsgoto > 0 || varAdicionarPontoEsgoto_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de esgoto : " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto1.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto1_1.getText().toString())) + " un ----- " + "    R$" + (varAdicionarPontoEsgoto_1 + varAdicionarPontoEsgoto) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de esgoto: " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto1.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoEsgoto_1 + varAdicionarPontoEsgoto)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRalo10cm > 0 || varAdicionarRalo10cm1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo de 10cm : " + (Double.parseDouble(valorHidraulicaRalo10cm1_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo10cm + varAdicionarRalo10cm1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 10cm: " + (Double.parseDouble(valorHidraulicaRalo10cm1_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo10cm1 + varAdicionarRalo10cm)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRalo15cm > 0 || varAdicionarRalo15cm1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo 15cm : " + (Double.parseDouble(valorHidraulicaRalo15cm1_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo15cm + varAdicionarRalo15cm1) + "0", boldServicosPrestados));
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 15cm: " + (Double.parseDouble(valorHidraulicaRalo15cm1_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo15cm1 + varAdicionarRalo15cm)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
                 if (varAdicionarChuveiro > 0 || varAdicionarChuveiro1 > 0)
-                    document.add(new Paragraph(">>> Chuveiro : " + (Double.parseDouble(valorHidraulicaChuveiro1.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro1_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarChuveiro + varAdicionarChuveiro1) + "0", boldServicosPrestados));
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Chuveiro: " + (Double.parseDouble(valorHidraulicaChuveiro1.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarChuveiro + varAdicionarChuveiro1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
                 if (varAdicionarRaloLinear > 0 || varAdicionarRaloLinear1 > 0)
-                    document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear1.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear1_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear + varAdicionarRaloLinear1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação de ralo linear: " + (Double.parseDouble(valorHidraulicaRaloLinear1.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear1_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRaloLinear + varAdicionarRaloLinear1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarVasoSanitario > 0 || varAdicionarVasoSanitario1 > 0)
-                    document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario1.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario1_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario + varAdicionarVasoSanitario1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalar Vaso Sanitário: " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario1.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarVasoSanitario + varAdicionarVasoSanitario1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
             if (valorTotalHidraulicaBanheiroSocial > 0) {
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
 
-                tableCozinha.addCell(paragrafoHidraulicaBanheiro);
+                PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+                tableCozinha.setWidthPercentage(100);
+                PdfPCell cellCozinha2 = new PdfPCell();
+                PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                cellCozinha2.addElement(paragrafoHidraulicaBanheiro);
+                cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+                tableCozinha.addCell(cellCozinha2);
+
                 document.add(tableCozinha);
+
                 if (varAdicionarTorneiraEletrica2 > 0 || varAdicionarTorneiraEletrica2_1 > 0)
-                    document.add(new Paragraph(">>> Torneira elétrica :" + (Double.parseDouble(valorHidraulicaTorneiraEletrica2.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica2_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraEletrica2_1 + varAdicionarTorneiraEletrica2) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraMonocomando > 0 || varAdicionarTorneiraMonocomando2_1 > 0)
-                    document.add(new Paragraph(">>> Torneira monocomando : " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando2.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando2_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraMonocomando2 + varAdicionarTorneiraMonocomando2_1) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraSimples2 > 0 || varAdicionarTorneiraSimples2_1 > 0)
-                    document.add(new Paragraph(">>> Torneira simples : " + (Double.parseDouble(valorHidraulicaTorneiraSimples2.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples2_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraSimples2_1 + varAdicionarTorneiraSimples2) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira elétrica: " + (Double.parseDouble(valorHidraulicaTorneiraEletrica2.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraEletrica2 + varAdicionarTorneiraEletrica2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarTorneiraMonocomando2 > 0 || varAdicionarTorneiraMonocomando2_1 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira monocomando: " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando2.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraMonocomando2_1 + varAdicionarTorneiraMonocomando2)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+
+                if (varAdicionarTorneiraSimples2_1 > 0 || varAdicionarTorneiraSimples2 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira Simples: " + (Double.parseDouble(valorHidraulicaTorneiraSimples2.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraSimples2 + varAdicionarTorneiraSimples2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarValvulaSifao2 > 0 || varAdicionarValvulaSifao2_1 > 0)
-                    document.add(new Paragraph(">>> Válvula e sifão simples : " + (Double.parseDouble(valorHidraulicaValvulaSifao2_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao2.getText().toString())) + " un ----- " + "R$" + (varAdicionarValvulaSifao2 + varAdicionarValvulaSifao2_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Válvula e Sifão simples: " + (Double.parseDouble(valorHidraulicaValvulaSifao2_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao2.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarValvulaSifao2 + varAdicionarValvulaSifao2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRegistroAcabamento2 > 0 || varAdicionarRegistroAcabamento2_1 > 0)
-                    document.add(new Paragraph(">>> Registros e acabamento : " + (Double.parseDouble(valorHidraulicaRegistroAcabamento2_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento2.getText().toString())) + " un ----- " + "    R$" + (varAdicionarRegistroAcabamento2 + varAdicionarRegistroAcabamento2_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Registros e acabamento: " + (Double.parseDouble(valorHidraulicaRegistroAcabamento2_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento2.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRegistroAcabamento2_1 + varAdicionarRegistroAcabamento2)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoAgua_2 > 0 || varAdicionarPontoAgua_2_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de água : " + (Double.parseDouble(valorHidraulicaCriacaoAgua2.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua2_1.getText().toString())) + " un -----" + "  R$" + (varAdicionarPontoAgua_2_1 + varAdicionarPontoAgua_2) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de água: " + (Double.parseDouble(valorHidraulicaCriacaoAgua2.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoAgua_2 + varAdicionarPontoAgua_2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoEsgoto_2 > 0 || varAdicionarPontoEsgoto_2_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de esgoto : " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto2.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto2_1.getText().toString())) + " un ----- " + "    R$" + (varAdicionarPontoEsgoto_2_1 + varAdicionarPontoEsgoto_2) + "0", boldServicosPrestados));
-                if (varAdicionarRalo10cm2 > 0 || varAdicionarRalo10cm2_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo de 10cm : " + (Double.parseDouble(valorHidraulicaRalo10cm2_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm2.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo10cm2 + varAdicionarRalo10cm2_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de esgoto: " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto2.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoEsgoto_2 + varAdicionarPontoEsgoto_2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarRalo10cm2_1 > 0 || varAdicionarRalo10cm2 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 10cm: " + (Double.parseDouble(valorHidraulicaRalo10cm2_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm2.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo10cm2 + varAdicionarRalo10cm2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRalo15cm2 > 0 || varAdicionarRalo15cm2_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo 15cm : " + (Double.parseDouble(valorHidraulicaRalo15cm2_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm2.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo15cm2 + varAdicionarRalo15cm2_1) + "0", boldServicosPrestados));
-                if (varAdicionarChuveiro2 > 0 || varAdicionarChuveiro2_1 > 0)
-                    document.add(new Paragraph(">>> Chuveiro : " + (Double.parseDouble(valorHidraulicaChuveiro2.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro2_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarChuveiro2_1 + varAdicionarChuveiro2) + "0", boldServicosPrestados));
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 15cm: " + (Double.parseDouble(valorHidraulicaRalo15cm2_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm2.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo15cm2 + varAdicionarRalo15cm2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
+                if (varAdicionarChuveiro2_1 > 0 || varAdicionarChuveiro2 > 0)
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Chuveiro: " + (Double.parseDouble(valorHidraulicaChuveiro2.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarChuveiro2_1 + varAdicionarChuveiro2)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
                 if (varAdicionarRaloLinear2 > 0 || varAdicionarRaloLinear2_1 > 0)
-                    document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear2.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear2_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear2_1 + varAdicionarRaloLinear2) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação de ralo linear: " + (Double.parseDouble(valorHidraulicaRaloLinear2.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRaloLinear2 + varAdicionarRaloLinear2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarVasoSanitario2 > 0 || varAdicionarVasoSanitario2_1 > 0)
-                    document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario2.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario2_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario2_1 + varAdicionarVasoSanitario2) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalar Vaso Sanitário: " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario2.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario2_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarVasoSanitario2 + varAdicionarVasoSanitario2_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
             if (valorTotalHidraulicaAreaServico > 0) {
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
 
-                tableCozinha.addCell(paragrafoHidraulicaAreaServico);
+                PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+                tableCozinha.setWidthPercentage(100);
+                PdfPCell cellCozinha2 = new PdfPCell();
+                PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                cellCozinha2.addElement(paragrafoHidraulicaAreaServico);
+                cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+                tableCozinha.addCell(cellCozinha2);
+
                 document.add(tableCozinha);
+
                 if (varAdicionarTorneiraEletrica3 > 0 || varAdicionarTorneiraEletrica3_1 > 0)
-                    document.add(new Paragraph(">>> Torneira elétrica :" + (Double.parseDouble(valorHidraulicaTorneiraEletrica3.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica3_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraEletrica3_1 + varAdicionarTorneiraEletrica3) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraMonocomando > 0 || varAdicionarTorneiraMonocomando3_1 > 0)
-                    document.add(new Paragraph(">>> Torneira monocomando : " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando3.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando3_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraMonocomando3 + varAdicionarTorneiraMonocomando3_1) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraSimples3 > 0 || varAdicionarTorneiraSimples3_1 > 0)
-                    document.add(new Paragraph(">>> Torneira simples : " + (Double.parseDouble(valorHidraulicaTorneiraSimples3.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples3_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraSimples3_1 + varAdicionarTorneiraSimples3) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira elétrica: " + (Double.parseDouble(valorHidraulicaTorneiraEletrica3.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraEletrica3 + varAdicionarTorneiraEletrica3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarTorneiraMonocomando3 > 0 || varAdicionarTorneiraMonocomando3_1 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira monocomando: " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando3.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraMonocomando3_1 + varAdicionarTorneiraMonocomando3)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+
+                if (varAdicionarTorneiraSimples3_1 > 0 || varAdicionarTorneiraSimples3 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira Simples: " + (Double.parseDouble(valorHidraulicaTorneiraSimples3.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraSimples3 + varAdicionarTorneiraSimples3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarValvulaSifao3 > 0 || varAdicionarValvulaSifao3_1 > 0)
-                    document.add(new Paragraph(">>> Válvula e sifão simples : " + (Double.parseDouble(valorHidraulicaValvulaSifao3_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao3.getText().toString())) + " un ----- " + "R$" + (varAdicionarValvulaSifao3 + varAdicionarValvulaSifao3_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Válvula e Sifão simples: " + (Double.parseDouble(valorHidraulicaValvulaSifao3_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao3.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarValvulaSifao3 + varAdicionarValvulaSifao3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRegistroAcabamento3 > 0 || varAdicionarRegistroAcabamento3_1 > 0)
-                    document.add(new Paragraph(">>> Registros e acabamento : " + (Double.parseDouble(valorHidraulicaRegistroAcabamento3_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento3.getText().toString())) + " un ----- " + "    R$" + (varAdicionarRegistroAcabamento3 + varAdicionarRegistroAcabamento3_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Registros e acabamento: " + (Double.parseDouble(valorHidraulicaRegistroAcabamento3_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento3.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRegistroAcabamento3_1 + varAdicionarRegistroAcabamento3)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoAgua_3 > 0 || varAdicionarPontoAgua_3_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de água : " + (Double.parseDouble(valorHidraulicaCriacaoAgua3.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua3_1.getText().toString())) + " un -----" + "  R$" + (varAdicionarPontoAgua_3_1 + varAdicionarPontoAgua_3) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de água: " + (Double.parseDouble(valorHidraulicaCriacaoAgua3.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoAgua_3 + varAdicionarPontoAgua_3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoEsgoto_3 > 0 || varAdicionarPontoEsgoto_3_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de esgoto : " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto3.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto3_1.getText().toString())) + " un ----- " + "    R$" + (varAdicionarPontoEsgoto_3_1 + varAdicionarPontoEsgoto_3) + "0", boldServicosPrestados));
-                if (varAdicionarRalo10cm3 > 0 || varAdicionarRalo10cm3_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo de 10cm : " + (Double.parseDouble(valorHidraulicaRalo10cm3_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm3.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo10cm3 + varAdicionarRalo10cm3_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de esgoto: " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto3.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoEsgoto_3 + varAdicionarPontoEsgoto_3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarRalo10cm3_1 > 0 || varAdicionarRalo10cm3 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 10cm: " + (Double.parseDouble(valorHidraulicaRalo10cm3_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm3.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo10cm3 + varAdicionarRalo10cm3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRalo15cm3 > 0 || varAdicionarRalo15cm3_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo 15cm : " + (Double.parseDouble(valorHidraulicaRalo15cm3_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm3.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo15cm3 + varAdicionarRalo15cm3_1) + "0", boldServicosPrestados));
-                if (varAdicionarChuveiro3 > 0 || varAdicionarChuveiro3_1 > 0)
-                    document.add(new Paragraph(">>> Chuveiro : " + (Double.parseDouble(valorHidraulicaChuveiro3.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro3_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarChuveiro3_1 + varAdicionarChuveiro3) + "0", boldServicosPrestados));
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 15cm: " + (Double.parseDouble(valorHidraulicaRalo15cm3_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm3.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo15cm3 + varAdicionarRalo15cm3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
+                if (varAdicionarChuveiro3_1 > 0 || varAdicionarChuveiro3 > 0)
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Chuveiro: " + (Double.parseDouble(valorHidraulicaChuveiro3.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarChuveiro3_1 + varAdicionarChuveiro3)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
                 if (varAdicionarRaloLinear3 > 0 || varAdicionarRaloLinear3_1 > 0)
-                    document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear3.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear3_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear3_1 + varAdicionarRaloLinear3) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação de ralo linear: " + (Double.parseDouble(valorHidraulicaRaloLinear3.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRaloLinear3 + varAdicionarRaloLinear3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarVasoSanitario3 > 0 || varAdicionarVasoSanitario3_1 > 0)
-                    document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario3.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario3_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario3_1 + varAdicionarVasoSanitario3) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalar Vaso Sanitário: " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario3.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario3_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarVasoSanitario3 + varAdicionarVasoSanitario3_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
             if (valorTotalHidraulicaBanheiroSuite > 0) {
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
 
-                tableCozinha.addCell(paragrafoHidraulicaBanheiro2);
+                PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+                tableCozinha.setWidthPercentage(100);
+                PdfPCell cellCozinha2 = new PdfPCell();
+                PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                cellCozinha2.addElement(paragrafoHidraulicaBanheiro2);
+                cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+                tableCozinha.addCell(cellCozinha2);
+
                 document.add(tableCozinha);
+
                 if (varAdicionarTorneiraEletrica4 > 0 || varAdicionarTorneiraEletrica4_1 > 0)
-                    document.add(new Paragraph(">>> Torneira elétrica :" + (Double.parseDouble(valorHidraulicaTorneiraEletrica4.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica4_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraEletrica4_1 + varAdicionarTorneiraEletrica4) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraMonocomando > 0 || varAdicionarTorneiraMonocomando4_1 > 0)
-                    document.add(new Paragraph(">>> Torneira monocomando : " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando4.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando4_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraMonocomando4 + varAdicionarTorneiraMonocomando4_1) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraSimples4 > 0 || varAdicionarTorneiraSimples4_1 > 0)
-                    document.add(new Paragraph(">>> Torneira simples : " + (Double.parseDouble(valorHidraulicaTorneiraSimples4.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples4_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraSimples4_1 + varAdicionarTorneiraSimples4) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira elétrica: " + (Double.parseDouble(valorHidraulicaTorneiraEletrica4.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica4_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraEletrica4 + varAdicionarTorneiraEletrica4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarTorneiraMonocomando4 > 0 || varAdicionarTorneiraMonocomando4_1 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira monocomando: " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando4.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando4_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraMonocomando4_1 + varAdicionarTorneiraMonocomando4)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+
+                if (varAdicionarTorneiraSimples4_1 > 0 || varAdicionarTorneiraSimples4 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira Simples: " + (Double.parseDouble(valorHidraulicaTorneiraSimples4.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples4_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraSimples4 + varAdicionarTorneiraSimples4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarValvulaSifao4 > 0 || varAdicionarValvulaSifao4_1 > 0)
-                    document.add(new Paragraph(">>> Válvula e sifão simples : " + (Double.parseDouble(valorHidraulicaValvulaSifao4_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao4.getText().toString())) + " un ----- " + "R$" + (varAdicionarValvulaSifao4 + varAdicionarValvulaSifao4_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Válvula e Sifão simples: " + (Double.parseDouble(valorHidraulicaValvulaSifao4_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao4.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarValvulaSifao4 + varAdicionarValvulaSifao4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRegistroAcabamento4 > 0 || varAdicionarRegistroAcabamento4_1 > 0)
-                    document.add(new Paragraph(">>> Registros e acabamento : " + (Double.parseDouble(valorHidraulicaRegistroAcabamento4_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento4.getText().toString())) + " un ----- " + "    R$" + (varAdicionarRegistroAcabamento4 + varAdicionarRegistroAcabamento4_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Registros e acabamento: " + (Double.parseDouble(valorHidraulicaRegistroAcabamento4_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento4.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRegistroAcabamento4_1 + varAdicionarRegistroAcabamento4)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoAgua_4 > 0 || varAdicionarPontoAgua_4_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de água : " + (Double.parseDouble(valorHidraulicaCriacaoAgua4.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua4_1.getText().toString())) + " un -----" + "  R$" + (varAdicionarPontoAgua_4_1 + varAdicionarPontoAgua_4) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de água: " + (Double.parseDouble(valorHidraulicaCriacaoAgua4.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua4_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoAgua_4 + varAdicionarPontoAgua_4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoEsgoto_4 > 0 || varAdicionarPontoEsgoto_4_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de esgoto : " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto4.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto4_1.getText().toString())) + " un ----- " + "    R$" + (varAdicionarPontoEsgoto_4_1 + varAdicionarPontoEsgoto_4) + "0", boldServicosPrestados));
-                if (varAdicionarRalo10cm4 > 0 || varAdicionarRalo10cm4_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo de 10cm : " + (Double.parseDouble(valorHidraulicaRalo10cm4_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm4.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo10cm4 + varAdicionarRalo10cm4_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de esgoto: " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto4.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto4_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoEsgoto_4 + varAdicionarPontoEsgoto_4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarRalo10cm4_1 > 0 || varAdicionarRalo10cm4 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 10cm: " + (Double.parseDouble(valorHidraulicaRalo10cm4_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm4.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo10cm4 + varAdicionarRalo10cm4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRalo15cm4 > 0 || varAdicionarRalo15cm4_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo 15cm : " + (Double.parseDouble(valorHidraulicaRalo15cm4_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm4.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo15cm4 + varAdicionarRalo15cm4_1) + "0", boldServicosPrestados));
-                if (varAdicionarChuveiro4 > 0 || varAdicionarChuveiro4_1 > 0)
-                    document.add(new Paragraph(">>> Chuveiro : " + (Double.parseDouble(valorHidraulicaChuveiro4.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro4_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarChuveiro4_1 + varAdicionarChuveiro4) + "0", boldServicosPrestados));
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 15cm: " + (Double.parseDouble(valorHidraulicaRalo15cm4_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm4.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo15cm4 + varAdicionarRalo15cm4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
+                if (varAdicionarChuveiro4_1 > 0 || varAdicionarChuveiro4 > 0)
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Chuveiro: " + (Double.parseDouble(valorHidraulicaChuveiro4.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro4_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarChuveiro4_1 + varAdicionarChuveiro4)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
                 if (varAdicionarRaloLinear4 > 0 || varAdicionarRaloLinear4_1 > 0)
-                    document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear4.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear4_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear4_1 + varAdicionarRaloLinear4) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação de ralo linear: " + (Double.parseDouble(valorHidraulicaRaloLinear4.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear4_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRaloLinear4 + varAdicionarRaloLinear4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarVasoSanitario4 > 0 || varAdicionarVasoSanitario4_1 > 0)
-                    document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario4.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario4_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario4_1 + varAdicionarVasoSanitario4) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalar Vaso Sanitário: " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario4.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario4_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarVasoSanitario4 + varAdicionarVasoSanitario4_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
             if (valorTotalHidraulicaLavabo > 0) {
                 PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
                 tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
+                PdfPCell cellCozinha2 = new PdfPCell();
+                PdfPCell cellCozinha1 = new PdfPCell();
 
-                tableCozinha.addCell(paragrafoHidraulicaLavabo);
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                cellCozinha2.addElement(paragrafoHidraulicaLavabo);
+                cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+                tableCozinha.addCell(cellCozinha2);
+
                 document.add(tableCozinha);
+
                 if (varAdicionarTorneiraEletrica5 > 0 || varAdicionarTorneiraEletrica5_1 > 0)
-                    document.add(new Paragraph(">>> Torneira elétrica :" + (Double.parseDouble(valorHidraulicaTorneiraEletrica5.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica5_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraEletrica5_1 + varAdicionarTorneiraEletrica5) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraMonocomando > 0 || varAdicionarTorneiraMonocomando5_1 > 0)
-                    document.add(new Paragraph(">>> Torneira monocomando : " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando5.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando5_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraMonocomando5 + varAdicionarTorneiraMonocomando5_1) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraSimples5 > 0 || varAdicionarTorneiraSimples5_1 > 0)
-                    document.add(new Paragraph(">>> Torneira simples : " + (Double.parseDouble(valorHidraulicaTorneiraSimples5.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples5_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraSimples5_1 + varAdicionarTorneiraSimples5) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira elétrica: " + (Double.parseDouble(valorHidraulicaTorneiraEletrica5.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica5_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraEletrica5 + varAdicionarTorneiraEletrica5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarTorneiraMonocomando5 > 0 || varAdicionarTorneiraMonocomando5_1 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira monocomando: " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando5.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando5_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraMonocomando5_1 + varAdicionarTorneiraMonocomando5)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+
+                if (varAdicionarTorneiraSimples5_1 > 0 || varAdicionarTorneiraSimples5 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira Simples: " + (Double.parseDouble(valorHidraulicaTorneiraSimples5.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples5_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraSimples5 + varAdicionarTorneiraSimples5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarValvulaSifao5 > 0 || varAdicionarValvulaSifao5_1 > 0)
-                    document.add(new Paragraph(">>> Válvula e sifão simples : " + (Double.parseDouble(valorHidraulicaValvulaSifao5_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao5.getText().toString())) + " un ----- " + "R$" + (varAdicionarValvulaSifao5 + varAdicionarValvulaSifao5_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Válvula e Sifão simples: " + (Double.parseDouble(valorHidraulicaValvulaSifao5_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao5.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarValvulaSifao5 + varAdicionarValvulaSifao5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRegistroAcabamento5 > 0 || varAdicionarRegistroAcabamento5_1 > 0)
-                    document.add(new Paragraph(">>> Registros e acabamento : " + (Double.parseDouble(valorHidraulicaRegistroAcabamento5_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento5.getText().toString())) + " un ----- " + "    R$" + (varAdicionarRegistroAcabamento5 + varAdicionarRegistroAcabamento5_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Registros e acabamento: " + (Double.parseDouble(valorHidraulicaRegistroAcabamento5_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento5.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRegistroAcabamento5_1 + varAdicionarRegistroAcabamento5)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoAgua_5 > 0 || varAdicionarPontoAgua_5_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de água : " + (Double.parseDouble(valorHidraulicaCriacaoAgua5.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua5_1.getText().toString())) + " un -----" + "  R$" + (varAdicionarPontoAgua_5_1 + varAdicionarPontoAgua_5) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de água: " + (Double.parseDouble(valorHidraulicaCriacaoAgua5.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua5_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoAgua_5 + varAdicionarPontoAgua_5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoEsgoto_5 > 0 || varAdicionarPontoEsgoto_5_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de esgoto : " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto5.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto5_1.getText().toString())) + " un ----- " + "    R$" + (varAdicionarPontoEsgoto_5_1 + varAdicionarPontoEsgoto_5) + "0", boldServicosPrestados));
-                if (varAdicionarRalo10cm5 > 0 || varAdicionarRalo10cm5_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo de 10cm : " + (Double.parseDouble(valorHidraulicaRalo10cm5_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm5.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo10cm5 + varAdicionarRalo10cm5_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de esgoto: " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto5.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto5_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoEsgoto_5 + varAdicionarPontoEsgoto_5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarRalo10cm5_1 > 0 || varAdicionarRalo10cm5 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 10cm: " + (Double.parseDouble(valorHidraulicaRalo10cm5_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm5.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo10cm5 + varAdicionarRalo10cm5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRalo15cm5 > 0 || varAdicionarRalo15cm5_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo 15cm : " + (Double.parseDouble(valorHidraulicaRalo15cm5_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm5.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo15cm5 + varAdicionarRalo15cm5_1) + "0", boldServicosPrestados));
-                if (varAdicionarChuveiro5 > 0 || varAdicionarChuveiro5_1 > 0)
-                    document.add(new Paragraph(">>> Chuveiro : " + (Double.parseDouble(valorHidraulicaChuveiro5.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro5_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarChuveiro5_1 + varAdicionarChuveiro5) + "0", boldServicosPrestados));
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 15cm: " + (Double.parseDouble(valorHidraulicaRalo15cm5_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm5.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo15cm5 + varAdicionarRalo15cm5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
+                if (varAdicionarChuveiro5_1 > 0 || varAdicionarChuveiro5 > 0)
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Chuveiro: " + (Double.parseDouble(valorHidraulicaChuveiro5.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro5_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarChuveiro5_1 + varAdicionarChuveiro5)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
                 if (varAdicionarRaloLinear5 > 0 || varAdicionarRaloLinear5_1 > 0)
-                    document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear5.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear5_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear5_1 + varAdicionarRaloLinear5) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação de ralo linear: " + (Double.parseDouble(valorHidraulicaRaloLinear5.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear5_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRaloLinear5 + varAdicionarRaloLinear5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarVasoSanitario5 > 0 || varAdicionarVasoSanitario5_1 > 0)
-                    document.add(new Paragraph(">>> Instalar Vaso Sanitário : " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario5.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario5_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarVasoSanitario5_1 + varAdicionarVasoSanitario5) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalar Vaso Sanitário: " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario5.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario5_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarVasoSanitario5 + varAdicionarVasoSanitario5_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
             if (valorTotalHidraulicaSacada > 0) {
-                PdfPTable tableCozinha = new PdfPTable(1);
-                tableCozinha.setWidthPercentage(100);
-                PdfPCell cellCozinha;
 
-                tableCozinha.addCell(paragrafoHidraulicaSacadaVaranda);
+                PdfPTable tableCozinha = new PdfPTable(1);
+//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
+//                tableCozinhaServicos.
+                tableCozinha.setWidthPercentage(100);
+                PdfPCell cellCozinha2 = new PdfPCell();
+                PdfPCell cellCozinha1 = new PdfPCell();
+
+//                cellCozinha2.addHeader(paragrafoCozinha);
+                cellCozinha2.addElement(paragrafoHidraulicaSacadaVaranda);
+                cellCozinha1.setBorder(Rectangle.BOX);
+//                tableCozinha.addCell(cellCozinha1);
+                tableCozinha.addCell(cellCozinha2);
+
                 document.add(tableCozinha);
+
                 if (varAdicionarTorneiraEletrica6 > 0 || varAdicionarTorneiraEletrica6_1 > 0)
-                    document.add(new Paragraph(">>> Torneira elétrica :" + (Double.parseDouble(valorHidraulicaTorneiraEletrica6.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica6_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraEletrica6_1 + varAdicionarTorneiraEletrica6) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraMonocomando > 0 || varAdicionarTorneiraMonocomando6_1 > 0)
-                    document.add(new Paragraph(">>> Torneira monocomando : " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando6.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando6_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraMonocomando6 + varAdicionarTorneiraMonocomando6_1) + "0", boldServicosPrestados));
-                if (varAdicionarTorneiraSimples6 > 0 || varAdicionarTorneiraSimples6_1 > 0)
-                    document.add(new Paragraph(">>> Torneira simples : " + (Double.parseDouble(valorHidraulicaTorneiraSimples6.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples6_1.getText().toString())) + " un -----" + "R$" + (varAdicionarTorneiraSimples6_1 + varAdicionarTorneiraSimples6) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira elétrica: " + (Double.parseDouble(valorHidraulicaTorneiraEletrica6.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraEletrica6_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraEletrica6 + varAdicionarTorneiraEletrica6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarTorneiraMonocomando6 > 0 || varAdicionarTorneiraMonocomando6_1 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira monocomando: " + (Double.parseDouble(valorHidraulicaTorneiraMonocomando6.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraMonocomando6_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraMonocomando6_1 + varAdicionarTorneiraMonocomando6)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+
+                if (varAdicionarTorneiraSimples6_1 > 0 || varAdicionarTorneiraSimples6 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Torneira Simples: " + (Double.parseDouble(valorHidraulicaTorneiraSimples6.getText().toString()) + Double.parseDouble(valorHidraulicaTorneiraSimples6_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarTorneiraSimples6 + varAdicionarTorneiraSimples6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarValvulaSifao6 > 0 || varAdicionarValvulaSifao6_1 > 0)
-                    document.add(new Paragraph(">>> Válvula e sifão simples : " + (Double.parseDouble(valorHidraulicaValvulaSifao6_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao6.getText().toString())) + " un ----- " + "R$" + (varAdicionarValvulaSifao6 + varAdicionarValvulaSifao6_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Válvula e Sifão simples: " + (Double.parseDouble(valorHidraulicaValvulaSifao6_1.getText().toString()) + Double.parseDouble(valorHidraulicaValvulaSifao6.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarValvulaSifao6 + varAdicionarValvulaSifao6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRegistroAcabamento6 > 0 || varAdicionarRegistroAcabamento6_1 > 0)
-                    document.add(new Paragraph(">>> Registros e acabamento : " + (Double.parseDouble(valorHidraulicaRegistroAcabamento6_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento6.getText().toString())) + " un ----- " + "    R$" + (varAdicionarRegistroAcabamento6 + varAdicionarRegistroAcabamento6_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Registros e acabamento: " + (Double.parseDouble(valorHidraulicaRegistroAcabamento6_1.getText().toString()) + Double.parseDouble(valorHidraulicaRegistroAcabamento6.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRegistroAcabamento6_1 + varAdicionarRegistroAcabamento6)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoAgua_6 > 0 || varAdicionarPontoAgua_6_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de água : " + (Double.parseDouble(valorHidraulicaCriacaoAgua6.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua6_1.getText().toString())) + " un -----" + "  R$" + (varAdicionarPontoAgua_6_1 + varAdicionarPontoAgua_6) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de água: " + (Double.parseDouble(valorHidraulicaCriacaoAgua6.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoAgua6_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoAgua_6 + varAdicionarPontoAgua_6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarPontoEsgoto_6 > 0 || varAdicionarPontoEsgoto_6_1 > 0)
-                    document.add(new Paragraph(">>> Criação de ponto de esgoto : " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto6.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto6_1.getText().toString())) + " un ----- " + "    R$" + (varAdicionarPontoEsgoto_6_1 + varAdicionarPontoEsgoto_6) + "0", boldServicosPrestados));
-                if (varAdicionarRalo10cm6 > 0 || varAdicionarRalo10cm6_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo de 10cm : " + (Double.parseDouble(valorHidraulicaRalo10cm6_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm6.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo10cm6 + varAdicionarRalo10cm6_1) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Criação de ponto de esgoto: " + (Double.parseDouble(valorHidraulicaCriacaoEsgoto6.getText().toString()) + Double.parseDouble(valorHidraulicaCriacaoEsgoto6_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarPontoEsgoto_6 + varAdicionarPontoEsgoto_6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarRalo10cm6_1 > 0 || varAdicionarRalo10cm6 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 10cm: " + (Double.parseDouble(valorHidraulicaRalo10cm6_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo10cm6.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo10cm6 + varAdicionarRalo10cm6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 if (varAdicionarRalo15cm6 > 0 || varAdicionarRalo15cm6_1 > 0)
-                    document.add(new Paragraph(">>> Instalação Ralo 16cm : " + (Double.parseDouble(valorHidraulicaRalo15cm6_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm6.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRalo15cm6 + varAdicionarRalo15cm6_1) + "0", boldServicosPrestados));
-                if (varAdicionarChuveiro6 > 0 || varAdicionarChuveiro6_1 > 0)
-                    document.add(new Paragraph(">>> Chuveiro : " + (Double.parseDouble(valorHidraulicaChuveiro6.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro6_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarChuveiro6_1 + varAdicionarChuveiro6) + "0", boldServicosPrestados));
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação Ralo de 15cm: " + (Double.parseDouble(valorHidraulicaRalo15cm6_1.getText().toString()) + Double.parseDouble(valorHidraulicaRalo15cm6.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRalo15cm6 + varAdicionarRalo15cm6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
+                if (varAdicionarChuveiro6_1 > 0 || varAdicionarChuveiro6 > 0)
+                {
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Chuveiro: " + (Double.parseDouble(valorHidraulicaChuveiro6.getText().toString()) + Double.parseDouble(valorHidraulicaChuveiro6_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarChuveiro6_1 + varAdicionarChuveiro6)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+
+                }
                 if (varAdicionarRaloLinear6 > 0 || varAdicionarRaloLinear6_1 > 0)
-                    document.add(new Paragraph(">>> Instalação de ralo linear : " + (Double.parseDouble(valorHidraulicaRaloLinear6.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear6_1.getText().toString())) + " un ----- " + "   R$" + (varAdicionarRaloLinear6_1 + varAdicionarRaloLinear6) + "0", boldServicosPrestados));
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalação de ralo linear: " + (Double.parseDouble(valorHidraulicaRaloLinear6.getText().toString()) + Double.parseDouble(valorHidraulicaRaloLinear6_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarRaloLinear6 + varAdicionarRaloLinear6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
+                if (varAdicionarVasoSanitario6 > 0 || varAdicionarVasoSanitario6_1 > 0)
+                {
+
+                    Paragraph removerRevestimentoParede = new Paragraph(">>> Instalar Vaso Sanitário: " + (Double.parseDouble(valorHidraulicaInstalarVasoSanitario6.getText().toString()) + Double.parseDouble(valorHidraulicaInstalarVasoSanitario6_1.getText().toString())) + " m²", boldServicosPrestados);
+                    Paragraph valorRemoverRevestimentoParede = new Paragraph("R$" + df.format((varAdicionarVasoSanitario6 + varAdicionarVasoSanitario6_1)), boldServicosPrestados);
+                    valorRemoverRevestimentoParede.setAlignment(Element.ALIGN_RIGHT);
+                    removerRevestimentoParede.add(0, valorRemoverRevestimentoParede);
+                    removerRevestimentoParede.setLeading(0.70f);
+
+                    //
+                    PdfPTable tabela = new PdfPTable(1);
+                    tabela.setWidthPercentage(100);
+                    PdfPCell celula = new PdfPCell();
+
+                    celula.addElement(removerRevestimentoParede);
+                    celula.setBorder(Rectangle.NO_BORDER);
+                    tabela.addCell(celula);
+                    document.add(tabela);
+                }
                 document.add(espacoBranco1);
             }
         }
