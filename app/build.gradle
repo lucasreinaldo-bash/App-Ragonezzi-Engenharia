@@ -23,6 +23,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         multiDexEnabled true
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //        versionName "4.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
