@@ -3951,7 +3951,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
 
                 valorTotalRevestimentoQuarto2 = varAdicionarAlvenaria11 + varAdicionarAlvenaria11_1 + varAdicionarContraPiso11 + varAdicionarContraPiso11_1 + varAplicacaoImpermeabilizante11 + varAplicacaoImpermeabilizante11_1 + varAplicarPorcelanatoMaior11 + varAplicarPorcelanatoMaior11_1 + varAplicarPorcelanatoMenor11 + varAplicarPorcelanatoMenor11_1 + varPastilhaVidro_11 + varPastilhaVidro_11_1 + varRevestimento3D_11 + varRevestimento3D_11_1;
 
-                valorTotalCategoriaRevestimento = valorTotalRevestimentoAreaServico + valorTotalRevestimentoQuarto2 + valorTotalRevestimentoQuarto1 + valorTotalRevestimentoQuartoSuite + valorTotalRevestimentoSalaEstar + valorTotalRevestimentoSalaJantar + valorTotalRevestimentoSacada + valorTotalRevestimentoLavabo + valorTotalRevestimentoAreaServico + valorTotalRevestimentoBanheiroSocial + valorTotalRevestimentoCozinha;
+                valorTotalCategoriaRevestimento =  valorTotalRevestimentoQuarto2 + valorTotalRevestimentoQuarto1 + valorTotalRevestimentoQuartoSuite + valorTotalRevestimentoSalaEstar + valorTotalRevestimentoSalaJantar + valorTotalRevestimentoSacada + valorTotalRevestimentoLavabo + valorTotalRevestimentoAreaServico + valorTotalRevestimentoBanheiroSocial + valorTotalRevestimentoBanheiroSuite + valorTotalRevestimentoCozinha;
 
 
                 //Valores Hidraulica
@@ -4830,7 +4830,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         paragrafoHidraulicaBanheiro.setLeading(0.70f);
         Paragraph paragrafoHidraulicaAreaServico = new Paragraph(0, "Área de Serviço", boldServicos);
         Paragraph paragrafoHidraulicaAreaServicoValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaAreaServico), boldServicos);
-        paragrafoHidraulicaAreaServico.setAlignment(Element.ALIGN_RIGHT);
+        paragrafoHidraulicaAreaServicoValor.setAlignment(Element.ALIGN_RIGHT);
         paragrafoHidraulicaAreaServico.add(0, paragrafoHidraulicaAreaServicoValor);
         paragrafoHidraulicaAreaServico.setLeading(0.70f);
         Paragraph paragrafoHidraulicaBanheiro2 = new Paragraph("Banheiro Suíte", boldServicos);
@@ -4846,7 +4846,7 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
         Paragraph paragrafoHidraulicaSacadaVaranda = new Paragraph(0, "Sacada Varanda", boldServicos);
         Paragraph paragrafoHidraulicaSacadaVarandaValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaSacada), boldServicos);
         paragrafoHidraulicaSacadaVarandaValor.setAlignment(Element.ALIGN_RIGHT);
-        paragrafoHidraulicaSacadaVaranda.add(0, paragrafoHidraulicaSacadaVaranda);
+        paragrafoHidraulicaSacadaVaranda.add(0, paragrafoHidraulicaSacadaVarandaValor);
         paragrafoHidraulicaSacadaVaranda.setLeading(0.70f);
         Paragraph paragrafoHidraulicaSalaJantar = new Paragraph(0, "Sala Jantar", boldServicos);
         Paragraph paragrafoHidraulicaSalaJantarValor = new Paragraph("Total R$" + df.format(valorTotalHidraulicaSalaJantar), boldServicos);
@@ -9148,19 +9148,17 @@ public class Main2Activity extends AppCompatActivity implements GoogleApiClient.
             if (valorTotalHidraulicaSacada > 0) {
 
                 PdfPTable tableCozinha = new PdfPTable(1);
-//                PdfPTable tableCozinhaServicos = new PdfPTable(qtdDemoCozinha);
-//                tableCozinhaServicos.
                 tableCozinha.setWidthPercentage(100);
                 PdfPCell cellCozinha2 = new PdfPCell();
                 PdfPCell cellCozinha1 = new PdfPCell();
-
-//                cellCozinha2.addHeader(paragrafoCozinha);
                 cellCozinha2.addElement(paragrafoHidraulicaSacadaVaranda);
                 cellCozinha1.setBorder(Rectangle.BOX);
-//                tableCozinha.addCell(cellCozinha1);
                 tableCozinha.addCell(cellCozinha2);
 
                 document.add(tableCozinha);
+
+
+
 
                 if (varAdicionarTorneiraEletrica6 > 0 || varAdicionarTorneiraEletrica6_1 > 0)
                 {
